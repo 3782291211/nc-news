@@ -1,13 +1,84 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Gloria+Hallelujah&display=swap');
+
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+}
+
+body {
+  width: 85%;
+  margin: 0 auto;
+  font-family: 'Gloria Hallelujah', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f1ebc7;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23a19da8' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2 {
+  margin: 30px auto;
+  font-family: 'Concert One', cursive;
+  font-size: 50px;
+}
+
+h2{
+  margin: 20px auto 30px;
+  font-size: 30px;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav > * {
+  margin: 0 30px;
+  padding: 0 3px;
+  text-decoration: none;
+  background-color: #cbbe74;
+  border: 2px solid burlywood;
+  border-radius: 10px;
+}
+
+.home__welcome {
+  margin: 20px auto;
+  font-size: 30px;
+}
+
+ul {
+  margin: 0 auto;
+}
+
+li {
+  list-style-type: none;
+  text-align: left;
+  border: 2px solid rgb(73, 64, 4);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 10px auto;
+  background-color: #f1ebc7;
+  width: 50vw;
+  min-width: 300px;
+}
+
+.article-card__details, .articles__loading {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.article-card__title {
+  padding: 5px;
+}
+
+.articles__loading {
+  margin: 60px auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
