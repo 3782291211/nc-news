@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
 
@@ -20,12 +21,11 @@ return (
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && <ul>
     {articles.map(({article_id, author, title, topic, created_at}) => {
-        return <ArticlePreviewCard 
-        key={article_id}
+        return <Link key={article_id} to={`articles/${article_id}`}><ArticlePreviewCard
         author={author}
         title={title}
         topic={topic}
-        createdAt={created_at} />;
+        createdAt={created_at} /></Link>;
     })}
   </ul>}
   </main>

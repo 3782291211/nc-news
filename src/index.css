@@ -62,6 +62,7 @@ li {
   margin: 10px auto;
   background-color: #f1ebc7;
   width: 50vw;
+  min-width: 300px;
 }
 
 .article-card__details, .articles__loading {
@@ -75,4 +76,9 @@ li {
 
 .articles__loading {
   margin: 60px auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

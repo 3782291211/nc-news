@@ -1,6 +1,5 @@
 const ArticlePreviewCard = ({author, title, topic, createdAt}) => {
 const date = new Date(createdAt).toString();
-console.log(typeof date);
 
   return (<li>
     <p className="article-card__title">{title} </p> 
