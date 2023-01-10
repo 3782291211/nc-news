@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Gloria+Hallelujah&display=swap');
 
-
 * {
   margin: 0;
+  font-size: 20px;
 }
 
 body {
@@ -23,12 +23,17 @@ code {
 h1, h2 {
   margin: 30px auto;
   font-family: 'Concert One', cursive;
-  font-size: 50px;
+  font-size: 70px;
 }
 
-h2{
+h2, h2> * {
   margin: 20px auto 30px;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+h3{
+  margin: 0px auto 5px;
+  font-size: 35px;
 }
 
 nav {
@@ -37,6 +42,7 @@ nav {
 
 nav > * {
   margin: 0 30px;
+  font-size: 25px;
   padding: 0 3px;
   text-decoration: none;
   background-color: #cbbe74;
@@ -67,7 +73,8 @@ li {
   background-color: hsl(12, 20%, 50%, 90%);
 }
 
-.article-card__details, .articles__loading, .comment-card__details  {
+.article-card__details, .articles__loading, 
+.comment-card__details, .single-article__loading  {
   background-color: black;
   color: whitesmoke;
   padding: 0 10px;
@@ -81,16 +88,17 @@ li {
   box-shadow: 0 0 10px 3px inset hsl(12, 20%, 50%, 90%);
 }
 
-.articles__loading {
+.articles__loading, .single-article__loading {
   margin: 60px auto;
+  max-width: 400px;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
-.single-article {
+.single-article, .comments {
   text-align: left;
 }
 
@@ -101,17 +109,9 @@ article {
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
 }
 
-article:hover{
-  /*background-color: rgb(70, 70, 70);
-  color: whitesmoke;
- box-shadow: 0 0 15px 10px inset hsl(12, 20%, 70%, 90%);*/
- font-size: 18px;
-}
-
 .single-article__author {
   background-color: black;
   color: whitesmoke;
-  width: fit-content;
   padding: 2px 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -119,14 +119,19 @@ article:hover{
 
 .comment-card__votes {
   float: right;
+  margin-right: 20px;
 }
 
-.comment-card__body {
+.comment-card__body, .comments__article  {
   display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;  
 overflow: hidden;
 text-overflow: ellipsis;
+}
+
+.comments__article:hover {
+  display: block;
 }
 
 .single-article__buttons {
@@ -136,10 +141,10 @@ text-overflow: ellipsis;
 }
 
 button {
-  margin: 0 5px;
-  font-size: 16px;
+  margin: 0 5px 10px;
+  font-size: 20px;
   padding: 6px;
-  background-color: black;
+  background-color: rgb(78, 69, 3);
   color: whitesmoke;
   border-radius: 10px;
 }
@@ -147,4 +152,84 @@ button {
 button:active{
   background-color: orangered;
   color: yellow;
+}
+
+#single-article__link {
+  color: whitesmoke;
+}
+
+.comment__full {
+  background-color: white;
+  width: 100%;
+  border: none;
+  max-width: 1000px;
+  margin-bottom: 30px;
+  box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
+}
+
+.comment__details {
+  padding: 2px 10px;
+  background-color: rgb(44, 40, 1);
+  color: whitesmoke;
+  line-height: 2.5ch;
+}
+
+.comment__body {
+  padding: 2px 10px;
+  margin-bottom: 10px;
+}
+
+.comments__article {
+  background-color: #f2f1ed;
+}
+
+.comment__buttons{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.comment__votes {
+  margin: 0 10px;
+  color: brown;
+  font-size: larger;
+  text-shadow: 1px 1px 3px red;
+}
+
+.comments__new {
+  display: block;
+  margin: 0 auto;
+  font-size: 25px;
+  background-color: rgb(245, 207, 71);
+  color: black;
+}
+
+.--green {
+  background-color: rgb(1, 57, 1);
+  color: yellow;
+}
+
+textarea {
+  margin: 10px auto;
+  display: block;
+  width: 50%;
+  height: 200px
+}
+
+.single-article--float {
+  float: right;
+}
+
+.comments__h2 {
+  font-weight: lighter;
+}
+
+.single-article__current {
+  text-align: center;
+  margin: 40px auto 30px;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: whitesmoke;
+  box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
+  font-weight: bold;
 }
