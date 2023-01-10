@@ -4,7 +4,7 @@ import * as api from '../api';
 
 import CommentCard from "./CommentCard";
 
-const Comments = () => {
+const Comments = ({loggedInUser}) => {
 const { articleId } = useParams('');
 const [article, setArticle] = useState([]);
 const [comments, setComments] = useState([]);
@@ -14,9 +14,13 @@ const [showTextArea, setShowTextArea] = useState(false);
 const [showCreateButton, setshowCreateButton] = useState(true);
 const [showPostButton, setshowPostButton] = useState(false);
 const [newComment, setNewComment] = useState('');
+
 const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+const [showErrorMsg, setShowErrorMsg] = useState(false);
+const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
 
 useEffect(() => {
+  setShowErrorMsg(false);
   setIsLoading(true);
   Promise.all([
     api.fetchSingleArticle(articleId),
@@ -29,14 +33,22 @@ useEffect(() => {
   }, []);
 
   const handleClick = e => {
-      setshowPostButton(false);
-    api.postNewComment(articleId, newComment).then(comment => {
+    if (!loggedInUser) {
+        setshowNotLoggedIn(true);
+        setTimeout(() => setshowNotLoggedIn(false), 6000);
+      };
+    setshowPostButton(false);
+    api.postNewComment(articleId, newComment, loggedInUser)
+    .then(comment => {
       setShowTextArea(false);
       setNewComment('');
       setShowSuccessMsg(true);
       setTimeout(() => setShowSuccessMsg(false), 6000);
-      
       setComments(prev => [comment, ...prev]);
+    })
+    .catch(() => {
+      setShowErrorMsg(true);
+      setTimeout(() => setShowErrorMsg(false), 6000);
     });
   };
 
@@ -64,6 +76,9 @@ useEffect(() => {
 
     {showSuccessMsg && <p className="comments__confirmation">Your comment has been added.</p>}
 
+    {showErrorMsg && loggedInUser && <p className="comments__error">Unable to add comment.</p>}
+    {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
+
     <ul>
     {comments.map(({author, body, comment_id, votes, created_at}) => {
       return <CommentCard 
@@ -74,6 +89,7 @@ useEffect(() => {
       body={body}
       votes={votes}
       date={new Date(created_at).toString().slice(0, 24)}
+      loggedInUser={loggedInUser}
       />
     })}
     </ul>
