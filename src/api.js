@@ -21,9 +21,9 @@ export const fetchComments = articleId => {
   .then(res => res.data);
 };
 
-export const updateCommentVotes = (itemType, id, voteModifier) => {
-  return newsApi.patch(`${itemType}s/${id}`, {"inc_votes": voteModifier})
-  .then(({data}) => itemType === 'article' ? data.article : data.comment);
+export const updateCommentVotes = (articleOrComments, id, voteModifier) => {
+  return newsApi.patch(`${articleOrComments}s/${id}`, {"inc_votes": voteModifier})
+  .then(({data}) => articleOrComments === 'article' ? data.article : data.comment);
 };
 
 export const postNewComment = (articleId, body) => {
