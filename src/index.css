@@ -191,9 +191,18 @@ button:active{
 
 .comment__votes {
   margin: 0 10px;
-  color: brown;
   font-size: larger;
-  text-shadow: 1px 1px 3px red;
+ 
+}
+
+.--positive {
+color: green;
+text-shadow: 1px 1px 3px green;
+}
+
+.--negative {
+color: red;
+text-shadow: 1px 1px 3px red;
 }
 
 .comments__new {

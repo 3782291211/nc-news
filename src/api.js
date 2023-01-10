@@ -18,3 +18,9 @@ export const fetchComments = articleId => {
   return newsApi.get(`articles/${articleId}/comments?limit=50`)
   .then(res => res.data);
 };
+
+export const updateCommentVotes = (commentId, voteModifier) => {
+  return newsApi.patch(`comments/${commentId}`, {
+    "inc_votes": voteModifier
+  }).then(({data: {comment}}) => comment);
+}
