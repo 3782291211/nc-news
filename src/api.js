@@ -15,6 +15,6 @@ export const fetchSingleArticle = articleId => {
 }
 
 export const fetchComments = articleId => {
-  return newsApi.get(`articles/${articleId}/comments`)
+  return newsApi.get(`articles/${articleId}/comments?limit=50`)
   .then(res => res.data);
 };
