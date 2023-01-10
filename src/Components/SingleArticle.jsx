@@ -48,7 +48,7 @@ return (
   {isLoading ? <p className="single-article__loading">Fetching data...</p> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
-    <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float"> </ span></p>
+    <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float">{new Date(article.created_at).toString().slice(0, 24)}</ span></p>
     <article>
       {article.body}
     </article>
@@ -62,14 +62,14 @@ return (
     <p className="single-article__current">{showRecentButton ? 'Showing top comments' : 'Showing most recent comments'}</p>
 
     <ul>
-    {comments.map(({comment_id, votes, author, body}, i) => {
+    {comments.map(({comment_id, votes, author, body, created_at}, i) => {
       if (i < 5) {
         return <CommentPreviewCard 
           key={comment_id}
           commentBody={body}
           votes={votes}
           author={author}
-          date={'date'} />
+          date={new Date(created_at).toString().slice(0, 15)} />
       }
     })}
     </ul>
