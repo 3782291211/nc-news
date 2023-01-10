@@ -20,13 +20,15 @@ return (
     <h2>Viewing all articles <em>(preview)</em></h2>
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && <ul>
-    {articles.map(({article_id, author, title, topic, created_at}) => {
+    {articles.map(({article_id, author, title, topic, created_at, votes, comment_count}) => {
         return <Link key={article_id} to={`${article_id}`}>
         <ArticlePreviewCard
         author={author}
         title={title}
         topic={topic}
-        createdAt={created_at} />
+        createdAt={created_at}
+        votes={votes}
+        commentCount={comment_count} />
         </Link>;
     })}
   </ul>}

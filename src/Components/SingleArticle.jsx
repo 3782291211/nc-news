@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
 import { Link } from "react-router-dom";
+import updateVotes from '../updateVotes';
+import VoteUpdateButtons from "./VoteUpdateButtons";
 
 const SingleArticle = () => {
 const { articleId } = useParams();
@@ -12,6 +14,7 @@ const [isLoading, setIsLoading] = useState(false);
 const [originalComments, setOriginalComments] = useState([]);
 const [showTopButton, setShowTopButton] = useState(true);
 const [showRecentButton, setShowRecentButton] = useState(false);
+const [showError, setShowError] = useState(false);
 
 useEffect(() => {
   setIsLoading(true);
@@ -51,6 +54,7 @@ return (
     <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float">{new Date(article.created_at).toString().slice(0, 24)}</ span></p>
     <article>
       {article.body}
+      <VoteUpdateButtons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')}/>
     </article>
 
     <div className="single-article__buttons">
