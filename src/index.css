@@ -206,7 +206,7 @@ text-shadow: 1px 1px 3px red;
 
 .comments__new {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   font-size: 25px;
   background-color: rgb(245, 207, 71);
   color: black;
@@ -232,7 +232,7 @@ textarea {
   font-weight: lighter;
 }
 
-.single-article__current {
+.single-article__current, .comments__confirmation {
   text-align: center;
   margin: 10px auto 30px;
   width: 100%;

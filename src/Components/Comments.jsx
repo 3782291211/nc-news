@@ -10,6 +10,12 @@ const [article, setArticle] = useState([]);
 const [comments, setComments] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 
+const [showTextArea, setShowTextArea] = useState(false);
+const [showCreateButton, setshowCreateButton] = useState(true);
+const [showPostButton, setshowPostButton] = useState(false);
+const [newComment, setNewComment] = useState('');
+const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+
 useEffect(() => {
   setIsLoading(true);
   Promise.all([
@@ -21,6 +27,18 @@ useEffect(() => {
       setIsLoading(false);
   })
   }, []);
+
+  const handleClick = e => {
+      setshowPostButton(false);
+    api.postNewComment(articleId, newComment).then(comment => {
+      setShowTextArea(false);
+      setNewComment('');
+      setShowSuccessMsg(true);
+      setTimeout(() => setShowSuccessMsg(false), 6000);
+      
+      setComments(prev => [comment, ...prev]);
+    });
+  };
 
  return (
     <main className="comments">
@@ -34,7 +52,18 @@ useEffect(() => {
     </article>
 
     <h3>Comments:</h3>
-  
+    {showTextArea && <textarea placeholder="Add text here" onChange={e => {
+      setNewComment(e.target.value);
+      setshowCreateButton(false);
+      setshowPostButton(true);
+    }} onBlur={() => !newComment && setShowTextArea(false)} value={newComment}/>}
+
+    {(showCreateButton || !newComment) && <button className="comments__new" onClick={() => setShowTextArea(true)}>{'Create new comment'}</button>}
+    
+    {showPostButton && newComment && <button className="comments__new --green" onClick={handleClick}>{'Post comment'}</button>}
+
+    {showSuccessMsg && <p className="comments__confirmation">Your comment has been added.</p>}
+
     <ul>
     {comments.map(({author, body, comment_id, votes, created_at}) => {
       return <CommentCard 

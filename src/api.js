@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const username = 'happyamy2016';
+
 const newsApi = axios.create({
   baseURL: 'https://majids-backend-api-project.onrender.com/api'
 });
@@ -23,3 +25,8 @@ export const updateCommentVotes = (itemType, id, voteModifier) => {
   return newsApi.patch(`${itemType}s/${id}`, {"inc_votes": voteModifier})
   .then(({data}) => itemType === 'article' ? data.article : data.comment);
 };
+
+export const postNewComment = (articleId, body) => {
+  return newsApi.post(`articles/${articleId}/comments`, {username, body})
+  .then(({data: {comment}}) => comment);
+}
