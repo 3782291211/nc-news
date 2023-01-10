@@ -21,11 +21,13 @@ return (
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && <ul>
     {articles.map(({article_id, author, title, topic, created_at}) => {
-        return <Link key={article_id} to={`articles/${article_id}`}><ArticlePreviewCard
+        return <Link key={article_id} to={`${article_id}`}>
+        <ArticlePreviewCard
         author={author}
         title={title}
         topic={topic}
-        createdAt={created_at} /></Link>;
+        createdAt={created_at} />
+        </Link>;
     })}
   </ul>}
   </main>
