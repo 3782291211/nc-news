@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
 import { Link } from "react-router-dom";
+import updateVotes from '../updateVotes';
+import VoteUpdateButtons from "./VoteUpdateButtons";
 
 const SingleArticle = () => {
 const { articleId } = useParams();
@@ -12,6 +14,7 @@ const [isLoading, setIsLoading] = useState(false);
 const [originalComments, setOriginalComments] = useState([]);
 const [showTopButton, setShowTopButton] = useState(true);
 const [showRecentButton, setShowRecentButton] = useState(false);
+const [showError, setShowError] = useState(false);
 
 useEffect(() => {
   setIsLoading(true);
@@ -48,9 +51,10 @@ return (
   {isLoading ? <p className="single-article__loading">Fetching data...</p> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
-    <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float"> </ span></p>
+    <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float">{new Date(article.created_at).toString().slice(0, 24)}</ span></p>
     <article>
       {article.body}
+      <VoteUpdateButtons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')}/>
     </article>
 
     <div className="single-article__buttons">
@@ -62,14 +66,14 @@ return (
     <p className="single-article__current">{showRecentButton ? 'Showing top comments' : 'Showing most recent comments'}</p>
 
     <ul>
-    {comments.map(({comment_id, votes, author, body}, i) => {
+    {comments.map(({comment_id, votes, author, body, created_at}, i) => {
       if (i < 5) {
         return <CommentPreviewCard 
           key={comment_id}
           commentBody={body}
           votes={votes}
           author={author}
-          date={'date'} />
+          date={new Date(created_at).toString().slice(0, 15)} />
       }
     })}
     </ul>
