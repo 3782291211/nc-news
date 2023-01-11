@@ -4,7 +4,7 @@ import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
 import { Link } from "react-router-dom";
 import updateVotes from '../updateVotes';
-import VoteUpdateButtons from "./VoteUpdateButtons";
+import Buttons from "./Buttons";
 
 const SingleArticle = ({loggedInUser}) => {
 const { articleId } = useParams();
@@ -54,7 +54,7 @@ return (
     <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float">{new Date(article.created_at).toString().slice(0, 24)}</ span></p>
     <article>
       {article.body}
-      <VoteUpdateButtons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')} loggedInUser={loggedInUser}/>
+      <Buttons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')} loggedInUser={loggedInUser}/>
     </article>
 
     <div className="single-article__buttons">

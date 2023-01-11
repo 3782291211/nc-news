@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as api from '../api';
 
-const VoteUpdateButtons = ({votes, showError, updateVotes, loggedInUser, author, id, setComments, setShowDeletedMsg, setShowWrongUserMsg, setShowDeleteError}) => {
+const Buttons = ({votes, showError, updateVotes, loggedInUser, author, id, setComments, setShowDeletedMsg, setShowWrongUserMsg, setShowDeleteError}) => {
   
 const [notLoggedInError, setNotLoggedInError] = useState(false);
 const [disableDelete, setDisableDelete] = useState(false);
@@ -41,7 +41,7 @@ const handleDelete = () => {
       <button id="upvote" onClick={handleClick()}>Vote up 👍</button>
       <button id="downvote" onClick={handleClick()}>Vote down 👎</button>
 
-      {loggedInUser && <button id={id} disabled={disableDelete} onClick={handleDelete} className={isLoading ? '--red' : ''}>{isLoading ? 'Deleting...' : 'Delete comment'}</button>}
+      {loggedInUser && <button id={id} disabled={disableDelete} onClick={handleDelete} className={isLoading ? '--red' : ''}>{isLoading ? 'Deleting...' : 'Delete'}</button>}
    
      {notLoggedInError && <p style={{'color': 'red', 'margin': '0 10px'}}>You must log in to vote.</p>}
      
@@ -50,4 +50,4 @@ const handleDelete = () => {
   );
 };
 
-export default VoteUpdateButtons;
+export default Buttons;
