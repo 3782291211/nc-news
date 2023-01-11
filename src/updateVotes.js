@@ -1,11 +1,11 @@
 import * as api from '../src/api';
-const updateVotes = (setShowError, setItems, id, itemType) => {
+const updateVotes = (setShowError, setCommentsOrArticle, id, itemType) => {
 
 return e => {
   setShowError(false);
   const voteModifier = e.target.id === 'upvote' ? 1 : -1;
 
-  setItems(prev => {
+  setCommentsOrArticle(prev => {
       if (itemType === 'comment') {
         return prev.map(comment => {
           return comment.comment_id === id ? 
@@ -20,7 +20,7 @@ return e => {
   api.updateCommentVotes(itemType, id, voteModifier)
   .catch(() => {
     setShowError(true);
-    setItems(prev => {
+    setCommentsOrArticle(prev => {
       if (itemType === 'comment') {
         return prev.map(comment => {
         return comment.comment_id === id ? 

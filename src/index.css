@@ -6,7 +6,6 @@
 }
 
 body {
-  width: 85%;
   margin: 0 auto;
   font-family: 'Gloria Hallelujah', cursive;
   -webkit-font-smoothing: antialiased;
@@ -15,18 +14,32 @@ body {
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23a19da8' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+#App__body {
+  width: 85%;
+  margin: 0 auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-h1, h2 {
-  margin: 30px auto;
+h1 {
   font-family: 'Concert One', cursive;
-  font-size: 70px;
+  font-size: 100px;
+  background-color: whitesmoke;
+  padding: 10px 0 60px;
+  margin: 0;
 }
 
-h2, h2> * {
+h2 {
+  font-family: 'Concert One', cursive;
+  font-size: 100px;
+  margin: 20px auto 30px;
+  font-size: 40px;
+}
+
+h2> * {
   margin: 20px auto 30px;
   font-size: 40px;
 }
@@ -51,8 +64,10 @@ nav > * {
 }
 
 .home__welcome {
-  margin: 20px auto;
-  font-size: 30px;
+  margin: 80px auto;
+  font-size: 90px;
+  line-height: 2ch;
+  text-shadow: black 4px 4px, rgb(220, 178, 80) 7px 7px, black 10px 10px;
 }
 
 ul {
@@ -187,6 +202,7 @@ button:active{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 18px 0 0
 }
 
 .votes__count {
@@ -206,7 +222,7 @@ text-shadow: 1px 1px 3px red;
 
 .comments__new {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   font-size: 25px;
   background-color: rgb(245, 207, 71);
   color: black;
@@ -232,7 +248,7 @@ textarea {
   font-weight: lighter;
 }
 
-.single-article__current {
+.single-article__current, .comments__confirmation, .comments__error {
   text-align: center;
   margin: 10px auto 30px;
   width: 100%;
@@ -241,3 +257,60 @@ textarea {
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
   font-weight: bold;
 }
+
+.comments__error {
+  background-color: rgb(248, 49, 49);
+  color: black;
+  margin: 0 auto;
+  max-width: 998px;
+}
+
+#login__form {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #000000;
+  padding: 0 0 5px;
+}
+
+label {
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+input {
+  font-size: 18px;
+color: black;
+width: 17vw;
+max-width: 200px
+}
+
+.login__error {
+width: fit-content;
+color: red;
+margin: 0 auto
+}
+
+.login__logged-in {
+  color: whitesmoke;
+  margin: 3px 10px 0 0
+}
+
+#login__button, #logout__button {
+  background-color: rgb(165, 165, 165);
+  color: black;
+  font-size: 16px;
+  height: fit-content;
+  padding: 3.5px 9px;
+  margin: 8px 10px 0
+}
+
+#login__button:active {
+  background-color: rgb(0, 4, 255);
+  color: yellow
+}
+
+/*@media (max-width: 960px) {
+  .login__logged-in {
+    float: none
+  }
+}*/
