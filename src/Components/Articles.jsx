@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
@@ -7,16 +8,25 @@ import ArticlePreviewCard from './ArticlePreviewCard';
 const Articles = () => {
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
-
 const { topic } = useParams();
+const [sortBy, setSortBy] = useState('created_at');
+
+/*const [searchParams, setSearchParams] = useSearchParams({});
+const sortBy = searchParams.get('sort_by');
+
+const setSortBy = option => {
+  const newParams = new URLSearchParams(searchParams);
+  newParams.set('sort_by', option);
+  setSearchParams(newParams);
+}*/
 
 useEffect(() => {
   setIsLoading(true);
-  api.fetchArticles(topic).then(({articles}) => {
+  api.fetchArticles(topic, sortBy).then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
   });
-}, [topic]);
+}, [topic, sortBy]);
 
 return (
     <main>
@@ -24,6 +34,17 @@ return (
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && 
     <div>
+
+  <p>Sort by:</p>
+      <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+        <option value="comment_count">Comment count</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="votes">Votes</option>
+        <option value="created_at">Date</option>
+        <option value="topic">Topic</option>
+      </select>
+
       <ul>
        {articles.map(({article_id, author, title, topic, created_at, votes, comment_count}) => {
          return <Link key={article_id} to={`/articles/${article_id}`}>
