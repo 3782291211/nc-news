@@ -309,8 +309,16 @@ margin: 0 auto
   color: yellow
 }
 
-/*@media (max-width: 960px) {
-  .login__logged-in {
-    float: none
-  }
-}*/
+.nav__topics {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 20px auto 0;
+}
+
+.nav__topic-li {
+  width: fit-content;
+  padding: 0 9px;
+  margin: 0 10px;
+  border-radius: 10px;
+}

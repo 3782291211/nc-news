@@ -4,8 +4,8 @@ const newsApi = axios.create({
   baseURL: 'https://majids-backend-api-project.onrender.com/api'
 });
 
-export const fetchArticles = () => {
-  return newsApi.get('/articles')
+export const fetchArticles = (topic, sortBy, limit = 50) => {
+  return newsApi.get('/articles', { params: { topic , sortBy, limit} })
   .then(res => res.data);
 };
 
@@ -32,3 +32,8 @@ export const postNewComment = (articleId, body, username) => {
 export const fetchUsers = () => {
   return newsApi.get('users').then(res => res.data);
 };
+
+export const fetchTopics = () => {
+  return newsApi.get('/topics')
+  .then(res => res.data);
+}
