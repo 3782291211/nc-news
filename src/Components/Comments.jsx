@@ -16,9 +16,11 @@ const [showPostButton, setshowPostButton] = useState(false);
 const [newComment, setNewComment] = useState('');
 
 const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showDeletedMsg, setShowDeletedMsg] = useState(false);
+
+const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
+const [showWrongUserMsg, setShowWrongUserMsg] = useState(false);
 
 useEffect(() => {
   setShowErrorMsg(false);
@@ -82,6 +84,8 @@ useEffect(() => {
     {showErrorMsg && loggedInUser && <p className="comments__error">Unable to add comment.</p>}
     {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
 
+    {showWrongUserMsg && <p className="comments__error">Cannot delete another user's comment.</p>}
+
     <ul>
     {comments.map(({author, body, comment_id, votes, created_at}) => {
       return <CommentCard 
@@ -94,6 +98,7 @@ useEffect(() => {
       date={new Date(created_at).toString().slice(0, 24)}
       loggedInUser={loggedInUser}
       setShowDeletedMsg={setShowDeletedMsg}
+      setShowWrongUserMsg={setShowWrongUserMsg}
       />
     })}
     </ul>

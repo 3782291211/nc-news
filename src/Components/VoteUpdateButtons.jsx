@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as api from '../api';
 
-const VoteUpdateButtons = ({votes, showError, updateVotes, loggedInUser, id, setComments, setShowDeletedMsg}) => {
+const VoteUpdateButtons = ({votes, showError, updateVotes, loggedInUser, author, id, setComments, setShowDeletedMsg, setShowWrongUserMsg}) => {
 const [notLoggedInError, setNotLoggedInError] = useState(false);
 const [disableDelete, setDisableDelete] = useState(false);
 
@@ -9,13 +9,18 @@ const handleClick = () =>
     !loggedInUser ? () => setNotLoggedInError(true) : updateVotes;
 
 const handleDelete = () => {
-  setDisableDelete(true);
-  api.deleteComment(id).then(() => {
-    setComments(prev => prev.filter(comment => 
+  if (loggedInUser === author) {
+    setDisableDelete(true);
+    api.deleteComment(id).then(() => {
+      setComments(prev => prev.filter(comment => 
       comment.comment_id !== id));
-    setShowDeletedMsg(true);
-    setTimeout(() => setShowDeletedMsg(false), 5000);
-  });
+      setShowDeletedMsg(true);
+      setTimeout(() => setShowDeletedMsg(false), 5000);
+    });
+  } else {
+    setShowWrongUserMsg(true);
+    setTimeout(() => setShowWrongUserMsg(false), 5000);
+  }
 };
 
   return (
