@@ -233,6 +233,10 @@ text-shadow: 1px 1px 3px red;
   color: yellow;
 }
 
+.--red {
+  background-color: red;
+}
+
 textarea {
   margin: 10px auto;
   display: block;

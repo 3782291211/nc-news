@@ -42,4 +42,8 @@ export const fetchUsers = () => {
 export const fetchTopics = () => {
   return newsApi.get('/topics')
   .then(res => res.data);
-}
+};
+
+export const deleteComment = commentId => {
+  return newsApi.delete(`comments/${commentId}`).then(() => 'Comment deleted.');
+};

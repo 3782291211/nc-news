@@ -2,7 +2,7 @@ import { useState } from 'react';
 import VoteUpdateButtons from './VoteUpdateButtons';
 import updateVotes from '../updateVotes';
 
-const CommentCard = ({body, author, votes, date, id, setComments, loggedInUser}) => {
+const CommentCard = ({body, author, votes, date, id, setComments, loggedInUser, setShowDeletedMsg}) => {
 const [showError, setShowError] = useState(false);
 
   return (
@@ -13,7 +13,10 @@ const [showError, setShowError] = useState(false);
     votes={votes} 
     showError={showError} 
     updateVotes={updateVotes(setShowError, setComments, id, 'comment')}
-    loggedInUser={loggedInUser}/>
+    loggedInUser={loggedInUser}
+    id={id}
+    setComments={setComments}
+    setShowDeletedMsg={setShowDeletedMsg}/>
     </li>
   );
 };

@@ -17,6 +17,7 @@ const [newComment, setNewComment] = useState('');
 
 const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 const [showErrorMsg, setShowErrorMsg] = useState(false);
+const [showDeletedMsg, setShowDeletedMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
 
 useEffect(() => {
@@ -76,6 +77,8 @@ useEffect(() => {
 
     {showSuccessMsg && <p className="comments__confirmation">Your comment has been added.</p>}
 
+    {showDeletedMsg && <p className="comments__confirmation">Your comment has been deleted.</p>}
+
     {showErrorMsg && loggedInUser && <p className="comments__error">Unable to add comment.</p>}
     {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
 
@@ -90,6 +93,7 @@ useEffect(() => {
       votes={votes}
       date={new Date(created_at).toString().slice(0, 24)}
       loggedInUser={loggedInUser}
+      setShowDeletedMsg={setShowDeletedMsg}
       />
     })}
     </ul>
