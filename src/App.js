@@ -22,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/articles" element={<Articles />}/> 
+        <Route path="/:topic/articles" element={<Articles />}/> 
         <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
       </Routes>
