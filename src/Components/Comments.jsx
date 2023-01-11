@@ -21,6 +21,7 @@ const [showDeletedMsg, setShowDeletedMsg] = useState(false);
 const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
 const [showWrongUserMsg, setShowWrongUserMsg] = useState(false);
+const [showDeleteError, setShowDeleteError] = useState(false);
 
 useEffect(() => {
   setShowErrorMsg(false);
@@ -82,9 +83,12 @@ useEffect(() => {
     {showDeletedMsg && <p className="comments__confirmation">Your comment has been deleted.</p>}
 
     {showErrorMsg && loggedInUser && <p className="comments__error">Unable to add comment.</p>}
+
     {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
 
     {showWrongUserMsg && <p className="comments__error">Cannot delete another user's comment.</p>}
+
+    {showDeleteError && <p className="comments__error">Unable to delete comment.</p>}
 
     <ul>
     {comments.map(({author, body, comment_id, votes, created_at}) => {
@@ -99,6 +103,7 @@ useEffect(() => {
       loggedInUser={loggedInUser}
       setShowDeletedMsg={setShowDeletedMsg}
       setShowWrongUserMsg={setShowWrongUserMsg}
+      setShowDeleteError={setShowDeleteError}
       />
     })}
     </ul>
