@@ -24,6 +24,7 @@ function App() {
         <Route path="/articles" element={<Articles />}/>
         <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
+        <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
       {useLocation().pathname !== '/' && <button onClick={() => window.scrollTo({

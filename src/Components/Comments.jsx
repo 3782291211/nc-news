@@ -22,6 +22,8 @@ const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
 const [showDeleteError, setShowDeleteError] = useState(false);
 
+const [apiError, setApiError] = useState(null);
+
 const myRef = useRef(null);
 
 if (showDeletedMsg || showDeleteError) {
@@ -34,10 +36,21 @@ useEffect(() => {
   Promise.all([
     api.fetchSingleArticle(articleId),
     api.fetchComments(articleId)
-  ]).then(([{article}, {comments}]) => {
+  ])
+  .then(([{article}, {comments}]) => {
       setArticle(article);
       setComments(comments);
       setIsLoading(false);
+  })
+  .catch(err => {
+    setIsLoading(false);
+    if (err.response.data.msg) {
+      setApiError(err.response.data.msg);
+    } else if (err.response.data) {
+      setApiError(err.response.data);
+    } else {
+      setApiError(err.message);
+    };
   })
   }, []);
 
@@ -61,6 +74,9 @@ useEffect(() => {
     });
   };
 
+if (apiError) {
+  return <p className="error">{apiError}</p>;
+} else {
  return (
     <main className="comments">
     {isLoading ? <p className="single-article__loading">Fetching data...</p> 
@@ -79,7 +95,7 @@ useEffect(() => {
       setshowPostButton(true);
     }} onBlur={() => !newComment && setShowTextArea(false)} value={newComment}/>}
 
-    {(showCreateButton || !newComment) && <button className="comments__new" onClick={() => setShowTextArea(true)}>{'Create new comment'}</button>}
+    {loggedInUser && (showCreateButton || !newComment) && <button className="comments__new" onClick={() => setShowTextArea(true)}>{'Create new comment'}</button>}
     
     {showPostButton && newComment && <button className="comments__new --green" onClick={handleClick}>{'Post comment'}</button>}
 
@@ -112,6 +128,7 @@ useEffect(() => {
     </div>}
     </main>
  );
+};
 };
 
 export default Comments;

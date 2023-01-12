@@ -9,6 +9,8 @@ const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [selectValue, setSelectValue] = useState('created_at');
 
+const [apiError, setApiError] = useState(null);
+
 const [searchParams, setSearchParams] = useSearchParams({});
 const sortByQuery = searchParams.get('sort_by');
 const topicQuery = searchParams.get('topic');
@@ -21,13 +23,27 @@ const setSortBy = option => {
 
 useEffect(() => {
   setIsLoading(true);
-  api.fetchArticles(topicQuery, sortByQuery).then(({articles}) => {
+  api.fetchArticles(topicQuery, sortByQuery)
+  .then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
+  })
+  .catch(err => {
+    setIsLoading(false);
+    if (err.response.data.msg) {
+      setApiError(err.response.data.msg);
+    } else if (err.response.data) {
+      setApiError(err.response.data);
+    } else {
+      setApiError(err.message);
+    };
   });
 }, [topicQuery, sortByQuery]);
 
-return (
+if (apiError) {
+  return <p className="error">{apiError}</p>;
+} else {
+  return (
     <main>
     <h2>Viewing all articles <em>(preview)</em></h2>
     {isLoading && <p className="articles__loading">Fetching data...</p>}
@@ -63,6 +79,7 @@ return (
   </div>}
   </main>
 );
+};
 };
 
 export default Articles;

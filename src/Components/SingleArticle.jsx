@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useNavigate } from "react";
 import { useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
@@ -15,17 +15,30 @@ const [originalComments, setOriginalComments] = useState([]);
 const [showTopButton, setShowTopButton] = useState(true);
 const [showRecentButton, setShowRecentButton] = useState(false);
 const [showError, setShowError] = useState(false);
+const [apiError, setApiError] = useState(null);
 
 useEffect(() => {
+  setApiError(null);
   setIsLoading(true);
   Promise.all([
     api.fetchSingleArticle(articleId),
     api.fetchComments(articleId)
-  ]).then(([{article}, {comments}]) => {
+  ])
+  .then(([{article}, {comments}]) => {
     setIsLoading(false);
     setArticle(article);
     setComments(comments);
     setOriginalComments(comments);
+  })
+  .catch(err => {
+    setIsLoading(false);
+    if (err.response.data.msg) {
+      setApiError(err.response.data.msg);
+    } else if (err.response.data) {
+      setApiError(err.response.data);
+    } else {
+      setApiError(err.message);
+    };
   })
 }, []);
 
@@ -46,8 +59,11 @@ const handleClick = e => {
   }
 };
 
-return (
- <main className="single-article">
+if (apiError) {
+  return <p className="error">{apiError}</p>;
+} else {
+  return (
+  <main className="single-article">
   {isLoading ? <p className="single-article__loading">Fetching data...</p> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
@@ -80,6 +96,7 @@ return (
     </div>}
   </main>
 );
+}
 };
 
 export default SingleArticle;
