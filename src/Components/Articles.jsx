@@ -30,8 +30,10 @@ useEffect(() => {
   })
   .catch(err => {
     setIsLoading(false);
-    if (err.response) {
+    if (err.response.data.msg) {
       setApiError(err.response.data.msg);
+    } else if (err.response.data) {
+      setApiError(err.response.data);
     } else {
       setApiError(err.message);
     };
