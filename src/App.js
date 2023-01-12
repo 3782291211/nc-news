@@ -6,12 +6,12 @@ import Nav from './Components/Nav';
 import Articles from './Components/Articles';
 import SingleArticle from './Components/SingleArticle';
 import Comments from './Components/Comments';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import { useState } from "react";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState('tickle122');
-
+ 
   return (
     <div className="App">
       <Login setLoggedInUser={setLoggedInUser}
@@ -26,11 +26,11 @@ function App() {
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
       </Routes>
       </div>
-      <button onClick={() => window.scrollTo({
+      {useLocation().pathname !== '/' && <button onClick={() => window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"
-      })}>Back to top</button>
+      })}>Back to top</button>}
     </div>
   );
 }
