@@ -25,15 +25,17 @@ useEffect(() => {
 
 return(
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="articles">All articles</Link>
+      <ul id="nav">
+      <Link to="/"><li className="nav__link">Home</li></Link>
+      <Link to="articles"><li className="nav__link">All articles</li></Link>
+      </ul>
+      <p id="nav__p">Articles by topic</p>
       {isLoading && <p className="nav__loading">Fetching topics</p>}
-      {!isLoading && !apiError && <div className="nav__topics">
-       <p> Articles by topic</p>
+      {!isLoading && !apiError && <ul>
         {topics.map(({slug}, index) => {
-          return <button key={index} id={slug} onClick={e => navigate(`articles?topic=${e.target.id}`)} className="nav__topic-li">{slug}</button>
+          return <li key={index} id={slug} onClick={e => navigate(`articles?topic=${e.target.id}`)} className="nav__link">{slug}</li>
         })}
-      </div>}
+      </ul>}
     </nav>
   )
 };

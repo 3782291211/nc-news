@@ -8,8 +8,13 @@ const [users, setUsers] = useState([]);
 const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [buttonId, setButtonId] = useState('');
 
+const [avatarUrl, setAvatarUrl] = useState('');
+
 useEffect(() => {
-  api.fetchUsers().then(({users}) => setUsers(users))
+  api.fetchUsers().then(({users}) => {
+    setUsers(users);
+    setAvatarUrl(users.filter(user => user.username === loggedInUser)[0].avatar_url);
+  });
 }, []);
 
 const handleSubmit = e => {
@@ -18,6 +23,7 @@ const handleSubmit = e => {
     setLoggedInUser('');
   } else if (users.map(({username}) => username).includes(username) && password === 'password') {
     setLoggedInUser(username);
+    setAvatarUrl(users.filter(user => user.username === username)[0].avatar_url);
     setUsername('');
     setPassword('');
   } else {
@@ -25,7 +31,6 @@ const handleSubmit = e => {
     setTimeout(() => setShowErrorMsg(false), 6000);
   }
 };
-
   return (
     <form id="login__form" onSubmit={handleSubmit}>
        
@@ -40,7 +45,7 @@ const handleSubmit = e => {
         </div>}
 
         {loggedInUser && <p className="login__logged-in">Current user: {loggedInUser}</p>}
-        
+        {loggedInUser && <img className="login__img" src={avatarUrl} />}
         {loggedInUser && <button onClick={e => setButtonId(e.target.id)} id="logout__button">Log out</button>}
         
         {showErrorMsg && <p className="login__error">Invalid username/password</p>}

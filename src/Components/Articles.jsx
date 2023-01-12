@@ -22,6 +22,7 @@ const setSortBy = option => {
 };
 
 useEffect(() => {
+  setApiError(null);
   setIsLoading(true);
   api.fetchArticles(topicQuery, sortByQuery)
   .then(({articles}) => {
@@ -30,12 +31,12 @@ useEffect(() => {
   })
   .catch(err => {
     setIsLoading(false);
-    if (err.response.data.msg) {
-      setApiError(err.response.data.msg);
-    } else if (err.response.data) {
-      setApiError(err.response.data);
-    } else {
+    if (!err.response) {
       setApiError(err.message);
+    } else if (err.response.data.msg) {
+      setApiError(err.response.data.msg === 'Resource not found.' ? 'Topic not found.' : err.response.data.msg);
+    }else {
+      setApiError(err.response.data);
     };
   });
 }, [topicQuery, sortByQuery]);

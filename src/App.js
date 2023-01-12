@@ -17,8 +17,8 @@ function App() {
       <Login setLoggedInUser={setLoggedInUser}
       loggedInUser={loggedInUser}/>
       <Header />
-      <div id="App__body">
       <Nav />
+      <div id="App__body">
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/articles" element={<Articles />}/>
@@ -27,7 +27,7 @@ function App() {
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
-      {useLocation().pathname !== '/' && <button onClick={() => window.scrollTo({
+      {useLocation().pathname !== '/' && <button id="button__top" onClick={() => window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"

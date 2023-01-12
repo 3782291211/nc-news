@@ -39,7 +39,7 @@ h1 {
 h2 {
   font-family: 'Concert One', cursive;
   font-size: 100px;
-  margin: 20px auto 30px;
+  margin: 30px auto 40px;
   font-size: 40px;
 }
 
@@ -49,42 +49,41 @@ h2> * {
 }
 
 h3{
-  margin: 0px auto 5px;
+  margin: 0px auto;
   font-size: 35px;
 }
 
-nav {
-  margin: 50px auto 40px;
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: black;
+  margin: 0;
+  border-radius: 0;
+  border: none
 }
 
-nav > * {
-  margin: 0 30px;
-  font-size: 25px;
-  padding: 0 3px;
-  text-decoration: none;
-  background-color: #cbbe74;
-  border: 2px solid burlywood;
-  border-radius: 10px;
+#nav {
+  background-color: whitesmoke;
+}
+
+#nav__p {
+  background-color: #000000;
+  color: whitesmoke;
+}
+
+.nav__link {
+  margin: 0 3px;
+  width: 120px;
+  text-align: center;
+  background-color: #f1ebc7;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-}
-
-.nav__topics {
-  display: flex;
-  flex-wrap: wrap;
-  width: fit-content;
-  margin: 20px auto 0;
-  padding: 0 5px
-}
-
-.nav__topic-li {
-  width: fit-content;
-  padding: 0 9px;
-  margin: 0 7px;
-  border-radius: 10px;
 }
 
 .home__welcome {
@@ -95,7 +94,7 @@ a {
 }
 
 ul {
-  margin: 20px auto 60px;
+  margin: 20px auto 30px;
   padding: 0;
 }
 
@@ -192,6 +191,10 @@ button {
   background-color: rgb(78, 69, 3);
   color: whitesmoke;
   border-radius: 10px;
+}
+
+#button__top {
+  margin-bottom: 30px;
 }
 
 button:active{
@@ -326,6 +329,10 @@ width: 17vw;
 max-width: 200px
 }
 
+.login__img {
+  height: 45px;
+}
+
 .login__error {
 width: fit-content;
 color: red;
@@ -369,12 +376,29 @@ select {
   p {
     font-size: 17px;
   }
-  nav > a {
-    display: inline-block;
-    width: 130px;
-    margin: 5px;
-    padding: 0;
-    font-size: 20px;
+
+  .votes__buttons {
+    flex-direction: column;
+    margin: 0 auto;
+    align-content: center;
+  }
+
+  .votes__buttons > * {
+    text-align: center;
+    width: 200px;
+    font-size: 17px;
+    margin: 0 auto 6px
+  }
+
+  h1 {
+    font-size: 70px;
+    padding-bottom: 50px;
+  }
+
+  .nav__link {
+    font-size: 17px;
+    width: fit-content;
+    padding: 2px 5px
   }
 
   .nav__topics {
