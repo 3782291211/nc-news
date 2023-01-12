@@ -5,6 +5,10 @@
   font-size: 20px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0 auto;
   font-family: 'Gloria Hallelujah', cursive;
@@ -260,7 +264,11 @@ text-shadow: 1px 1px 3px red;
 }
 
 .--red {
-  background-color: red;
+  color: red;
+  font-weight: bold;
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 
 textarea {
@@ -293,6 +301,10 @@ textarea {
   color: black;
   margin: 0 auto;
   max-width: 998px;
+}
+
+.comments__confirmation {
+  background-color: rgb(2, 182, 2);
 }
 
 #login__form {

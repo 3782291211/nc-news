@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
@@ -9,10 +8,10 @@ const Articles = () => {
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [selectValue, setSelectValue] = useState('created_at');
-const { topic } = useParams();
 
 const [searchParams, setSearchParams] = useSearchParams({});
 const sortByQuery = searchParams.get('sort_by');
+const topicQuery = searchParams.get('topic');
 
 const setSortBy = option => {
   const newParams = new URLSearchParams(searchParams);
@@ -21,13 +20,12 @@ const setSortBy = option => {
 };
 
 useEffect(() => {
-console.log(sortByQuery);
   setIsLoading(true);
-  api.fetchArticles(topic, sortByQuery).then(({articles}) => {
+  api.fetchArticles(topicQuery, sortByQuery).then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
   });
-}, [topic, sortByQuery]);
+}, [topicQuery, sortByQuery]);
 
 return (
     <main>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useRef } from "react";
 import * as api from '../api';
 
 import CommentCard from "./CommentCard";
@@ -22,6 +23,12 @@ const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
 const [showWrongUserMsg, setShowWrongUserMsg] = useState(false);
 const [showDeleteError, setShowDeleteError] = useState(false);
+
+const myRef = useRef(null);
+
+if (showDeletedMsg || showWrongUserMsg || showDeleteError) {
+  myRef.current.scrollIntoView();
+}
 
 useEffect(() => {
   setShowErrorMsg(false);
@@ -67,7 +74,7 @@ useEffect(() => {
       {article.body}
     </article>
 
-    <h3>Comments:</h3>
+    <h3 ref={myRef}>Comments:</h3>
     {showTextArea && <textarea placeholder="Add text here" onChange={e => {
       setNewComment(e.target.value);
       setshowCreateButton(false);

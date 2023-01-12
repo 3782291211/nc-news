@@ -21,12 +21,16 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/articles" element={<Articles />}/> 
-        <Route path="/:topic/articles" element={<Articles />}/> 
+        <Route path="/articles" element={<Articles />}/>
         <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
       </Routes>
       </div>
+      <button onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })}>Back to top</button>
     </div>
   );
 }

@@ -9,6 +9,7 @@ const [showError, setShowError] = useState(false);
     <li className="comment__full">
     <p className="comment__details"><strong>{author}</strong> <br />{date}</p>
     <p className ="comment__body">{body}</p>
+    
     <Buttons 
     votes={votes} 
     showError={showError} 

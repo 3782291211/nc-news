@@ -7,7 +7,7 @@ const newsApi = axios.create({
 export const fetchArticles = (topic, sort_by) => {
   const sortDesc = ['votes', 'comment_count', 'created_at'];
   return newsApi.get('/articles', { params: { 
-    topic , 
+    topic, 
     sort_by, 
     limit: 50, 
     order: sortDesc.includes(sort_by) ? 'desc' : 'asc'
