@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
-//import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
@@ -8,25 +7,25 @@ import ArticlePreviewCard from './ArticlePreviewCard';
 const Articles = () => {
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
-const { topic } = useParams();
-const [sortBy, setSortBy] = useState('created_at');
+const [selectValue, setSelectValue] = useState('created_at');
 
-/*const [searchParams, setSearchParams] = useSearchParams({});
-const sortBy = searchParams.get('sort_by');
+const [searchParams, setSearchParams] = useSearchParams({});
+const sortByQuery = searchParams.get('sort_by');
+const topicQuery = searchParams.get('topic');
 
 const setSortBy = option => {
   const newParams = new URLSearchParams(searchParams);
   newParams.set('sort_by', option);
   setSearchParams(newParams);
-}*/
+};
 
 useEffect(() => {
   setIsLoading(true);
-  api.fetchArticles(topic, sortBy).then(({articles}) => {
+  api.fetchArticles(topicQuery, sortByQuery).then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
   });
-}, [topic, sortBy]);
+}, [topicQuery, sortByQuery]);
 
 return (
     <main>
@@ -36,7 +35,10 @@ return (
     <div>
 
   <p>Sort by:</p>
-      <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+      <select value={selectValue} onChange={e => {
+        setSortBy(e.target.value);
+        setSelectValue(e.target.value);
+      }}>
         <option value="comment_count">Comment count</option>
         <option value="title">Title</option>
         <option value="author">Author</option>
@@ -64,19 +66,3 @@ return (
 };
 
 export default Articles;
-
-/*
-const [sortBy, setSortBy] = useState('created_at');
-   <p>Sort by:</p>
-     
-     <select onChange={e => setSortBy(e.target.value)} value={sortBy}>
-       <option value="comment_count">Comment count</option>
-       <option value="title">Title</option>
-       <option value="author">Author</option>
-       <option value="votes">Votes</option>
-       <option value="created_at">Date</option>
-       <option value="topic">Topic</option>
-     </select>
-
-
-*/ 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import * as api from '../api';
 
@@ -16,8 +16,17 @@ const [showPostButton, setshowPostButton] = useState(false);
 const [newComment, setNewComment] = useState('');
 
 const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+const [showDeletedMsg, setShowDeletedMsg] = useState(false);
+
 const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
+const [showDeleteError, setShowDeleteError] = useState(false);
+
+const myRef = useRef(null);
+
+if (showDeletedMsg || showDeleteError) {
+  myRef.current.scrollIntoView();
+};
 
 useEffect(() => {
   setShowErrorMsg(false);
@@ -63,7 +72,7 @@ useEffect(() => {
       {article.body}
     </article>
 
-    <h3>Comments:</h3>
+    <h3 ref={myRef}>Comments:</h3>
     {showTextArea && <textarea placeholder="Add text here" onChange={e => {
       setNewComment(e.target.value);
       setshowCreateButton(false);
@@ -76,8 +85,13 @@ useEffect(() => {
 
     {showSuccessMsg && <p className="comments__confirmation">Your comment has been added.</p>}
 
+    {showDeletedMsg && <p className="comments__confirmation">Your comment has been deleted.</p>}
+
     {showErrorMsg && loggedInUser && <p className="comments__error">Unable to add comment.</p>}
+
     {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
+
+    {showDeleteError && <p className="comments__error">Unable to delete comment.</p>}
 
     <ul>
     {comments.map(({author, body, comment_id, votes, created_at}) => {
@@ -90,6 +104,8 @@ useEffect(() => {
       votes={votes}
       date={new Date(created_at).toString().slice(0, 24)}
       loggedInUser={loggedInUser}
+      setShowDeletedMsg={setShowDeletedMsg}
+      setShowDeleteError={setShowDeleteError}
       />
     })}
     </ul>
