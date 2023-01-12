@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
+import 'animate.css';
 
 const Articles = () => {
 const [articles, setArticles] = useState([]);
@@ -51,7 +52,7 @@ if (apiError) {
     {!isLoading && 
     <div>
 
-  <p>Sort by:</p>
+  <p id="articles__sort">Sort by:</p>
       <select value={selectValue} onChange={e => {
         setSortBy(e.target.value);
         setSelectValue(e.target.value);
@@ -64,7 +65,7 @@ if (apiError) {
         <option value="topic">Topic</option>
       </select>
 
-      <ul>
+      <ul className="articles__list animate__animated animate__bounceInLeft">
        {articles.map(({article_id, author, title, topic, created_at, votes, comment_count}) => {
          return <Link key={article_id} to={`/articles/${article_id}`}>
           <ArticlePreviewCard

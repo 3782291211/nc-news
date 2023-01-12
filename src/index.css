@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 * {
   margin: 0;
@@ -11,11 +13,11 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Patrick Hand';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1ebc7;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23a19da8' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #e3e3e3;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23a0afe7' fill-opacity='0.38' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 #App__body {
@@ -29,15 +31,15 @@ code {
 }
 
 h1 {
-  font-family: 'Concert One', cursive;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 100px;
   background-color: whitesmoke;
-  padding: 10px 0 60px;
+  padding: 37px 0 10px;
   margin: 0;
 }
 
 h2 {
-  font-family: 'Concert One', cursive;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 100px;
   margin: 30px auto 40px;
   font-size: 40px;
@@ -49,7 +51,8 @@ h2> * {
 }
 
 h3{
-  margin: 0px auto;
+  font-family: 'Do Hyeon', sans-serif;
+  margin: auto 0px 6px;
   font-size: 35px;
 }
 
@@ -76,7 +79,7 @@ nav ul {
   margin: 0 3px;
   width: 120px;
   text-align: center;
-  background-color: #f1ebc7;
+  background-color: #e3f4f5;
   font-size: 20px;
   cursor: pointer;
 }
@@ -93,6 +96,16 @@ a {
   text-shadow: black 4px 4px, rgb(220, 178, 80) 7px 7px, black 10px 10px;
 }
 
+#home__intro {
+  background-color: whitesmoke;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
 ul {
   margin: 20px auto 30px;
   padding: 0;
@@ -101,14 +114,36 @@ ul {
 li {
   list-style-type: none;
   text-align: left;
-  border: 2px solid rgb(73, 64, 4);
+  border: 2px solid rgb(0, 0, 0);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin: 10px auto;
-  background-color: #f1ebc7;
+  margin: 5px auto;
+  /*background-color: #f1ebc7;
   width: 70vw;
+  background-color: hsl(12, 20%, 50%, 90%);*/
   max-width: 600px;
-  background-color: hsl(12, 20%, 50%, 90%);
+}
+
+.articles__preview {
+  width: 400px;
+}
+
+#articles__sort {
+  font-size: 24px;
+}
+
+.articles__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.articles__list li {
+  margin: 5px;
+}
+
+.articles-preview__votes {
+  background-color: #000000;
 }
 
 .article-card__details, .articles__loading, 
@@ -119,11 +154,13 @@ li {
 }
 
 .article-card__title, .comment-card__body  {
+  font-size: 24px;
   padding: 5px;
-  background-color: rgb(246, 241, 217);
+  height: 6ch;
+  background-color: rgb(254, 254, 254);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  box-shadow: 0 0 10px 3px inset hsl(12, 20%, 50%, 90%);
+  box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
 }
 
 .articles__loading, .single-article__loading {
@@ -147,6 +184,7 @@ li {
 }
 
 article {
+  font-size: 24px;
   background-color: #ffffff;
   padding: 5px;
   margin-bottom: 4vw;
@@ -154,6 +192,7 @@ article {
 }
 
 .single-article__author {
+  font-size: 24px;
   background-color: black;
   color: whitesmoke;
   padding: 2px 10px;
@@ -167,11 +206,16 @@ article {
 }
 
 .comment-card__body, .comments__article  {
+  margin-bottom: 25px;
   display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;  
 overflow: hidden;
 text-overflow: ellipsis;
+}
+
+.comment-card__body{
+ margin: auto;
 }
 
 .comments__article:hover {
@@ -186,11 +230,13 @@ text-overflow: ellipsis;
 
 button {
   margin: 0 5px 10px;
-  font-size: 20px;
-  padding: 6px;
-  background-color: rgb(78, 69, 3);
+  font-size: 22px;
+  font-family: 'Do Hyeon', sans-serif;
+  font-weight: lighter;
+  padding: 2px 5px;
+  background-color: hsl(201deg 30% 20%);
   color: whitesmoke;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 #button__top {
@@ -204,6 +250,7 @@ button:active{
 
 #single-article__link {
   color: whitesmoke;
+  font-size: 23px;
 }
 
 .comment__full {
@@ -216,13 +263,15 @@ button:active{
 }
 
 .comment__details {
+  font-size: 24px;
   padding: 2px 10px;
-  background-color: rgb(44, 40, 1);
+  background-color: black;
   color: whitesmoke;
   line-height: 2.5ch;
 }
 
 .comment__body {
+  font-size: 24px;
   padding: 2px 10px;
   margin-bottom: 10px;
 }
@@ -235,22 +284,23 @@ button:active{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 18px 0 0
+  margin: 12px 0 0
 }
 
 .votes__count {
-  margin: 0 10px;
-  font-size: larger;
+  font-family: 'Do Hyeon', sans-serif;
+  margin: 5px 10px 0 10px;
+  font-size: 22px;
 }
 
 .--positive {
-color: green;
-text-shadow: 1px 1px 2px rgb(59, 249, 49);
+color: rgb(3, 195, 54);
+text-shadow: 0 0 3px #eeff03;
 }
 
 .--negative {
 color: red;
-text-shadow: 1px 1px 3px red;
+text-shadow: 0 0 1px red;
 }
 
 .comments__new {
@@ -307,10 +357,12 @@ textarea {
 }
 
 .comments__confirmation {
+  font-size: 24px;
   background-color: rgb(2, 182, 2);
 }
 
 #login__form {
+  height: 57px;
   display: flex;
   justify-content: flex-end;
   background-color: #000000;
@@ -323,14 +375,19 @@ label {
 }
 
 input {
-  font-size: 18px;
+font-size: 18px;
 color: black;
 width: 17vw;
 max-width: 200px
 }
 
 .login__img {
-  height: 45px;
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;;
+  border: 2px solid rgb(51, 64, 87);
+  margin: 10px 0;
 }
 
 .login__error {
@@ -341,7 +398,7 @@ margin: 0 auto
 
 .login__logged-in {
   color: whitesmoke;
-  margin: 3px 10px 0 0
+  margin: 17px 10px 0 0
 }
 
 #login__button, #logout__button {
@@ -350,7 +407,7 @@ margin: 0 auto
   font-size: 16px;
   height: fit-content;
   padding: 3.5px 9px;
-  margin: 8px 10px 0
+  margin: 17px 16px;
 }
 
 #login__button:active {
@@ -369,12 +426,43 @@ select {
   background-color: red;
   font-weight: bold;
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
-  margin-bottom: 40px
+  margin: 40px auto;
+}
+
+.topic__title {
+  background-color: rgb(254, 254, 254);
+  box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
+  font-size: 30px;
+  color: black;
+  padding: 2px 6px
+}
+
+.topics__list {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 40px
+}
+
+.topics__topic {
+  font-size: 30px;
+  color: whitesmoke;
+  background-color: #000000;
+  padding: 3px;
+  border-radius: 10px;
+  margin: 10px auto
 }
 
 @media (max-width: 600px) {
   p {
     font-size: 17px;
+  }
+
+  .topics__topic, .topics__topic em {
+    font-size: 22px;
+  }
+
+  .articles__preview {
+    width: 90vw;
   }
 
   .votes__buttons {
@@ -391,8 +479,8 @@ select {
   }
 
   h1 {
-    font-size: 70px;
-    padding-bottom: 50px;
+    font-size: 60px;
+    padding: 20px 0 10px;
   }
 
   .nav__link {
@@ -412,4 +500,11 @@ select {
     margin: 3px;
     width: 150px;
   }
+}
+
+@media (max-width: 1000px) {
+  #App__body {
+  width: 100%;
+  margin: 0 auto;
+}
 }

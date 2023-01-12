@@ -28,6 +28,7 @@ return(
       <ul id="nav">
       <Link to="/"><li className="nav__link">Home</li></Link>
       <Link to="articles"><li className="nav__link">All articles</li></Link>
+      <Link to="topics"><li className="nav__link">Topics</li></Link>
       </ul>
       <p id="nav__p">Articles by topic</p>
       {isLoading && <p className="nav__loading">Fetching topics</p>}

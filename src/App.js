@@ -6,6 +6,7 @@ import Nav from './Components/Nav';
 import Articles from './Components/Articles';
 import SingleArticle from './Components/SingleArticle';
 import Comments from './Components/Comments';
+import Topics from './Components/Topics';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import { useState } from "react";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/articles" element={<Articles />}/>
         <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
+        <Route path="/topics" element={<Topics />}/>
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
