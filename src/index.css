@@ -228,7 +228,7 @@ button:active{
   background-color: #f2f1ed;
 }
 
-.votes__buttons{
+.votes__buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -356,6 +356,13 @@ select {
   color: whitesmoke;
   padding: 3px;
   border-radius: 5px;
+}
+
+.error {
+  background-color: red;
+  font-weight: bold;
+  box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
+  margin-bottom: 40px
 }
 
 @media (max-width: 600px) {
