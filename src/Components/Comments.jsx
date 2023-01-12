@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { useRef } from "react";
 import * as api from '../api';
 
 import CommentCard from "./CommentCard";
@@ -21,14 +20,13 @@ const [showDeletedMsg, setShowDeletedMsg] = useState(false);
 
 const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [showNotLoggedIn, setshowNotLoggedIn] = useState(false);
-const [showWrongUserMsg, setShowWrongUserMsg] = useState(false);
 const [showDeleteError, setShowDeleteError] = useState(false);
 
 const myRef = useRef(null);
 
-if (showDeletedMsg || showWrongUserMsg || showDeleteError) {
+if (showDeletedMsg || showDeleteError) {
   myRef.current.scrollIntoView();
-}
+};
 
 useEffect(() => {
   setShowErrorMsg(false);
@@ -93,8 +91,6 @@ useEffect(() => {
 
     {showNotLoggedIn && <p className="comments__error">You must be logged in to add a comment.</p>}
 
-    {showWrongUserMsg && <p className="comments__error">Cannot delete another user's comment.</p>}
-
     {showDeleteError && <p className="comments__error">Unable to delete comment.</p>}
 
     <ul>
@@ -109,7 +105,6 @@ useEffect(() => {
       date={new Date(created_at).toString().slice(0, 24)}
       loggedInUser={loggedInUser}
       setShowDeletedMsg={setShowDeletedMsg}
-      setShowWrongUserMsg={setShowWrongUserMsg}
       setShowDeleteError={setShowDeleteError}
       />
     })}
