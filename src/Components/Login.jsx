@@ -32,15 +32,19 @@ const handleSubmit = e => {
   }
 };
   return (
-    <form id="login__form" onSubmit={handleSubmit}>
+    <form style={loggedInUser ? {'height': '57px'} : {}} id="login__form" onSubmit={handleSubmit}>
        
-        {!loggedInUser && <div>
-        <label htmlFor="username"> Username </label>
+        {!loggedInUser && !showErrorMsg && <div id="login__div">
+        <div className="login__field">
+        <label htmlFor="username" className="login__label"> Username </label>
         <input id="username" type="text" onChange={e => setUsername(e.target.value)} placeholder="username" value={username}/>
-       
-        <label htmlFor="password"> Password  </label>
-        <input id="password" type="password" onChange={e => setPassword(e.target.value)} placeholder="password" value={password} />
+        </div>
 
+        <div className="login__field">
+        <label htmlFor="password" className="login__label"> Password  </label>
+        <input id="password" type="password" onChange={e => setPassword(e.target.value)} placeholder="password" value={password} />
+        </div>
+        
         <button onClick={e => setButtonId(e.target.id)} id="login__button">Login</button>
         </div>}
 

@@ -89,7 +89,7 @@ if (apiError) {
     </article>
 
     <h3 ref={myRef}>Comments:</h3>
-    {showTextArea && <textarea placeholder="Add text here" onChange={e => {
+    {showTextArea && <textarea id="comments__new" placeholder="Add text here" onChange={e => {
       setNewComment(e.target.value);
       setshowCreateButton(false);
       setshowPostButton(true);

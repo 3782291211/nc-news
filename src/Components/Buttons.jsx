@@ -40,7 +40,7 @@ const handleDelete = () => {
 
       {loggedInUser && loggedInUser === author && <button id={id} disabled={disableDelete} onClick={handleDelete} className={isLoading ? '--red' : ''}>{isLoading ? 'Deleting...' : 'Delete'}</button>}
    
-     {notLoggedInError && <p style={{'color': 'red', 'margin': '0 10px'}}>You must log in to vote.</p>}
+     {notLoggedInError && !loggedInUser && <p style={{'color': 'red', 'margin': '0 10px'}}>You must log in to vote.</p>}
      
      {showError && <p style={{'color': 'red', 'margin': '0 10px'}}>Unable to update votes.</p>}
    </div>

@@ -47,7 +47,7 @@ if (apiError) {
 } else {
   return (
     <main>
-    <h2>Viewing all articles <em>(preview)</em></h2>
+    <h2>{topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles'}<em>(preview)</em></h2>
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && 
     <div>
@@ -66,10 +66,12 @@ if (apiError) {
       </select>
 
       <ul className="articles__list animate__animated animate__bounceInLeft">
-       {articles.map(({article_id, author, title, topic, created_at, votes, comment_count}) => {
+       {articles.map(({article_id, author, avatar_url, title, topic, created_at, votes, comment_count}) => {
          return <Link key={article_id} to={`/articles/${article_id}`}>
           <ArticlePreviewCard
+            article_id={article_id}
             author={author}
+            avatar_url={avatar_url}
             title={title}
             topic={topic}
             createdAt={created_at}

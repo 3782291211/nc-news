@@ -47,3 +47,15 @@ export const fetchTopics = () => {
 export const deleteComment = commentId => {
   return newsApi.delete(`comments/${commentId}`).then(() => 'Comment deleted.');
 };
+
+export const postNewTopic = (slug, description) => {
+  return newsApi.post('topics', {slug, description}).then(({data: {topic}}) => topic);
+};
+
+export const deleteTopic = topic => {
+  return newsApi.delete(`topics/${topic}`);
+};
+
+export const fetchRecentComments = (limit, page) => {
+  return newsApi.get('comments', { params : { limit, page } }).then(res => res.data);
+};

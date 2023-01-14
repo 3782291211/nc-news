@@ -31,6 +31,7 @@ code {
 }
 
 h1 {
+  text-shadow: 6px 7px 8px rgb(109, 109, 157);
   font-family: 'Do Hyeon', sans-serif;
   font-size: 100px;
   background-color: whitesmoke;
@@ -66,8 +67,20 @@ nav ul {
   border: none
 }
 
+.nav__dropdown {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.nav__dropdown-link {
+  font-size: 22px;
+  border: none;
+  text-align: center;
+}
+
 #nav {
   background-color: whitesmoke;
+  border-bottom: 2px solid black;
 }
 
 #nav__p {
@@ -75,12 +88,16 @@ nav ul {
   color: whitesmoke;
 }
 
+.Dropdown-placeholder, .Dropdown-option {
+  font-size: 22px;
+}
+
 .nav__link {
   margin: 0 3px;
   width: 120px;
   text-align: center;
   background-color: #e3f4f5;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
 }
 
@@ -118,9 +135,6 @@ li {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   margin: 5px auto;
-  /*background-color: #f1ebc7;
-  width: 70vw;
-  background-color: hsl(12, 20%, 50%, 90%);*/
   max-width: 600px;
 }
 
@@ -139,7 +153,7 @@ li {
 }
 
 .articles__list li {
-  margin: 5px;
+  margin: 7px;
 }
 
 .articles-preview__votes {
@@ -153,7 +167,7 @@ li {
   padding: 0 10px;
 }
 
-.article-card__title, .comment-card__body  {
+.article__li-div, .comment-card__body  {
   font-size: 24px;
   padding: 5px;
   height: 6ch;
@@ -163,12 +177,40 @@ li {
   box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
 }
 
-.articles__loading, .single-article__loading {
+.article-card__title {
+  font-size: 28px;
+  line-height: 2ch;
+}
+
+.article-preview__img {
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  object-fit: cover;
+  height: 80px;
+  border: 2px solid black;
+  background-color: hsl(201, 30%, 50%);
+  border-radius: 10%;
+  margin-right: 5px
+}
+
+.avatar__name {
+  font-size: 18px;
+  align-self: center;
+  line-height: 17px;
+}
+
+.article__li-div {
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.articles__loading, .single-article__loading, .topics__loading {
   margin: 50px auto;
   max-width: 400px;
 }
 
-.nav__loading {
+.nav__loading, .topics__loading {
   margin: 30px auto;
   max-width: 400px;
   border-radius: 0;
@@ -195,7 +237,7 @@ article {
   font-size: 24px;
   background-color: black;
   color: whitesmoke;
-  padding: 2px 10px;
+  padding: 6px 0 7px 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -205,13 +247,17 @@ article {
   margin-right: 5px;
 }
 
-.comment-card__body, .comments__article  {
+.comment-card__body, .comments__article, .topics__topic {
   margin-bottom: 25px;
   display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;  
 overflow: hidden;
 text-overflow: ellipsis;
+}
+
+.topics__topic  {
+  -webkit-line-clamp: 3;
 }
 
 .comment-card__body{
@@ -243,7 +289,7 @@ button {
   margin-bottom: 30px;
 }
 
-button:active{
+button:active, #topic__submit:active{
   background-color: orangered;
   color: yellow;
 }
@@ -303,7 +349,7 @@ color: red;
 text-shadow: 0 0 1px red;
 }
 
-.comments__new {
+.comments__new, #topic__submit {
   display: block;
   margin: 0 auto 20px;
   font-size: 25px;
@@ -325,10 +371,11 @@ text-shadow: 0 0 1px red;
 }
 
 textarea {
+  font-family: 'Patrick Hand';
   margin: 10px auto;
   display: block;
   width: 50%;
-  height: 200px
+  height: 200px;
 }
 
 .single-article--float {
@@ -339,7 +386,7 @@ textarea {
   font-weight: lighter;
 }
 
-.single-article__current, .comments__confirmation, .comments__error {
+.single-article__current, .comments__confirmation, .topic__confirmation, .comments__error {
   text-align: center;
   margin: 10px auto 30px;
   width: 100%;
@@ -356,7 +403,7 @@ textarea {
   max-width: 998px;
 }
 
-.comments__confirmation {
+.comments__confirmation, .topic__confirmation {
   font-size: 24px;
   background-color: rgb(2, 182, 2);
 }
@@ -369,15 +416,15 @@ textarea {
   padding: 0 0 5px;
 }
 
-label {
+.login__label {
   color: whitesmoke;
-  font-size: 18px;
+  font-size: 21px;
 }
 
-input {
+#username, #password {
 font-size: 18px;
 color: black;
-width: 17vw;
+width: 150px;
 max-width: 200px
 }
 
@@ -393,12 +440,16 @@ max-width: 200px
 .login__error {
 width: fit-content;
 color: red;
-margin: 0 auto
+margin: 16px auto 0
 }
 
 .login__logged-in {
   color: whitesmoke;
   margin: 17px 10px 0 0
+}
+
+.login__field {
+  display: inline;
 }
 
 #login__button, #logout__button {
@@ -430,35 +481,147 @@ select {
 }
 
 .topic__title {
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(254, 254, 254);
   box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
-  font-size: 30px;
   color: black;
   padding: 2px 6px
 }
-
-.topics__list {
-  width: 80%;
-  max-width: 600px;
-  margin-top: 40px
+.topic__title > p {
+  font-size: 27px;
+}
+.--empty-topic {
+  box-shadow: 0 0 20px 3px inset hsl(39, 100%, 50%)
 }
 
+
+.topics__list {
+  max-width: 600px;
+}
+.--flex {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: none;
+  align-items: stretch;
+  justify-content: center;
+}
+
+
+
 .topics__topic {
-  font-size: 30px;
+  font-size: 27px;
   color: whitesmoke;
   background-color: #000000;
   padding: 3px;
   border-radius: 10px;
   margin: 10px auto
 }
+.--flex-item {
+  margin: 5px;
+  width: 90%;
+  max-width: 400px
+}
+
+
+
+.topics__h2 {
+  margin: 40px auto 0;
+}
+
+#topic__form {
+  background-color: whitesmoke;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto 30px;
+  padding-bottom: 9px;
+  height: 318px;
+  box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
+}
+
+.topic__form-label {
+  box-sizing: border-box;
+  background-color: #000000;
+  text-align: left;
+  display: block;
+  padding: 3px 20px 6px 6px;
+  font-size: 24px;
+  color: whitesmoke;
+  width: 100%;
+}
+
+textarea#topic__body {
+  font-family: 'Patrick Hand';
+  margin: 0 30px 6px 6px;
+  width: 97%;
+  height: 150px;
+  font-size: 24px;
+}
+
+#topic__new-topic {
+  font-size: 24px;
+  font-family: 'Patrick Hand';
+  width: 97%;
+  display: block;
+  margin: 0 0 0 5px;
+}
+
+.topic__delete {
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+@media (max-width: 868px) {
+  .articles__preview {
+    width: 80vw;
+  }
+}
 
 @media (max-width: 600px) {
+  .login__field {
+    display: block;
+  }
+
+  #login__form {
+   height: 75px
+  }
+
+  #login__button {
+    margin: 3px 6px 0 0;
+    float: right;
+    height: 20px;
+    padding: 0 7px 18px 4px;
+    font-size: 14px;
+    width: 108px
+  }
+
+  #username, #password {
+    width: 100px;
+    font-size: 12px;
+    }
+
+  #username {
+    margin-right: 7px
+  }
+
+  .login__label  {
+    font-size: 14px;
+  }
+
+  .login__logged-in {
+    margin: 20px 20px 0 0;
+  }
+
   p {
     font-size: 17px;
   }
 
-  .topics__topic, .topics__topic em {
+  .topics__topic {
     font-size: 22px;
+  }
+
+  .topic__title {
+    font-size: 24px;
   }
 
   .articles__preview {
@@ -484,7 +647,7 @@ select {
   }
 
   .nav__link {
-    font-size: 17px;
+    font-size: 20px;
     width: fit-content;
     padding: 2px 5px
   }
@@ -500,11 +663,21 @@ select {
     margin: 3px;
     width: 150px;
   }
+
+  textarea#topic__body, #topic__new-topic {
+    width: 95%;
+    font-size: 16px;
+  }
+
+  #comments__new {
+    width: 80%;
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 1000px) {
   #App__body {
-  width: 100%;
+  width: 97%;
   margin: 0 auto;
 }
 }
