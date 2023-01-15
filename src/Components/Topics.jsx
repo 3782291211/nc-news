@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { TopicsContext } from "../Contexts/Topics";
 import { useNavigate } from "react-router-dom";
 import * as api from '../api';
 
 const Topics = () => {
-const [topics, setTopics] = useState([]);
+const { topics, setTopics } = useContext(TopicsContext);
+
+//const [topics, setTopics] = useState([]);
 const [newTopic, setNewTopic] = useState('');
 const [newTopicBody, setNewTopicBody] = useState('');
 const [isLoading, setIsLoading] = useState(false);
@@ -81,7 +84,7 @@ return (
             onClick={() => number_of_articles > 0 && navigate(`/articles?topic=${slug}`)}
             >
           
-            <div className={`topic__title ${number_of_articles === 0 ? '--empty-topic' : ''}`}><p>{slug}</p><p>{number_of_articles ? number_of_articles : 'No'} articles</p>
+            <div key={topic_id} className={`topic__title ${number_of_articles === 0 ? '--empty-topic' : ''}`}><p>{slug}</p><p>{number_of_articles ? number_of_articles : 'No'} articles</p>
             {number_of_articles === 0 && <button className="topic__delete" onClick={handleDelete(slug)}>Delete</button>}
             </div> "{description}"
             </li>)

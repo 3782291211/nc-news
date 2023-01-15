@@ -6,12 +6,12 @@ import * as api from '../api';
 const DeleteNotification = ( {show, onHide, commentCount, articleId, setApiError } ) => {
 const navigate = useNavigate();
 
-const handleDelete = ({articleId}) => {
-    console.log(articleId);
+const handleDelete = (articleId) => {
 return () => {
   api.deleteArticle(articleId).then(() => {
     navigate(`/articles/deleted/${articleId}`);
   }).catch (err => {
+    console.log(err);
     setApiError(err.message);
   });
 }
@@ -33,7 +33,7 @@ return () => {
       <Modal.Body>
         <h4>{ commentCount > 0 ? `This article has ${commentCount} comments` : 'Are you sure you want to delete this article?'}</h4>
         <p>
-          { commentCount > 0 ? 'If you delete this article, all comments will be permanently deleted. Are you sure you want to delete the article?' : 'This action is permanenet; your deleted article will not be recoverable.'}
+          { commentCount > 0 ? 'If you delete this article, all comments will be permanently deleted. Are you sure you want to delete the article?' : 'This action is permanent; your deleted article will not be recoverable.'}
         </p>
       </Modal.Body>
       <Modal.Footer>

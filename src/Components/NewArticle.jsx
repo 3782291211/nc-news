@@ -1,19 +1,33 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TopicsContext } from "../Contexts/Topics";
 import * as api from '../api';
+import { useNavigate } from "react-router-dom";
 
 const NewArticle = ({loggedInUser}) => {
+const { topics } = useContext(TopicsContext);
 const [articleTitle, setNewArticleTitle] = useState('');
 const [topic, setTopic] = useState('');
 const [newArticleBody, setNewArticleBody] = useState('');
+
+const navigate = useNavigate();
 
 const [error, setError] = useState(false);
 
 const handleSubmit = e => {
   setError(false);
   e.preventDefault();
-  api.postNewArticle(loggedInUser, articleTitle, newArticleBody, topic)
-  .then(({article}) => {console.log(article)})
-  .catch(err => setError(err.message));
+  if (!articleTitle || !topic || !newArticleBody) {
+    setError('You must complete all fields before posting your article.');
+  } else if (!topics.map(topic => topic.slug).includes(topic)) {
+    setError('That topic does not exist.')
+  } else if (articleTitle && topic && newArticleBody) {
+    api.postNewArticle(loggedInUser, articleTitle, newArticleBody, topic)
+    .then(({article}) => {
+      navigate(`/articles/new/${article.article_id}`);
+    })
+    .catch(err => setError(err.message));
+  }
+
 };
 
 return (
@@ -31,7 +45,7 @@ return (
         <label className="new-article__form-label" htmlFor="new-article__body">Write your article here</label>
         <textarea id="new-article__body" type="text" onChange={e => setNewArticleBody(e.target.value)} value={newArticleBody}/>
 
-        <button id="new-article__submit">Create new topic</button>
+        <button id="new-article__submit">Post article</button>
     </form>
 
   </main>

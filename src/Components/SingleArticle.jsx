@@ -70,7 +70,7 @@ if (apiError) {
   return (
   <section>
     <p className="error">{apiError}</p>
-    <button onClick={() => navigate(-1)}>Go back</button>
+    <button onClick={() => navigate(-2)}>Go back</button>
   </section>);
 } else {
   return (
@@ -89,7 +89,8 @@ if (apiError) {
     </article>
 
    
-    <Button className="article__delete" variant="primary" onClick={() => setShowDeleteWarning(true)}>
+   {loggedInUser === article.author && 
+     <div> <Button className="article__delete" variant="primary" onClick={() => setShowDeleteWarning(true)}>
       Delete article  
       </Button>
 
@@ -99,7 +100,7 @@ if (apiError) {
         commentCount={article.comment_count}
         articleId={articleId}
         setApiError={setApiError}
-      />
+      /></div>}
 
     {article.comment_count > 0 &&
     <div>

@@ -9,12 +9,16 @@ import Comments from './Components/Comments';
 import Topics from './Components/Topics';
 import NewArticle from './Components/NewArticle';
 import ArticleDeleteConfirm from './Components/ArticleDeleteConfirm';
-import {Routes, Route} from 'react-router-dom';
-import { useState } from "react";
+import ArticlePostedConfirm from './Components/ArticlePostedConfirm';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useState, useContext } from "react";
+import { TopicsContext } from './Contexts/Topics';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState('tickle122');
- 
+  const topics = useContext(TopicsContext);
+  const location = useLocation();
+
   return (
     <div className="App">
       <Login setLoggedInUser={setLoggedInUser}
@@ -30,14 +34,15 @@ function App() {
         <Route path="/articles/new" element={<NewArticle loggedInUser={loggedInUser} />} />
         <Route path="/topics" element={<Topics />}/>
         <Route path="/articles/deleted/:articleId" element={<ArticleDeleteConfirm />} />
+        <Route path="/articles/new/:articleId" element={<ArticlePostedConfirm />}/>
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
-      <button id="button__top" onClick={() => window.scrollTo({
+      {!/\/articles\/(deleted|new)/.test(location.pathname) && <button id="button__top" onClick={() => window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"
-      })}>Back to top</button>
+      })}>Back to top</button>}
     </div>
   );
 }

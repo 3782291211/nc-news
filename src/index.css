@@ -21,7 +21,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 #App__body {
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -35,8 +35,9 @@ h1 {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 100px;
   background-color: whitesmoke;
-  padding: 37px 0 10px;
+  padding: 37px 0 23px;
   margin: 0;
+  font-weight: bold;
 }
 
 h2 {
@@ -55,6 +56,7 @@ h3{
   font-family: 'Do Hyeon', sans-serif;
   margin: auto 0px 6px;
   font-size: 35px;
+  margin-top: 16px
 }
 
 nav ul {
@@ -118,7 +120,7 @@ a {
 }
 
 .home__pagination > * {
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
 .--bold {
@@ -134,6 +136,7 @@ a {
   margin-top: 7px;
 }
 .home__select p, .home__pagination p, .home__skip label {
+  margin: 0 9px;
   font-size: 23px
 }
 
@@ -146,7 +149,7 @@ a {
 .home__welcome {
   font-family: 'Do Hyeon', sans-serif;
   margin: 30px auto 70px;
-  font-size: 70px;
+  font-size: 50px;
   text-align: left;
   line-height: 1.5ch;
 }
@@ -177,7 +180,7 @@ a {
 }
 
 .home__comments li {
-  width: 600px;
+  width: 550px;
   margin: 5px;
 }
 
@@ -316,6 +319,7 @@ article {
   padding: 9px 4px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  margin: 0
 }
 
 .comment-card__votes {
@@ -489,6 +493,7 @@ textarea {
 
 .single-article__current, .comments__confirmation, .topic__confirmation, .comments__error {
   text-align: center;
+  font-size: 24px;
   margin: 10px auto 30px;
   padding: 5px;
   width: 100%;
@@ -521,6 +526,7 @@ textarea {
 .login__label {
   color: whitesmoke;
   font-size: 21px;
+  margin: 0 8px
 }
 
 #username, #password {
@@ -560,7 +566,7 @@ margin: 16px auto 0
   font-size: 16px;
   height: fit-content;
   padding: 3.5px 9px;
-  margin: 17px 16px;
+  margin: 11px 16px;
 }
 
 #login__button:active {
@@ -588,7 +594,8 @@ select {
   background-color: rgb(254, 254, 254);
   box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
   color: black;
-  padding: 2px 6px
+  padding: 2px 6px;
+  height: 50px
 }
 .topic__title > p {
   font-size: 27px;
@@ -634,15 +641,21 @@ select {
 #topic__form, #new-article__form {
   background-color: whitesmoke;
   width: 80%;
-  max-width: 600px;
   margin: 20px auto 30px;
   padding-bottom: 9px;
   height: 318px;
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
 }
 
+#topic__form {
+  height: 338px;
+  max-width: 800px;
+}
+
 #new-article__form {
-  height: 400px
+  height: 811px;
+  max-width: 1200px;
+  width: 100%
 }
 
 .topic__form-label, .new-article__form-label {
@@ -662,14 +675,32 @@ textarea#topic__body, textarea#new-article__body {
   width: 97%;
   height: 150px;
   font-size: 24px;
+  resize: none;
+}
+
+textarea#topic__body {
+  width: 99%;
+  margin: 0 auto 6px;
+  height: 148px
+}
+
+textarea#new-article__body {
+  height: 535px;
+  width: 99%;
+  margin: 0 auto 6px;
+}
+
+#new-article__title, #new-article__topic {
+  width: 99%;
+  font-size: 24px;
 }
 
 #topic__new-topic {
   font-size: 24px;
   font-family: 'Patrick Hand';
-  width: 97%;
+  width: 99%;
   display: block;
-  margin: 0 0 0 5px;
+  margin: 0 auto;
 }
 
 .topic__delete {
@@ -691,9 +722,13 @@ button.article__delete:active {
   .articles__preview {
     width: 80vw;
   }
+
+  .home__page-button {
+    margin: 4px 0;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .login__field {
     display: block;
   }
@@ -762,6 +797,10 @@ button.article__delete:active {
     padding: 20px 0 10px;
   }
 
+  .home__h2 {
+    font-size: 30px;
+  }
+
   .nav__link {
     font-size: 20px;
     width: fit-content;
@@ -789,23 +828,26 @@ button.article__delete:active {
     width: 80%;
     font-size: 17px;
   }
-}
+  .single-article__author {
+    padding: 3px
+  }
 
-@media (max-width: 1000px) {
-  #App__body {
-  width: 97%;
-  margin: 0 auto;
-}
+  #login__form {
+    height: 65px
+  }
+
+  #login__button {
+    margin: 7px 3px 0 0;
+  }
 }
 
 @media (max-width: 780px) {
   .home__pagination {
-    width: 95%;
+    width: 80%;
     padding: 5px 10px
   }
   .home__pagination > * {
-    display: block;
-    margin: 4px auto;
+    margin: 2px auto;
     font-size: 17px;
   }
 
@@ -816,11 +858,12 @@ button.article__delete:active {
   }
 
   .home__select p, .home__pagination p, .home__skip label, .home__select select, .home__page-button {
-    font-size: 16px
+    font-size: 16px;
+    line-height: 16px;
   }
 
   .home__page-button {
-    width: 107px;
+    width: 96px;
     margin: 2px 0
   }
 
@@ -835,16 +878,20 @@ button.article__delete:active {
     -webkit-line-clamp: 4;
   }
 
-}
-
-@media (max-width: 469px) {
   .home__buttons {
-    width: 110px
+    width: 110px;
   }
-}
 
-@media (max-width: 550px) {
-  .single-article__author {
-    padding: 3px
+  .home__select p, .home__pagination p, .home__skip label {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .home__page-button {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 70px
   }
 }
