@@ -75,6 +75,7 @@ if (newComment) {
   setLoadingNewComment(true);
   api.postNewComment(articleId, newComment, loggedInUser)
   .then(comment => {
+    setArticle(prev => ({...prev , comment_count: ++(prev.comment_count) }));
     setLoadingNewComment(false);
     setNewComment('');
     setSuccessMsg(true);
@@ -85,7 +86,6 @@ if (newComment) {
   }).catch(err => {
     setLoadingNewComment(false);
     setApiError(err.message);
-    setComments(prev => prev.filter(comment => comment.article_id !== articleId));
   });
   } else {
     setCommentError('Unable to post a blank comment. Please add some text before posting your comment.');
