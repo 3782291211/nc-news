@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import * as api from '../api';
 import Dropdown from 'react-dropdown';
-import Option from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 const Nav = () => {
@@ -10,8 +9,8 @@ const [topics, setTopics] = useState(['coding', 'football', 'cooking']);
 const [isLoading, setIsLoading] = useState(false);
 const [apiError, setApiError] = useState(false);
 
-const [defaultPlaceholder, setDefaultPlaceholder] = useState('');
-const defaultValue = { label: 'Articles by topic' };
+const [defaultPlaceholder, setDefaultPlaceholder] = useState(topics[0]);
+const defaultValue = { label: '📰 Articles by topic' };
  
 const [navigateTo, setNavigateTo] = useState('');
 const navigate = useNavigate();
@@ -45,7 +44,7 @@ return(
   <nav>
     <ul id="nav">
     <Link to="/"><li className="nav__link">Home</li></Link>
-    <Link to="articles"><li className="nav__link">All articles</li></Link>
+    <Link to="articles?sort_by=created_at"><li className="nav__link">All articles</li></Link>
     <Link to="topics"><li className="nav__link">Topics</li></Link>
     </ul>
     {isLoading && <p className="nav__loading">Fetching topics</p>}

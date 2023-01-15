@@ -4,12 +4,12 @@ const newsApi = axios.create({
   baseURL: 'https://majids-backend-api-project.onrender.com/api'
 });
 
-export const fetchArticles = (topic, sort_by) => {
+export const fetchArticles = (topic, sort_by, limit = 50, order) => {
   const sortDesc = ['votes', 'comment_count', 'created_at'];
   return newsApi.get('/articles', { params: { 
     topic, 
     sort_by, 
-    limit: 50, 
+    limit, 
     order: sortDesc.includes(sort_by) ? 'desc' : 'asc'
   }})
   .then(res => res.data);
@@ -56,6 +56,14 @@ export const deleteTopic = topic => {
   return newsApi.delete(`topics/${topic}`);
 };
 
-export const fetchRecentComments = (limit, page) => {
+export const fetchRecentComments = (limit = 10, page) => {
   return newsApi.get('comments', { params : { limit, page } }).then(res => res.data);
+};
+
+export const postNewArticle = (author, title, body, topic) => {
+  return newsApi.post('articles', {author, title, body, topic}).then(({data}) => data);
+};
+
+export const deleteArticle = articleId => {
+  return newsApi.delete(`articles/${articleId}`);
 };

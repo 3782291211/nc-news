@@ -25,7 +25,7 @@ const setSortBy = option => {
 useEffect(() => {
   setApiError(null);
   setIsLoading(true);
-  api.fetchArticles(topicQuery, sortByQuery)
+  api.fetchArticles(topicQuery, sortByQuery || 'created_at')
   .then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
@@ -48,6 +48,7 @@ if (apiError) {
   return (
     <main>
     <h2>{topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles'}<em>(preview)</em></h2>
+    {!isLoading && <Link to="/articles/new"><button className="articles__new">Post new article</button></Link>}
     {isLoading && <p className="articles__loading">Fetching data...</p>}
     {!isLoading && 
     <div>

@@ -1,12 +1,16 @@
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import updateVotes from '../updateVotes';
 import Buttons from "./Buttons";
+import DeleteNotification from "./DeleteNotification";
+import Button from 'react-bootstrap/Button';
+
 
 const SingleArticle = ({loggedInUser}) => {
+const navigate = useNavigate();
 const { articleId } = useParams();
 const [article, setArticle] = useState([]);
 const [comments, setComments] = useState([]);
@@ -16,6 +20,9 @@ const [showTopButton, setShowTopButton] = useState(true);
 const [showRecentButton, setShowRecentButton] = useState(false);
 const [showError, setShowError] = useState(false);
 const [apiError, setApiError] = useState(null);
+
+
+const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
 useEffect(() => {
   setApiError(null);
@@ -60,19 +67,42 @@ const handleClick = e => {
 };
 
 if (apiError) {
-  return <p className="error">{apiError}</p>;
+  return (
+  <section>
+    <p className="error">{apiError}</p>
+    <button onClick={() => navigate(-1)}>Go back</button>
+  </section>);
 } else {
   return (
   <main className="single-article">
   {isLoading ? <p className="single-article__loading">Fetching data...</p> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
-    <p className="single-article__author">By <strong>{article.author}</strong>, under "{article.topic}" <span className="single-article--float">{new Date(article.created_at).toString().slice(0, 24)}</ span></p>
+    <div className="single-article__author-div">
+      <p className="single-article__author" style={{'marginRight' : '30px'}}>By <strong style={{'fontSize' : '24px'}}>{article.author}</strong>, under "{article.topic}"</p>
+      <p className="single-article__author">{new Date(article.created_at).toString().slice(0, 24)}</p>
+    </div>
+    
     <article>
       {article.body}
       <Buttons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')} loggedInUser={loggedInUser}/>
     </article>
 
+   
+    <Button className="article__delete" variant="primary" onClick={() => setShowDeleteWarning(true)}>
+      Delete article  
+      </Button>
+
+      <DeleteNotification
+        show={showDeleteWarning}
+        onHide={() => setShowDeleteWarning(false)}
+        commentCount={article.comment_count}
+        articleId={articleId}
+        setApiError={setApiError}
+      />
+
+    {article.comment_count > 0 &&
+    <div>
     <div className="single-article__buttons">
     {showRecentButton && <button id="recent" onClick={handleClick}>Most recent</button>}
     {showTopButton && <button id="top" onClick={handleClick}>Top comments</button>}
@@ -93,6 +123,8 @@ if (apiError) {
       }
     })}
     </ul>
+    </div>}
+
     </div>}
   </main>
 );
