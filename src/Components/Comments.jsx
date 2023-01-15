@@ -88,7 +88,7 @@ if (apiError) {
       {article.body}
     </article>
 
-    <h3 ref={myRef}>Comments:</h3>
+    <h3 ref={myRef} style={{'margin' : '45px 0 20px'}}>{comments.length ? 'Comments: ' : 'There are no comments on this article. Check again later.'}</h3>
     {showTextArea && <textarea id="comments__new" placeholder="Add text here" onChange={e => {
       setNewComment(e.target.value);
       setshowCreateButton(false);

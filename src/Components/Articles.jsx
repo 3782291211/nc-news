@@ -8,13 +8,15 @@ import 'animate.css';
 const Articles = () => {
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
-const [selectValue, setSelectValue] = useState('created_at');
+const [selectedSort, setSelectedSort] = useState('');
+const [selectedOrder, setSelectedOrder] = useState('ASC');
 
 const [apiError, setApiError] = useState(null);
 
 const [searchParams, setSearchParams] = useSearchParams({});
 const sortByQuery = searchParams.get('sort_by');
 const topicQuery = searchParams.get('topic');
+const orderByQuery = searchParams.get('order');
 
 const setSortBy = option => {
   const newParams = new URLSearchParams(searchParams);
@@ -22,10 +24,16 @@ const setSortBy = option => {
   setSearchParams(newParams);
 };
 
+const setOrderBy = option => {
+  const newParams = new URLSearchParams(searchParams);
+  newParams.set('order', option);
+  setSearchParams(newParams);
+};
+
 useEffect(() => {
   setApiError(null);
   setIsLoading(true);
-  api.fetchArticles(topicQuery, sortByQuery || 'created_at')
+  api.fetchArticles(topicQuery, sortByQuery || 'created_at', orderByQuery)
   .then(({articles}) => {
     setIsLoading(false);
     setArticles(articles);
@@ -40,7 +48,7 @@ useEffect(() => {
       setApiError(err.response.data);
     };
   });
-}, [topicQuery, sortByQuery]);
+}, [topicQuery, sortByQuery, orderByQuery]);
 
 if (apiError) {
   return <p className="error">{apiError}</p>;
@@ -53,11 +61,13 @@ if (apiError) {
     {!isLoading && 
     <div>
 
+  <div className="articles__sort">
+  <div>
   <p id="articles__sort">Sort by:</p>
-      <select value={selectValue} onChange={e => {
+      <select value={selectedSort} onChange={e => {
+        setSelectedSort(e.target.value);
         setSortBy(e.target.value);
-        setSelectValue(e.target.value);
-      }}>
+      } }>
         <option value="comment_count">Comment count</option>
         <option value="title">Title</option>
         <option value="author">Author</option>
@@ -65,6 +75,19 @@ if (apiError) {
         <option value="created_at">Date</option>
         <option value="topic">Topic</option>
       </select>
+    </div>
+
+    <div>
+      <p id="articles__sort">Order:</p>
+      <select value={selectedOrder} onChange={e => {
+        setSelectedOrder(e.target.value);
+        setOrderBy(e.target.value);
+      }}>
+        <option value="ASC">Ascending</option>
+        <option value="DESC">Descending</option>
+      </select>
+    </div>
+  </div>
 
       <ul className="articles__list animate__animated animate__bounceInLeft">
        {articles.map(({article_id, author, avatar_url, title, topic, created_at, votes, comment_count}) => {

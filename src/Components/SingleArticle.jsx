@@ -8,7 +8,6 @@ import Buttons from "./Buttons";
 import DeleteNotification from "./DeleteNotification";
 import Button from 'react-bootstrap/Button';
 
-
 const SingleArticle = ({loggedInUser}) => {
 const navigate = useNavigate();
 const { articleId } = useParams();
@@ -21,6 +20,10 @@ const [showRecentButton, setShowRecentButton] = useState(false);
 const [showError, setShowError] = useState(false);
 const [apiError, setApiError] = useState(null);
 
+const [newComment, setNewComment] = useState('');
+const [loadingNewComment, setLoadingNewComment] = useState(false);
+const [successMsg, setSuccessMsg] = useState('');
+const [commentError, setCommentError] = useState(false);
 
 const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
@@ -66,6 +69,31 @@ const handleClick = e => {
   }
 };
 
+const handleSubmit = e => {
+e.preventDefault();
+if (newComment) {
+  setLoadingNewComment(true);
+  api.postNewComment(articleId, newComment, loggedInUser)
+  .then(comment => {
+    setLoadingNewComment(false);
+    setNewComment('');
+    setSuccessMsg(true);
+    setTimeout(() => setSuccessMsg(false), 6000);
+    setComments(prev => {
+      return [comment, ...prev];
+    })
+  }).catch(err => {
+    setLoadingNewComment(false);
+    setApiError(err.message);
+    setComments(prev => prev.filter(comment => comment.article_id !== articleId));
+  });
+  } else {
+    setCommentError('Unable to post a blank comment. Please add some text before posting your comment.');
+    setTimeout(() => setCommentError(false), 6000);
+  }
+
+};
+
 if (apiError) {
   return (
   <section>
@@ -88,7 +116,18 @@ if (apiError) {
       <Buttons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')} loggedInUser={loggedInUser}/>
     </article>
 
-   
+    {article.comment_count === 0 && 
+      <p class="article__no-comments">There are no comments on this article. Seize the moment and be the first.</p>}
+    {successMsg && <p className="comments__confirmation">Comment successsfully posted.</p>}
+    {commentError &&  <p className="error" style={{'textAlign' : 'center'}}>{commentError}</p>}
+    <section>
+      <form id="new-comment__form" onSubmit={handleSubmit}>
+        <textarea id="new-comment__body" type="text" onChange={e => setNewComment(e.target.value)} value={newComment} placeholder="Type your comment here..."/>
+
+        <button style={{ 'backgroundColor' : loadingNewComment ? 'grey' : ''}} id="new-comment__submit">{loadingNewComment ? 'Posting comment. Please wait...' : 'Post new comment'}</button>
+    </form>
+    </section>
+
    {loggedInUser === article.author && 
      <div> <Button className="article__delete" variant="primary" onClick={() => setShowDeleteWarning(true)}>
       Delete article  

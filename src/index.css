@@ -110,7 +110,7 @@ a {
 
 .home__pagination {
   background-color: hsl(201deg 30% 70%);
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 20px auto 0;
   padding: 10px;
   width: fit-content;
@@ -141,17 +141,22 @@ a {
 }
 
 .home__skip input {
-  margin-top: 7px;
+  margin: 2px 7px 7px;
   display: block;
   width: 90px
 }
 
-.home__welcome {
+.home__welcome, .article__no-comments {
   font-family: 'Do Hyeon', sans-serif;
   margin: 30px auto 70px;
   font-size: 50px;
   text-align: left;
   line-height: 1.5ch;
+}
+
+.article__no-comments {
+  font-size: 28px;
+  margin: 40px 0
 }
 
 .home__h2, .new-article__h2 {
@@ -167,6 +172,7 @@ a {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  line-height: 26px;
   font-size: 24px;
   border: 2px solid black;
   border-radius: 20px;
@@ -177,11 +183,6 @@ a {
   justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start;
-}
-
-.home__comments li {
-  width: 550px;
-  margin: 5px;
 }
 
 ul {
@@ -195,8 +196,14 @@ li {
   border: 2px solid rgb(0, 0, 0);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin: 5px auto;
+  margin: 11px auto;
   max-width: 600px;
+}
+
+.home__comments li {
+  width: 95%;
+  max-width: none;
+  margin: 8px 5px;
 }
 
 .articles__preview {
@@ -205,6 +212,21 @@ li {
 
 #articles__sort {
   font-size: 24px;
+  margin: 0
+}
+
+.articles__sort {
+  display: flex;
+  justify-content: center;
+  background-color: hsl(201deg 30% 70%);
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 4px 12px 9px
+}
+
+.articles__sort > * {
+  margin: 0 4px
 }
 
 .articles__list {
@@ -221,7 +243,7 @@ li {
   background-color: #000000;
 }
 
-.article-card__details, .articles__loading, 
+.article-card__details, .articles__loading, .users__loading, 
 .comment-card__details, .single-article__loading {
   background-color: black;
   color: whitesmoke;
@@ -284,12 +306,12 @@ li {
   line-height: 17px;
 }
 
-.articles__loading, .single-article__loading, .topics__loading {
+.articles__loading, .single-article__loading, .topics__loading, .comments__loading {
   margin: 50px auto;
   max-width: 400px;
 }
 
-.nav__loading, .topics__loading {
+.nav__loading, .topics__loading, .comments__loading, .users__loading {
   margin: 30px auto;
   max-width: 400px;
   border-radius: 0;
@@ -327,7 +349,7 @@ article {
   margin-right: 5px;
 }
 
-.comment-card__body, .comments__article, .topics__topic, .comment-card__details {
+.comment-card__body, .comments__article, .comment-card__details {
   margin-bottom: 25px;
   display: -webkit-box;
 -webkit-box-orient: vertical;  
@@ -352,10 +374,6 @@ text-overflow: ellipsis;
 .--home-comment {
   height: 100px;
   cursor: pointer;
-}
-
-.topics__topic  {
-  -webkit-line-clamp: 3;
 }
 
 .comment-card__details {
@@ -387,10 +405,16 @@ button {
   margin-bottom: 30px;
 }
 
-button:active, #topic__submit:active, #new-article__submit:active{
+button:active, #topic__submit:active, #new-article__submit:active {
   background-color: orangered;
   color: yellow;
 }
+
+#new-article__submit {
+  font-family: 'Do Hyeon', sans-serif;
+  padding: 5px 10px
+}
+
 
 #single-article__link {
   color: whitesmoke;
@@ -447,7 +471,7 @@ color: red;
 text-shadow: 0 0 1px red;
 }
 
-.comments__new, #topic__submit, #new-article__submit, .articles__new {
+.comments__new, #new-comment__submit, #topic__submit, #new-article__submit, .articles__new {
   display: block;
   margin: 0 auto 20px;
   font-size: 25px;
@@ -469,12 +493,20 @@ text-shadow: 0 0 1px red;
 }
 
 textarea {
-  font-size: 25px;
+  font-size: 23px;
   font-family: 'Patrick Hand';
-  margin: 10px auto;
   display: block;
-  width: 50%;
+}
+
+textarea#comments__new, #new-comment__body {
+  margin: 10px auto;
+  width: 90%;
   height: 200px;
+  max-width: 800px
+}
+
+#new-comment__body {
+  height: 100px
 }
 
 .comments__h2 {
@@ -561,8 +593,9 @@ margin: 16px auto 0
 }
 
 #login__button, #logout__button {
-  background-color: rgb(165, 165, 165);
-  color: black;
+  background-color: rgb(73, 72, 72);
+  box-shadow: 0 0 7px 1px grey;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   height: fit-content;
   padding: 3.5px 9px;
@@ -589,21 +622,30 @@ select {
 }
 
 .topic__title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgb(254, 254, 254);
-  box-shadow: 0 0 5px 3px inset hsl(201, 30%, 50%);
-  color: black;
-  padding: 2px 6px;
-  height: 50px
+  background-color: rgb(219, 2, 114);
+  color: rgb(210, 255, 253);
+  padding-left: 6px;
+  height: 50px;
+  border-bottom: 2px solid rgb(229, 40, 159);
 }
 .topic__title > p {
   font-size: 27px;
 }
-.--empty-topic {
-  box-shadow: 0 0 20px 3px inset hsl(39, 100%, 50%)
-}
 
+#dropdown-basic-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #0d6efd;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  margin: 0;
+}
 
 .topics__list {
   max-width: 600px;
@@ -616,6 +658,12 @@ select {
   justify-content: center;
 }
 
+.topic__empty-msg {
+  font-size: 21px;
+  margin: 2px 0;
+  color: rgb(248, 56, 98);
+  padding-left: 4px
+}
 
 
 .topics__topic {
@@ -627,12 +675,14 @@ select {
   margin: 10px auto
 }
 .--flex-item {
-  margin: 5px;
-  width: 90%;
-  max-width: 400px
+  border: none;
+  margin: 9px;
+  width: 900px;
 }
 
-
+.--empty-topic {
+  box-shadow: 0 0 4px 4px rgb(248, 56, 98);;
+}
 
 .topics__h2 {
   margin: 40px auto 0;
@@ -653,7 +703,7 @@ select {
 }
 
 #new-article__form {
-  height: 811px;
+  height: 825px;
   max-width: 1200px;
   width: 100%
 }
@@ -671,23 +721,19 @@ select {
 
 textarea#topic__body, textarea#new-article__body {
   font-family: 'Patrick Hand';
-  margin: 0 30px 6px 6px;
-  width: 97%;
+  margin: 0 0 5px;
+  width: 100%;
   height: 150px;
   font-size: 24px;
   resize: none;
 }
 
 textarea#topic__body {
-  width: 99%;
-  margin: 0 auto 6px;
-  height: 148px
+  width: 100%;
 }
 
 textarea#new-article__body {
-  height: 535px;
-  width: 99%;
-  margin: 0 auto 6px;
+  height: 546px;
 }
 
 #new-article__title, #new-article__topic {
@@ -709,13 +755,46 @@ textarea#new-article__body {
 }
 
 button.article__delete {
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 22px;
   display: block;
   margin: 20px auto;
+  padding: 6px;
   background-color: rgb(193, 0, 0);
 }
 
 button.article__delete:active {
   background-color: #000000;
+}
+
+
+.users__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.users__user {
+  padding: 5px;
+  margin: 25px;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 20px 6px rgb(249, 48, 212);
+}
+
+.users__user img {
+  margin-top: 9px;
+  border-radius: 10px;
+  aspect-ratio: 1;
+  height: 200px;
+  object-fit: cover;
+  object-position: 0 20%;
+}
+
+.users__user  > * {
+  font-size: 25px;
+  color: whitesmoke;
+  margin: 0
 }
 
 @media (max-width: 868px) {
@@ -773,6 +852,11 @@ button.article__delete:active {
 
   .topic__title {
     font-size: 24px;
+    height: auto
+  }
+
+  .topic__title p {
+    margin: 0
   }
 
   .articles__preview {
@@ -793,7 +877,6 @@ button.article__delete:active {
   }
 
   h1 {
-    font-size: 60px;
     padding: 20px 0 10px;
   }
 
@@ -825,7 +908,7 @@ button.article__delete:active {
   }
 
   #comments__new {
-    width: 80%;
+    width: 90%;
     font-size: 17px;
   }
   .single-article__author {
@@ -839,15 +922,21 @@ button.article__delete:active {
   #login__button {
     margin: 7px 3px 0 0;
   }
+
 }
 
 @media (max-width: 780px) {
+  #home__intro {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
   .home__pagination {
-    width: 80%;
-    padding: 5px 10px
+    width: 100%;
+    padding: 5px 4px
   }
   .home__pagination > * {
-    margin: 2px auto;
+    margin: auto;
     font-size: 17px;
   }
 
@@ -859,7 +948,7 @@ button.article__delete:active {
 
   .home__select p, .home__pagination p, .home__skip label, .home__select select, .home__page-button {
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
   }
 
   .home__page-button {
@@ -883,8 +972,8 @@ button.article__delete:active {
   }
 
   .home__select p, .home__pagination p, .home__skip label {
-    margin: 0;
-    font-size: 14px;
+    margin: auto;
+    font-size: 21px;
   }
 
   .home__page-button {
@@ -893,5 +982,27 @@ button.article__delete:active {
 
   h1 {
     font-size: 70px
+  }
+
+  #new-comment__body{
+    width: 100%
+  }
+
+  .article__no-comments {
+    font-size: 20px;
+    margin: 40px 0 20px
+  }
+}
+
+
+@media (max-width: 505px) {
+  .home__select p, .home__pagination p, .home__skip label {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .home__comments li {
+    width: 650px;
   }
 }

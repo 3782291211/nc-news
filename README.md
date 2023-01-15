@@ -12,14 +12,14 @@ Northcoders News has articles which are divided into topics. Each article has us
 With this applciation, a user can: 
 - view all articles that have been posted;
 - filter and sort articles;
+- view latest commentss;
 - vote up/down on articles and comments;
-- post new comments;
-- delete their previous comments;
-- post new articles;
-- delete their previous articles;
+- post new comments and delete previous comments;
+- post new articles and delete previous articles;
 - login in using pre-defined user account;
-- add new topics.
+- add and delete topics.
 
 ## Preview
-
-<img src="screenshot_gxf.png" width="600px"/>  
+<img src="./Screenshots/localhost_3000_articles_sort_by=title&order=DESC.png" width="600px"/> 
+<br />  <br /> 
+<img src="./Screenshots/localhost_3000_articles_35(iPad Air).png" width="600px"/>  

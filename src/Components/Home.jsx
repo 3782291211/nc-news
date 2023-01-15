@@ -6,7 +6,8 @@ import * as api from '../api';
 const Home = () => {
   const [hinge, setHinge] = useState({state: false, count: 0});
   const [comments, setComments] = useState([]);
-  const [limit, setLimit] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
+  const [limit, setLimit] = useState(20);
   const [page, setPage] = useState(1);
 
   const [errorMsg, setErrorMsg] = useState(false);
@@ -14,11 +15,18 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setErrorMsg(false);
     if (page) {
+      setIsLoading(true);
+      setErrorMsg(false);
       api.fetchRecentComments(limit, page)
-    .then(({comments}) => setComments(comments))
-    .catch(err => setErrorMsg(err.message));
+    .then(({comments}) => {
+      setIsLoading(false);
+      setComments(comments);
+    })
+    .catch(err => {
+      setIsLoading(false);
+      setErrorMsg(err.message);
+    });
     };
   }, [limit, page]);
 
@@ -31,12 +39,14 @@ const Home = () => {
       };
     }}>Welcome to NC News, an online social hub</p>
    
-    <p id="home__intro">NC News is a newly-launched online social space where you can read articles and comments posted by others, as well as posting your own articles and comments. To get started, check out the latest comments below, or feel free to navigate to the different sections and explore various articles.
-    Post new articles.</p>
+    <p id="home__intro">Northcoders News is a newly-launched online social space where you can read articles and comments posted by others, as well as posting your own articles and comments. To get started, check out the latest comments below, or feel free to navigate to the different sections and explore various articles. <br /> <br />
+    If you'd like to share an interesting story or experience, you can post new articles under existing topics, or you can create a new topic to go along with your article. <br /> <br /> 
+    
+    This website is part of a larger full-stack web development project and was inspired by the incredible people at the Northcoders organisation whose support and guidance were invaluable.</p>
     {errorMsg && <p className="error">{errorMsg}</p>}
 
     <h2 className="home__h2">Showing latest comments</h2>
-    <section>
+    {isLoading ? <p className="comments__loading">Fetching data...</p> : <section>
 
     <div className="home__pagination">
     <div className="home__select">
@@ -57,7 +67,7 @@ const Home = () => {
     {page > 1 && <button className="home__page-button" onClick={() => setPage(prev => --prev)}>Previous page</button>}
     <button className="home__page-button" onClick={() => setPage(prev => ++prev)}>Next page</button></div>
 
-    <p className="--bold">Page {page}</p>
+    <p className="--bold">Page <br /> {page}</p>
     <div className="home__skip">
     <label htmlFor="comments__select-page">Go to page</label>
     <input id="comments__select-page" type="number" value={page} onChange={e => setPage(e.target.value)} />
@@ -75,13 +85,13 @@ const Home = () => {
        <p className="comment-card__body --home">{body}</p>
        </div>
        
-       <p className="comment-card__details"><em>by </em> <strong>{author}</strong></p>
-        <p className="comment-card__details"><em>in</em> "{article}"</p>
-       <p className="comment-card__details"> {new Date(created_at).toString().slice(4, 15)} <span className="comment-card__votes">Votes: {votes}</span></p>
+       <p className="comment-card__details"><em>🗨 by </em> <strong>{author}</strong></p>
+        <p className="comment-card__details">📝 <em>in</em> "{article}"</p>
+       <p className="comment-card__details"> 📆 {new Date(created_at).toString().slice(4, 15)} <span className="comment-card__votes">Votes: {votes}</span></p>
       </li>)
     })}
     </ul>
-    </section>
+    </section>}
   </main>);
 };
 

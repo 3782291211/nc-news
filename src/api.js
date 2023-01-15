@@ -4,13 +4,12 @@ const newsApi = axios.create({
   baseURL: 'https://majids-backend-api-project.onrender.com/api'
 });
 
-export const fetchArticles = (topic, sort_by, limit = 50, order) => {
-  const sortDesc = ['votes', 'comment_count', 'created_at'];
+export const fetchArticles = (topic, sort_by, order, limit = 30) => {
   return newsApi.get('/articles', { params: { 
     topic, 
     sort_by, 
-    limit, 
-    order: sortDesc.includes(sort_by) ? 'desc' : 'asc'
+    order,
+    limit 
   }})
   .then(res => res.data);
 };
