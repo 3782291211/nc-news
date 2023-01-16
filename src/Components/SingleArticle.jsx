@@ -9,23 +9,26 @@ import DeleteNotification from "./DeleteNotification";
 import Button from 'react-bootstrap/Button';
 
 const SingleArticle = ({loggedInUser}) => {
-const navigate = useNavigate();
-const { articleId } = useParams();
-const [article, setArticle] = useState([]);
-const [comments, setComments] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
-const [originalComments, setOriginalComments] = useState([]);
-const [showTopButton, setShowTopButton] = useState(true);
-const [showRecentButton, setShowRecentButton] = useState(false);
-const [showError, setShowError] = useState(false);
-const [apiError, setApiError] = useState(null);
-
-const [newComment, setNewComment] = useState('');
-const [loadingNewComment, setLoadingNewComment] = useState(false);
-const [successMsg, setSuccessMsg] = useState('');
-const [commentError, setCommentError] = useState(false);
-
-const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  
+  const { articleId } = useParams();
+  const [article, setArticle] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [originalComments, setOriginalComments] = useState([]);
+  
+  const [showTopButton, setShowTopButton] = useState(true);
+  const [showRecentButton, setShowRecentButton] = useState(false);
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [apiError, setApiError] = useState(null);
+  
+  const [newComment, setNewComment] = useState('');
+  const [loadingNewComment, setLoadingNewComment] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [commentError, setCommentError] = useState(false);
+  
+  const navigate = useNavigate();
+  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
 useEffect(() => {
   setApiError(null);
