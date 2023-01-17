@@ -116,11 +116,11 @@ if (apiError) {
     
     <article>
       {article.body}
-      <Buttons votes={article.votes} showError={showError} updateVotes={updateVotes(setShowError, setArticle, articleId, 'article')} loggedInUser={loggedInUser}/>
+      <Buttons votes={article.votes} id={articleId} itemType={'article'} setItem={setArticle} showError={showError} setShowError={setShowError} updateVotes={updateVotes} loggedInUser={loggedInUser}/>
     </article>
 
     {article.comment_count === 0 && 
-      <p class="article__no-comments">There are no comments on this article. Seize the moment and be the first.</p>}
+      <p className="article__no-comments">There are no comments on this article. Seize the moment and be the first.</p>}
     {successMsg && <p className="comments__confirmation">Comment successsfully posted.</p>}
     {commentError &&  <p className="error" style={{'textAlign' : 'center'}}>{commentError}</p>}
     <section>
