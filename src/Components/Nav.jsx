@@ -13,7 +13,7 @@ return(
   <nav>
     <ul id="nav">
     <Link to="/"><li className="nav__link">Home</li></Link>
-    <Link to="articles?sort_by=created_at"><li className="nav__link">All articles</li></Link>
+    <Link to="articles"><li className="nav__link">All articles</li></Link>
     <Link to="topics"><li className="nav__link">Topics</li></Link>
     <Link to="users"><li className="nav__link">Users</li></Link>
     </ul>
