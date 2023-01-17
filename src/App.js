@@ -16,12 +16,15 @@ import { useState } from "react";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState('tickle122');
+  const [avatarUrl, setAvatarUrl] = useState('');
   const location = useLocation();
 
   return (
     <div className="App">
       <Login setLoggedInUser={setLoggedInUser}
-      loggedInUser={loggedInUser}/>
+      loggedInUser={loggedInUser}
+      avatarUrl={avatarUrl}
+      setAvatarUrl={setAvatarUrl}/>
       <Header />
       <Nav />
       <div id="App__body">
@@ -34,7 +37,10 @@ function App() {
         <Route path="/topics" element={<Topics />}/>
         <Route path="/articles/deleted/:articleId" element={<ArticleDeleteConfirm />} />
         <Route path="/articles/new/:articleId" element={<ArticlePostedConfirm />}/>
-        <Route path='/users' element={<Users />}></Route>
+        <Route path='/users' element={<Users 
+        setLoggedInUser={setLoggedInUser} 
+        setAvatarUrl={setAvatarUrl}
+        loggedInUser={loggedInUser} />}></Route>
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
