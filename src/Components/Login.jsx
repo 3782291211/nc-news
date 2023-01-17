@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import * as api from '../api';
 
-const Login = ({setLoggedInUser, loggedInUser}) => {
+const Login = ({setLoggedInUser, loggedInUser, avatarUrl, setAvatarUrl}) => {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [users, setUsers] = useState([]);
 const [showErrorMsg, setShowErrorMsg] = useState(false);
 const [buttonId, setButtonId] = useState('');
-
-const [avatarUrl, setAvatarUrl] = useState('');
 
 useEffect(() => {
   api.fetchUsers().then(({users}) => {
