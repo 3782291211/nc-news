@@ -43,7 +43,7 @@ h1 {
 h2 {
   font-family: 'Do Hyeon', sans-serif;
   font-size: 100px;
-  margin: 30px auto 40px;
+  margin: 20px auto 30px;
   font-size: 40px;
 }
 
@@ -108,6 +108,12 @@ a {
   color: rgb(0, 0, 0);
 }
 
+.articles__pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .home__pagination {
   background-color: hsl(201deg 30% 70%);
   border-radius: 10px;
@@ -162,7 +168,7 @@ a {
 .home__h2, .new-article__h2 {
   text-align: left;
   font-weight: lighter;
-  margin: 50px 0 0;
+  margin: 15px 0 0;
 }
 
 #home__intro {
@@ -210,7 +216,7 @@ li {
   width: 400px;
 }
 
-#articles__sort {
+#articles__sort, #articles__limit {
   font-size: 24px;
   margin: 0
 }
@@ -410,9 +416,10 @@ button:active, #topic__submit:active, #new-article__submit:active {
   color: yellow;
 }
 
-#new-article__submit {
+button#new-article__submit {
   font-family: 'Do Hyeon', sans-serif;
-  padding: 5px 10px
+  margin: auto;
+  padding: 5px 10px;
 }
 
 
@@ -431,6 +438,7 @@ button:active, #topic__submit:active, #new-article__submit:active {
 }
 
 .comment__details {
+  margin-bottom: 0;
   font-size: 24px;
   padding: 2px 10px;
   background-color: black;
@@ -459,6 +467,11 @@ button:active, #topic__submit:active, #new-article__submit:active {
   font-family: 'Do Hyeon', sans-serif;
   margin: 5px 10px 0 10px;
   font-size: 22px;
+}
+
+.votes__error {
+  color: red;
+  margin: 0 10px;
 }
 
 .--positive {
@@ -523,7 +536,7 @@ textarea#comments__new, #new-comment__body {
   border-top-right-radius: 10px;
 }
 
-.single-article__current, .comments__confirmation, .topic__confirmation, .comments__error {
+.single-article__current, .comments__confirmation, .topic__confirmation, .comments__error, .login__confirmation {
   text-align: center;
   font-size: 24px;
   margin: 10px auto 30px;
@@ -542,7 +555,7 @@ textarea#comments__new, #new-comment__body {
   max-width: 998px;
 }
 
-.comments__confirmation, .topic__confirmation {
+.comments__confirmation, .topic__confirmation, .login__confirmation {
   font-size: 24px;
   background-color: rgb(2, 182, 2);
 }
@@ -618,38 +631,45 @@ select {
   background-color: red;
   font-weight: bold;
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .topic__title {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  font-size: 26px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   background-color: rgb(219, 2, 114);
   color: rgb(210, 255, 253);
-  padding-left: 6px;
-  height: 50px;
+  padding: 0 6px;
   border-bottom: 2px solid rgb(229, 40, 159);
-}
-.topic__title > p {
-  font-size: 27px;
+  margin: 0
 }
 
 #dropdown-basic-button {
   border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   background-color: #0d6efd;
   color: rgb(255, 255, 255);
   font-size: 20px;
-  margin: 0;
+  margin: auto;
+  width: 100%;
+}
+
+.topics__topic .dropdown-menu.show {
+  width: 100%;
+  text-align: center;
+}
+
+.topic__description {
+  font-size: 22px;
+  padding: 6px 6px 6px;
+  margin: auto
 }
 
 .topics__list {
   max-width: 600px;
 }
+
 .--flex {
   display: flex;
   flex-wrap: wrap;
@@ -662,18 +682,21 @@ select {
   font-size: 21px;
   margin: 2px 0;
   color: rgb(248, 56, 98);
-  padding-left: 4px
+  padding: 4px 6px
 }
 
 
 .topics__topic {
-  font-size: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   color: whitesmoke;
   background-color: #000000;
-  padding: 3px;
+  padding: 2px;
   border-radius: 10px;
   margin: 10px auto
 }
+
 .--flex-item {
   border: none;
   margin: 9px;
@@ -685,7 +708,7 @@ select {
 }
 
 .topics__h2 {
-  margin: 40px auto 0;
+  margin: 20px auto 0;
 }
 
 #topic__form, #new-article__form {
@@ -698,12 +721,22 @@ select {
 }
 
 #topic__form {
-  height: 338px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 350px;
   max-width: 800px;
 }
 
+#topic__submit {
+  margin: auto;
+}
+
 #new-article__form {
-  height: 825px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 860px;
   max-width: 1200px;
   width: 100%
 }
@@ -728,25 +761,12 @@ textarea#topic__body, textarea#new-article__body {
   resize: none;
 }
 
-textarea#topic__body {
-  width: 100%;
-}
-
 textarea#new-article__body {
   height: 546px;
 }
 
-#new-article__title, #new-article__topic {
-  width: 99%;
+#new-article__title, #new-article__topic, #topic__new-topic {
   font-size: 24px;
-}
-
-#topic__new-topic {
-  font-size: 24px;
-  font-family: 'Patrick Hand';
-  width: 99%;
-  display: block;
-  margin: 0 auto;
 }
 
 .topic__delete {
@@ -767,6 +787,15 @@ button.article__delete:active {
   background-color: #000000;
 }
 
+.users__li {
+  border: none;
+  margin: 0
+}
+
+.users__change {
+  display: block;
+  margin: 0 auto 20px
+}
 
 .users__list {
   display: flex;
@@ -776,7 +805,7 @@ button.article__delete:active {
 
 .users__user {
   padding: 5px;
-  margin: 25px;
+  margin: 20px;
   border-radius: 10px;
   background-color: rgb(0, 0, 0);
   box-shadow: 0 0 20px 6px rgb(249, 48, 212);
@@ -797,19 +826,18 @@ button.article__delete:active {
   margin: 0
 }
 
-@media (max-width: 868px) {
-  .articles__preview {
-    width: 80vw;
-  }
-
-  .home__page-button {
-    margin: 4px 0;
-  }
-}
 
 @media (max-width: 550px) {
   .login__field {
     display: block;
+  }
+
+  .articles__sort {
+   flex-direction: column;
+  }
+
+  #articles__sort, #articles__limit {
+    font-size: 20px;
   }
 
   #login__form {
@@ -840,6 +868,7 @@ button.article__delete:active {
 
   .login__logged-in {
     margin: 20px 20px 0 0;
+    font-size: 4vw;
   }
 
   p {
@@ -851,12 +880,12 @@ button.article__delete:active {
   }
 
   .topic__title {
-    font-size: 24px;
     height: auto
   }
 
   .topic__title p {
-    margin: 0
+    margin: 0;
+    font-size: 23px;
   }
 
   .articles__preview {
@@ -869,15 +898,32 @@ button.article__delete:active {
     align-content: center;
   }
 
-  .votes__buttons > * {
+  .votes__buttons button {
     text-align: center;
-    width: 200px;
+    width: 120px;
     font-size: 17px;
-    margin: 0 auto 6px
+    margin: 0 auto 5px
+  }
+
+  .votes__count {
+    margin: 2px auto
+  }
+
+  .votes__error {
+    margin-bottom: 6px
   }
 
   h1 {
     padding: 20px 0 10px;
+    font-size: 18vw
+  }
+
+  h2, .h2__em {
+    font-size: 8vw
+  }
+
+  article {
+    font-size: 5vw;
   }
 
   .home__h2 {
@@ -885,9 +931,17 @@ button.article__delete:active {
   }
 
   .nav__link {
-    font-size: 20px;
+    font-size: 5vw;
     width: fit-content;
     padding: 2px 5px
+  }
+
+  #dropdown__main {
+    font-size: 5vw;
+  }
+
+  #logout__button  {
+    font-size: 14px;
   }
 
   .nav__topics {
@@ -903,8 +957,11 @@ button.article__delete:active {
   }
 
   textarea#topic__body, #topic__new-topic {
-    width: 95%;
     font-size: 16px;
+  }
+
+  #topic__submit {
+    font-size: 20px;
   }
 
   #comments__new {
@@ -923,18 +980,22 @@ button.article__delete:active {
     margin: 7px 3px 0 0;
   }
 
+  #new-article__title, #new-article__topic, textarea#new-article__body {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 780px) {
   #home__intro {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 4vw;
+    line-height: 2.5ch;
   }
 
   .home__pagination {
     width: 100%;
     padding: 5px 4px
   }
+  
   .home__pagination > * {
     margin: auto;
     font-size: 17px;
@@ -952,12 +1013,12 @@ button.article__delete:active {
   }
 
   .home__page-button {
-    width: 96px;
-    margin: 2px 0
+    width: fit-content;
+    margin: 2px 0;
   }
 
   .home__welcome  {
-    font-size: 40px;
+    font-size: 35px;
     margin: 30px 0 50px
   }
 
@@ -977,11 +1038,7 @@ button.article__delete:active {
   }
 
   .home__page-button {
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 70px
+    font-size: 3vw;
   }
 
   #new-comment__body{
