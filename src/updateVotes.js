@@ -1,9 +1,8 @@
 import * as api from '../src/api';
-const updateVotes = (setShowError, setCommentsOrArticle, id, itemType) => {
+const updateVotes = (setShowError, setCommentsOrArticle, id, buttonId, itemType) => {
 
-return e => {
   setShowError(false);
-  const voteModifier = e.target.id === 'upvote' ? 1 : -1;
+  const voteModifier = buttonId === 'upvote' ? 1 : -1;
 
   setCommentsOrArticle(prev => {
       if (itemType === 'comment') {
@@ -32,8 +31,6 @@ return e => {
       }
     })
   })
-}
-
 };
 
 export default updateVotes;
