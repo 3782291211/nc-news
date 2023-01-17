@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Buttons from './Buttons';
-import updateVotes from '../updateVotes';
 
 const CommentCard = ({body, author, votes, date, id, setComments, loggedInUser, setShowDeletedMsg, setShowWrongUserMsg, setShowDeleteError}) => {
 const [showError, setShowError] = useState(false);
@@ -12,11 +11,12 @@ const [showError, setShowError] = useState(false);
     
     <Buttons 
     votes={votes} 
-    showError={showError} 
-    updateVotes={updateVotes(setShowError, setComments, id, 'comment')}
+    showError={showError}
+    setShowError={setShowError}
     loggedInUser={loggedInUser}
     id={id}
-    setComments={setComments}
+    itemType={'comment'}
+    setItem={setComments}
     setShowDeletedMsg={setShowDeletedMsg}
     author={author}
     setShowWrongUserMsg={setShowWrongUserMsg}
