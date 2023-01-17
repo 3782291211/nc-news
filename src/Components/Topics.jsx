@@ -100,19 +100,17 @@ return (
             onClick={() => number_of_articles > 0 && navigate(`/articles?topic=${slug}`)}
             >
           
-            <div key={topic_id} className='topic__title'>
-            <p>{`${slug}; ${number_of_articles === 1 ? `${number_of_articles} article` : `${number_of_articles} articles`}`}</p>
-              
-            {number_of_articles === 0 && <DropdownButton 
-            id="dropdown-basic-button" 
+            <p className='topic__title'>{`${slug}; ${number_of_articles === 1 ? `${number_of_articles} article` : `${number_of_articles} articles`}`}</p>
+            
+            <p className='topic__description'>"{description}"</p>
+            {number_of_articles === 0 && <p className="topic__empty-msg">No articles have been posted under this topic yet. Click the button to add an article, or to delete the topic.</p>}
+
+            {number_of_articles === 0 && <DropdownButton
+            id="dropdown-basic-button"
             title="Select an option">
               <Dropdown.Item onClick={() => navigate(`/articles/new?topic=${slug}`)}>Post an article</Dropdown.Item>
               <Dropdown.Item onClick={handleDelete(slug)}>Delete topic</Dropdown.Item>
               </DropdownButton>}
-
-            </div> 
-            "{description}"
-            {number_of_articles === 0 && <p className="topic__empty-msg">No articles have been posted under this topic yet. Click the button to add an article, or to delete the topic.</p>}
             </li>)
         })}
     </ul>
