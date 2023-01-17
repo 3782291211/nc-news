@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { TopicsContext } from "../Contexts/Topics";
 import * as api from '../api';
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -18,6 +18,11 @@ const [showTopicPrompt, setShowTopicPrompt] = useState(false);
 const [error, setError] = useState(false);
 
 const navigate = useNavigate();
+const myRef = useRef(null);
+
+if (error) {
+  myRef.current.scrollIntoView();
+}
 
 const handleSubmit = () => {
 return e => {
@@ -43,7 +48,7 @@ return e => {
 
 return (
   <main>
-    <h2 className="new-article__h2">Post a new article</h2>
+    <h2 ref={myRef} className="new-article__h2">Post a new article</h2>
 
     {error && <p className="error">{error}</p>}
     <form style={{ 'marginBottom' : '50px'}} id="new-article__form">
