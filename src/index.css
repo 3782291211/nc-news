@@ -126,6 +126,7 @@ a {
 
 .--bold {
   font-weight: bold;
+  margin: 0 0 7px
 }
 
 .home__page-button {
@@ -203,9 +204,8 @@ li {
   width: 400px;
 }
 
-#articles__sort,
-#articles__limit {
-  font-size: 24px;
+.articles__sort p {
+  font-size: 23px;
   margin: 0;
 }
 
@@ -217,10 +217,6 @@ li {
   justify-content: center;
   background-color: hsl(201deg 30% 70%);
   border-radius: 10px;
-}
-
-.articles__pagination p {
-  margin: 0 0 10px
 }
 
 .articles__sort {
@@ -882,8 +878,7 @@ button.article__delete:active {
     flex-direction: column;
   }
 
-  #articles__sort,
-  #articles__limit {
+  .articles__sort__text {
     font-size: 20px;
   }
 
@@ -1058,7 +1053,10 @@ button.article__delete:active {
   .home__pagination p,
   .home__skip label,
   .home__select select,
-  .home__page-button {
+  .home__page-button,
+  .articles__buttons button,
+  .articles__pagination select, 
+  .articles__sort p {
     font-size: 16px;
     line-height: 20px;
   }
