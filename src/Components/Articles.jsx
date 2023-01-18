@@ -77,7 +77,7 @@ if (apiError) {
   <div className="articles__pagination">
   <div className="articles__sort">
   <div>
-  <p id="articles__sort">Sort by:</p>
+  <p className="articles__sort__text">Sort by:</p>
       <select value={selectedSort} onChange={e => {
         setSelectedSort(e.target.value);
         setQuery(e.target.value, 'sort_by');
@@ -92,7 +92,7 @@ if (apiError) {
     </div>
 
     <div>
-      <p id="articles__sort">Order:</p>
+      <p className="articles__sort__text">Order:</p>
       <select value={selectedOrder} onChange={e => {
         setSelectedOrder(e.target.value);
         setQuery(e.target.value, 'order');
@@ -103,7 +103,7 @@ if (apiError) {
     </div>
 
     <div>
-      <p id="articles__limit">Articles per page:</p>
+      <p className="articles__sort__text">Articles per page:</p>
       <select value={selectedLimit} onChange={e => {
         setSelectedLimit(e.target.value);
         setQuery(e.target.value, 'limit');
