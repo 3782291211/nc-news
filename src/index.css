@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
 
 * {
   margin: 0;
@@ -13,11 +13,11 @@ html {
 
 body {
   margin: 0 auto;
-  font-family: 'Patrick Hand';
+  font-family: "Patrick Hand";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e3e3e3;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23a0afe7' fill-opacity='0.38' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23a0afe7' fill-opacity='0.38' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 #App__body {
@@ -26,37 +26,37 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 h1 {
   text-shadow: 6px 7px 8px rgb(109, 109, 157);
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   font-size: 100px;
   background-color: whitesmoke;
-  padding: 37px 0 23px;
+  padding: 37px 5px 23px;
   margin: 0;
   font-weight: bold;
 }
 
 h2 {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   font-size: 100px;
   margin: 20px auto 30px;
   font-size: 40px;
 }
 
-h2> * {
+h2 > * {
   margin: 20px auto 30px;
   font-size: 40px;
 }
 
-h3{
-  font-family: 'Do Hyeon', sans-serif;
+h3 {
+  font-family: "Do Hyeon", sans-serif;
   margin: auto 0px 6px;
   font-size: 35px;
-  margin-top: 16px
+  margin-top: 16px;
 }
 
 nav ul {
@@ -66,7 +66,7 @@ nav ul {
   background-color: black;
   margin: 0;
   border-radius: 0;
-  border: none
+  border: none;
 }
 
 .nav__dropdown {
@@ -90,7 +90,8 @@ nav ul {
   color: whitesmoke;
 }
 
-.Dropdown-placeholder, .Dropdown-option {
+.Dropdown-placeholder,
+.Dropdown-option {
   font-size: 22px;
 }
 
@@ -106,12 +107,6 @@ nav ul {
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-}
-
-.articles__pagination {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .home__pagination {
@@ -135,26 +130,29 @@ a {
 
 .home__page-button {
   margin: 0 7px;
-  width: 160px
+  width: 160px;
 }
 
 .home__select select {
   margin-top: 7px;
 }
-.home__select p, .home__pagination p, .home__skip label {
+.home__select p,
+.home__pagination p,
+.home__skip label {
   margin: 0 9px;
-  font-size: 23px
+  font-size: 23px;
 }
 
 .home__skip input {
   margin: 2px 7px 7px;
   display: block;
-  width: 90px
+  width: 90px;
 }
 
-.home__welcome, .article__no-comments {
-  font-family: 'Do Hyeon', sans-serif;
-  margin: 30px auto 70px;
+.home__welcome,
+.article__no-comments {
+  font-family: "Do Hyeon", sans-serif;
+  margin: 30px auto 50px;
   font-size: 50px;
   text-align: left;
   line-height: 1.5ch;
@@ -162,13 +160,15 @@ a {
 
 .article__no-comments {
   font-size: 28px;
-  margin: 40px 0
+  margin: 40px 0;
 }
 
-.home__h2, .new-article__h2 {
+.home__h2,
+.new-article__h2 {
   text-align: left;
   font-weight: lighter;
-  margin: 15px 0 0;
+  margin: 40px 0 10px;
+  font-size: 40px;
 }
 
 #home__intro {
@@ -182,13 +182,6 @@ a {
   font-size: 24px;
   border: 2px solid black;
   border-radius: 20px;
-}
-
-.home__comments {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-content: flex-start;
 }
 
 ul {
@@ -206,61 +199,76 @@ li {
   max-width: 600px;
 }
 
-.home__comments li {
-  width: 95%;
-  max-width: none;
-  margin: 8px 5px;
-}
-
 .articles__preview {
   width: 400px;
 }
 
-#articles__sort, #articles__limit {
+#articles__sort,
+#articles__limit {
   font-size: 24px;
-  margin: 0
+  margin: 0;
+}
+
+.articles__pagination {
+  width: fit-content;
+  margin: 50px auto 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: hsl(201deg 30% 70%);
+  border-radius: 10px;
+}
+
+.articles__pagination p {
+  margin: 0 0 10px
 }
 
 .articles__sort {
   display: flex;
   justify-content: center;
-  background-color: hsl(201deg 30% 70%);
   border-radius: 10px;
   width: fit-content;
   margin: 0 auto;
-  padding: 4px 12px 9px
+  padding: 4px 12px 9px;
 }
 
 .articles__sort > * {
-  margin: 0 4px
+  margin: 0 4px;
 }
 
-.articles__list {
-  display: flex;
-  flex-wrap: wrap;
+.articles__list, .home__comments, .topics__list {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
   justify-content: center;
+  gap: 15px
 }
 
-.articles__list li {
-  margin: 7px;
+.articles__list li, .home__comments li, .topics__topic {
+ width: 100%;
+ margin: 0
 }
 
 .articles-preview__votes {
   background-color: #000000;
 }
 
-.article-card__details, .articles__loading, .users__loading, 
-.comment-card__details, .single-article__loading {
+.article-card__details,
+.articles__loading,
+.users__loading,
+.comment-card__details,
+.single-article__loading {
   background-color: black;
   color: whitesmoke;
   padding: 0 10px;
 }
 
 .article-card__details {
-  margin: 0
+  margin: 0;
 }
 
-.article__li-div, .comment-card__body  {
+.article__li-div,
+.comment-card__body {
   font-size: 24px;
   padding: 5px;
   background-color: rgb(254, 254, 254);
@@ -275,19 +283,19 @@ li {
   justify-content: flex-start;
 }
 
-
 .article-card__title {
   margin: 0;
   font-size: 28px;
   line-height: 2.18ch;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.article-preview__img, .comment-preview__img {
+.article-preview__img,
+.comment-preview__img {
   aspect-ratio: 1;
   box-sizing: border-box;
   object-fit: cover;
@@ -295,14 +303,14 @@ li {
   border: 2px solid black;
   background-color: hsl(201, 30%, 50%);
   border-radius: 10%;
-  margin-right: 5px
+  margin-right: 5px;
 }
 
 .article-preview__img {
-  height: 87px
+  height: 87px;
 }
 
-.comment-preview__img{
+.comment-preview__img {
   height: 90px;
 }
 
@@ -312,13 +320,25 @@ li {
   line-height: 17px;
 }
 
-.articles__loading, .single-article__loading, .topics__loading, .comments__loading {
-  margin: 50px auto;
+.articles__loading,
+.single-article__loading,
+.topics__loading,
+.comments__loading {
+  text-align: center;
+  margin: 10px auto 20px;
   max-width: 400px;
 }
 
-.nav__loading, .topics__loading, .comments__loading, .users__loading {
-  margin: 30px auto;
+.spinner-grow {
+  display: block;
+  margin: 20px auto 5px
+}
+
+.nav__loading,
+.topics__loading,
+.comments__loading,
+.users__loading {
+  margin: 10px auto 30px;
   max-width: 400px;
   border-radius: 0;
   border: none;
@@ -328,8 +348,14 @@ li {
   font-size: 20px;
 }
 
-.single-article, .comments {
+.single-article,
+.comments {
   text-align: left;
+}
+
+#single-article__link {
+  display: block;
+  margin: 0 auto
 }
 
 article {
@@ -347,7 +373,7 @@ article {
   padding: 9px 4px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin: 0
+  margin: 0;
 }
 
 .comment-card__votes {
@@ -355,12 +381,14 @@ article {
   margin-right: 5px;
 }
 
-.comment-card__body, .comments__article, .comment-card__details {
+.comment-card__body,
+.comments__article,
+.comment-card__details {
   margin-bottom: 25px;
   display: -webkit-box;
--webkit-box-orient: vertical;  
-overflow: hidden;
-text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .--home {
@@ -399,7 +427,7 @@ text-overflow: ellipsis;
 button {
   margin: 0 5px 10px;
   font-size: 22px;
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   font-weight: lighter;
   padding: 2px 5px;
   background-color: hsl(201deg 30% 20%);
@@ -411,17 +439,18 @@ button {
   margin-bottom: 30px;
 }
 
-button:active, #topic__submit:active, #new-article__submit:active {
+button:active,
+#topic__submit:active,
+#new-article__submit:active {
   background-color: orangered;
   color: yellow;
 }
 
 button#new-article__submit {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   margin: auto;
   padding: 5px 10px;
 }
-
 
 #single-article__link {
   color: whitesmoke;
@@ -460,11 +489,11 @@ button#new-article__submit {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 12px 0 0
+  margin: 12px 0 0;
 }
 
 .votes__count {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   margin: 5px 10px 0 10px;
   font-size: 22px;
 }
@@ -475,21 +504,31 @@ button#new-article__submit {
 }
 
 .--positive {
-color: rgb(3, 195, 54);
-text-shadow: 0 0 3px #eeff03;
+  color: rgb(3, 195, 54);
+  text-shadow: 0 0 3px #eeff03;
 }
 
 .--negative {
-color: red;
-text-shadow: 0 0 1px red;
+  color: red;
+  text-shadow: 0 0 1px red;
 }
 
-.comments__new, #new-comment__submit, #topic__submit, #new-article__submit, .articles__new {
+.comments__new,
+#new-comment__submit,
+#topic__submit,
+#new-article__submit,
+#single-article__link,
+#single-article__link a,
+.articles__new {
   display: block;
   margin: 0 auto 20px;
   font-size: 25px;
   background-color: rgb(245, 207, 71);
   color: black;
+}
+
+#single-article__link a {
+  margin: 0
 }
 
 .--green {
@@ -507,23 +546,20 @@ text-shadow: 0 0 1px red;
 
 textarea {
   font-size: 23px;
-  font-family: 'Patrick Hand';
+  font-family: "Patrick Hand";
   display: block;
 }
 
-textarea#comments__new, #new-comment__body {
+textarea#comments__new,
+#new-comment__body {
   margin: 10px auto;
   width: 90%;
   height: 200px;
-  max-width: 800px
+  max-width: 800px;
 }
 
 #new-comment__body {
-  height: 100px
-}
-
-.comments__h2 {
-  font-weight: lighter;
+  height: 100px;
 }
 
 .single-article__author-div {
@@ -536,7 +572,11 @@ textarea#comments__new, #new-comment__body {
   border-top-right-radius: 10px;
 }
 
-.single-article__current, .comments__confirmation, .topic__confirmation, .comments__error, .login__confirmation {
+.single-article__current,
+.comments__confirmation,
+.topic__confirmation,
+.comments__error,
+.login__confirmation {
   text-align: center;
   font-size: 24px;
   margin: 10px auto 30px;
@@ -555,7 +595,9 @@ textarea#comments__new, #new-comment__body {
   max-width: 998px;
 }
 
-.comments__confirmation, .topic__confirmation, .login__confirmation {
+.comments__confirmation,
+.topic__confirmation,
+.login__confirmation {
   font-size: 24px;
   background-color: rgb(2, 182, 2);
 }
@@ -571,41 +613,43 @@ textarea#comments__new, #new-comment__body {
 .login__label {
   color: whitesmoke;
   font-size: 21px;
-  margin: 0 8px
+  margin: 0 8px;
 }
 
-#username, #password {
-font-size: 18px;
-color: black;
-width: 150px;
-max-width: 200px
+#username,
+#password {
+  font-size: 18px;
+  color: black;
+  width: 150px;
+  max-width: 200px;
 }
 
 .login__img {
   object-fit: cover;
   height: 40px;
   width: 40px;
-  border-radius: 50%;;
+  border-radius: 50%;
   border: 2px solid rgb(51, 64, 87);
   margin: 10px 0;
 }
 
 .login__error {
-width: fit-content;
-color: red;
-margin: 16px auto 0
+  width: fit-content;
+  color: red;
+  margin: 16px auto 0;
 }
 
 .login__logged-in {
   color: whitesmoke;
-  margin: 17px 10px 0 0
+  margin: 17px 10px 0 0;
 }
 
 .login__field {
   display: inline;
 }
 
-#login__button, #logout__button {
+#login__button,
+#logout__button {
   background-color: rgb(73, 72, 72);
   box-shadow: 0 0 7px 1px grey;
   color: rgb(255, 255, 255);
@@ -617,7 +661,7 @@ margin: 16px auto 0
 
 #login__button:active {
   background-color: rgb(0, 4, 255);
-  color: yellow
+  color: yellow;
 }
 
 select {
@@ -635,14 +679,14 @@ select {
 }
 
 .topic__title {
-  font-size: 26px;
+  font-size: 31px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   background-color: rgb(219, 2, 114);
   color: rgb(210, 255, 253);
   padding: 0 6px;
   border-bottom: 2px solid rgb(229, 40, 159);
-  margin: 0
+  margin: 0;
 }
 
 #dropdown-basic-button {
@@ -663,28 +707,32 @@ select {
 .topic__description {
   font-size: 22px;
   padding: 6px 6px 6px;
-  margin: auto
+  margin: auto;
 }
+
+/*.articles__list, .home__comments, .topics__list {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+  justify-content: center;
+  gap: 15px
+}
+
+.articles__list li, .home__comments li, .topics__topic {
+ width: 100%;
+ margin: 0
+}*/
 
 .topics__list {
-  max-width: 600px;
-}
-
-.--flex {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: none;
-  align-items: stretch;
-  justify-content: center;
+  max-width: 100%;
 }
 
 .topic__empty-msg {
   font-size: 21px;
   margin: 2px 0;
   color: rgb(248, 56, 98);
-  padding: 4px 6px
+  padding: 4px 6px;
 }
-
 
 .topics__topic {
   display: flex;
@@ -694,24 +742,19 @@ select {
   background-color: #000000;
   padding: 2px;
   border-radius: 10px;
-  margin: 10px auto
-}
-
-.--flex-item {
-  border: none;
-  margin: 9px;
-  width: 900px;
+  margin: 10px auto;
 }
 
 .--empty-topic {
-  box-shadow: 0 0 4px 4px rgb(248, 56, 98);;
+  box-shadow: 0 0 4px 4px rgb(248, 56, 98);
 }
 
 .topics__h2 {
   margin: 20px auto 0;
 }
 
-#topic__form, #new-article__form {
+#topic__form,
+#new-article__form {
   background-color: whitesmoke;
   width: 80%;
   margin: 20px auto 30px;
@@ -738,10 +781,11 @@ select {
   justify-content: flex-start;
   height: 860px;
   max-width: 1200px;
-  width: 100%
+  width: 100%;
 }
 
-.topic__form-label, .new-article__form-label {
+.topic__form-label,
+.new-article__form-label {
   box-sizing: border-box;
   background-color: #000000;
   text-align: left;
@@ -752,8 +796,9 @@ select {
   width: 100%;
 }
 
-textarea#topic__body, textarea#new-article__body {
-  font-family: 'Patrick Hand';
+textarea#topic__body,
+textarea#new-article__body {
+  font-family: "Patrick Hand";
   margin: 0 0 5px;
   width: 100%;
   height: 150px;
@@ -765,7 +810,9 @@ textarea#new-article__body {
   height: 546px;
 }
 
-#new-article__title, #new-article__topic, #topic__new-topic {
+#new-article__title,
+#new-article__topic,
+#topic__new-topic {
   font-size: 24px;
 }
 
@@ -775,7 +822,7 @@ textarea#new-article__body {
 }
 
 button.article__delete {
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   font-size: 22px;
   display: block;
   margin: 20px auto;
@@ -789,12 +836,12 @@ button.article__delete:active {
 
 .users__li {
   border: none;
-  margin: 0
+  margin: 0;
 }
 
 .users__change {
   display: block;
-  margin: 0 auto 20px
+  margin: 0 auto 20px;
 }
 
 .users__list {
@@ -820,12 +867,11 @@ button.article__delete:active {
   object-position: 0 20%;
 }
 
-.users__user  > * {
+.users__user > * {
   font-size: 25px;
   color: whitesmoke;
-  margin: 0
+  margin: 0;
 }
-
 
 @media (max-width: 550px) {
   .login__field {
@@ -833,15 +879,16 @@ button.article__delete:active {
   }
 
   .articles__sort {
-   flex-direction: column;
+    flex-direction: column;
   }
 
-  #articles__sort, #articles__limit {
+  #articles__sort,
+  #articles__limit {
     font-size: 20px;
   }
 
   #login__form {
-   height: 75px
+    height: 75px;
   }
 
   #login__button {
@@ -850,19 +897,20 @@ button.article__delete:active {
     height: 20px;
     padding: 0 7px 18px 4px;
     font-size: 14px;
-    width: 108px
+    width: 108px;
   }
 
-  #username, #password {
+  #username,
+  #password {
     width: 100px;
     font-size: 12px;
-    }
-
-  #username {
-    margin-right: 7px
   }
 
-  .login__label  {
+  #username {
+    margin-right: 7px;
+  }
+
+  .login__label {
     font-size: 14px;
   }
 
@@ -880,12 +928,7 @@ button.article__delete:active {
   }
 
   .topic__title {
-    height: auto
-  }
-
-  .topic__title p {
-    margin: 0;
-    font-size: 23px;
+    font-size: 25px
   }
 
   .articles__preview {
@@ -902,24 +945,24 @@ button.article__delete:active {
     text-align: center;
     width: 120px;
     font-size: 17px;
-    margin: 0 auto 5px
+    margin: 0 auto 5px;
   }
 
   .votes__count {
-    margin: 2px auto
+    margin: 2px auto;
   }
 
   .votes__error {
-    margin-bottom: 6px
+    margin-bottom: 6px;
   }
 
   h1 {
     padding: 20px 0 10px;
-    font-size: 18vw
+    font-size: 18vw;
   }
 
   h2, .h2__em {
-    font-size: 8vw
+    font-size: 8vw;
   }
 
   article {
@@ -927,20 +970,21 @@ button.article__delete:active {
   }
 
   .home__h2 {
-    font-size: 30px;
+    font-size: 28px;
+    margin-top: 35px
   }
 
   .nav__link {
     font-size: 5vw;
     width: fit-content;
-    padding: 2px 5px
+    padding: 2px 5px;
   }
 
   #dropdown__main {
     font-size: 5vw;
   }
 
-  #logout__button  {
+  #logout__button {
     font-size: 14px;
   }
 
@@ -948,7 +992,7 @@ button.article__delete:active {
     flex-direction: column;
     align-content: center;
     padding: 4px;
-    width: 170px
+    width: 170px;
   }
 
   .nav__topic-li {
@@ -956,7 +1000,8 @@ button.article__delete:active {
     width: 150px;
   }
 
-  textarea#topic__body, #topic__new-topic {
+  textarea#topic__body,
+  #topic__new-topic {
     font-size: 16px;
   }
 
@@ -969,57 +1014,62 @@ button.article__delete:active {
     font-size: 17px;
   }
   .single-article__author {
-    padding: 3px
+    padding: 3px;
   }
 
   #login__form {
-    height: 65px
+    height: 65px;
   }
 
   #login__button {
     margin: 7px 3px 0 0;
   }
 
-  #new-article__title, #new-article__topic, textarea#new-article__body {
+  #new-article__title,
+  #new-article__topic,
+  textarea#new-article__body {
     font-size: 17px;
   }
+
+  .articles__list, .home__comments, .topics__list {
+    grid-template-columns: repeat(auto-fit, minmax(93vw, max-content));
+  }
+
 }
 
 @media (max-width: 780px) {
   #home__intro {
-    font-size: 4vw;
+    font-size: 18px;
     line-height: 2.5ch;
   }
 
   .home__pagination {
     width: 100%;
-    padding: 5px 4px
-  }
-  
-  .home__pagination > * {
-    margin: auto;
-    font-size: 17px;
+    padding: 5px 4px;
   }
 
   .home__skip input {
     margin: 5px auto;
     font-size: 17px;
-    width: 40px
+    width: 40px;
   }
 
-  .home__select p, .home__pagination p, .home__skip label, .home__select select, .home__page-button {
+  .home__select p,
+  .home__pagination p,
+  .home__skip label,
+  .home__select select,
+  .home__page-button {
     font-size: 16px;
     line-height: 20px;
   }
 
   .home__page-button {
     width: fit-content;
-    margin: 2px 0;
   }
 
-  .home__welcome  {
-    font-size: 35px;
-    margin: 30px 0 50px
+  .home__welcome {
+    font-size: 40px;
+    margin: 30px 0 50px;
   }
 
   .--home {
@@ -1028,11 +1078,9 @@ button.article__delete:active {
     -webkit-line-clamp: 4;
   }
 
-  .home__buttons {
-    width: 110px;
-  }
-
-  .home__select p, .home__pagination p, .home__skip label {
+  .home__select p,
+  .home__pagination p,
+  .home__skip label {
     margin: auto;
     font-size: 21px;
   }
@@ -1041,25 +1089,20 @@ button.article__delete:active {
     font-size: 3vw;
   }
 
-  #new-comment__body{
-    width: 100%
+  #new-comment__body {
+    width: 100%;
   }
 
   .article__no-comments {
     font-size: 20px;
-    margin: 40px 0 20px
+    margin: 40px 0 20px;
   }
 }
-
 
 @media (max-width: 505px) {
-  .home__select p, .home__pagination p, .home__skip label {
+  .home__select p,
+  .home__pagination p,
+  .home__skip label {
     font-size: 17px;
-  }
-}
-
-@media (min-width: 1500px) {
-  .home__comments li {
-    width: 650px;
   }
 }
