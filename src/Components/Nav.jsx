@@ -3,6 +3,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { TopicsContext } from "../Contexts/Topics";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Nav = () => {
 const { topics, isLoading, apiError } = useContext(TopicsContext);
@@ -17,7 +18,7 @@ return(
     <Link to="topics"><li className="nav__link">Topics</li></Link>
     <Link to="users"><li className="nav__link">Users</li></Link>
     </ul>
-    {isLoading && <p className="nav__loading">Fetching topics</p>}
+    {isLoading && <div><Spinner animation="grow" /><p className="nav__loading">Fetching topics</p></div>}
     {!isLoading && !apiError && 
     <DropdownButton id="dropdown__main" title="📰 Articles by topic">
       {topics.filter(({number_of_articles}) => number_of_articles > 0).map(({slug, topic_id}) => {

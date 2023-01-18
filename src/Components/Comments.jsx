@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import * as api from '../api';
-
 import CommentCard from "./CommentCard";
+import Spinner from 'react-bootstrap/Spinner';
 
 const Comments = ({loggedInUser}) => {
 const { articleId } = useParams('');
@@ -79,9 +79,9 @@ if (apiError) {
 } else {
  return (
     <main className="comments">
-    {isLoading ? <p className="single-article__loading">Fetching data...</p> 
+    {isLoading ? <div><Spinner animation="grow" /><p className="single-article__loading">Fetching data...</p></div> 
     : <div>
-       <h2 className="comments__h2">Showing comments for <em>{`"${article.title}"`} </em></h2>
+       <h2>Showing comments for <em className="h2__em">{`"${article.title}"`} </em></h2>
        <h3>Article:</h3>
        <p className="single-article__author">By <strong>{article.author}</strong>, {new Date(article.created_at).toString().slice(0, 24)}</p>
     <article className="comments__article">

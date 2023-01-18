@@ -2,6 +2,7 @@ import 'animate.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../api';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Home = () => {
   const [hinge, setHinge] = useState({state: false, count: 0});
@@ -46,7 +47,7 @@ const Home = () => {
     {errorMsg && <p className="error">{errorMsg}</p>}
 
     <h2 className="home__h2">Showing latest comments</h2>
-    {isLoading ? <p className="comments__loading">Fetching data...</p> : <section>
+    {isLoading ? <div><Spinner animation="grow" /><p className="comments__loading">Fetching data...</p></div> : <section>
 
     <div className="home__pagination">
     <div className="home__select">

@@ -7,6 +7,7 @@ import updateVotes from '../updateVotes';
 import Buttons from "./Buttons";
 import DeleteNotification from "./DeleteNotification";
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 const SingleArticle = ({loggedInUser}) => {
   
@@ -106,7 +107,7 @@ if (apiError) {
 } else {
   return (
   <main className="single-article">
-  {isLoading ? <p className="single-article__loading">Fetching data...</p> 
+  {isLoading ? <div><Spinner animation="grow" /><p className="single-article__loading">Fetching data...</p></div> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
     <div className="single-article__author-div">
@@ -129,6 +130,7 @@ if (apiError) {
 
         <button style={{ 'backgroundColor' : loadingNewComment ? 'grey' : ''}} id="new-comment__submit">{loadingNewComment ? 'Posting comment. Please wait...' : 'Post new comment'}</button>
     </form>
+    <button id="single-article__link"><Link to={`/articles/${articleId}/comments`}>Show all comments</Link></button>
     </section>
 
    {loggedInUser === article.author && 
@@ -149,7 +151,7 @@ if (apiError) {
     <div className="single-article__buttons">
     {showRecentButton && <button id="recent" onClick={handleClick}>Most recent</button>}
     {showTopButton && <button id="top" onClick={handleClick}>Top comments</button>}
-    <button> <Link id="single-article__link" to={`/articles/${articleId}/comments`}>Show all comments</Link></button>
+    
     </div>
 
     <p className="single-article__current">{showRecentButton ? 'Showing top comments' : 'Showing most recent comments'}</p>

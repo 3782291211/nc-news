@@ -4,10 +4,11 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import * as api from '../api';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Topics = () => {
 const { topics, setTopics } = useContext(TopicsContext);
-const [ searchParams, setSearchParams ] = useSearchParams();
+const [ searchParams ] = useSearchParams();
 const newTopicInput = searchParams.get('topic');
 
 const [newTopic, setNewTopic] = useState(newTopicInput ? newTopicInput : '');
@@ -84,7 +85,66 @@ const handleDelete = topic => {
 return (
   <main ref={myRef}>
      <h2 className="topics__h2">Viewing all topics</h2>
-     {isLoading ? <p className="topics__loading">Fetching data...</p> : <div>
+     {isLoading ? <div><Spinner animation="grow" /><p className="topics__loading">Fetching data...</p></div> : 
+     
+     <div>
+     {successMsg && <p className="topic__confirmation">Your topic has been added to the list.</p>}
+     {showDeletedMsg && <p className="comments__confirmation">Topic deleted.</p>}
+     {error && <p className="error">{error}</p>}
+     
+     <ul className={'topics__list'}>
+        {topics.map(({slug, description, topic_id, number_of_articles}) => {
+          const cursorStyle = number_of_articles > 0 ? {'cursor' : 'pointer'} : {};
+              return (
+            <li 
+            key={topic_id} 
+            style={cursorStyle}
+            className={`topics__topic ${number_of_articles === 0 ? '--empty-topic' : ''}`}
+            onClick={() => number_of_articles > 0 && navigate(`/articles?topic=${slug}`)}
+            >
+          
+            <p className='topic__title'>{`
+            ${slug} ${number_of_articles === 1 ? `❙ ${number_of_articles} article 📄` : number_of_articles === 0 ? `(no articles)` : number_of_articles !== undefined ? `❙ ${number_of_articles} articles 📄` : ''}
+            `}</p>
+            
+            <p className='topic__description'>"{description}"</p>
+            {number_of_articles === 0 && <p className="topic__empty-msg">No articles have been posted under this topic yet. Click the button to add an article, or to delete the topic.</p>}
+
+            {number_of_articles === 0 && <DropdownButton
+            id="dropdown-basic-button"
+            title="Select an option">
+              <Dropdown.Item onClick={() => navigate(`/articles/new?topic=${slug}`)}>Post an article</Dropdown.Item>
+              <Dropdown.Item onClick={handleDelete(slug)}>Delete topic</Dropdown.Item>
+              </DropdownButton>}
+            </li>)
+        })}
+    </ul>
+
+    <h3 className="topics__h3">Add a new topic</h3>
+    <form id="topic__form" onSubmit={handleSubmit}>
+        <label className="topic__form-label" htmlFor="topic__new-topic">Topic title</label>
+        <input id="topic__new-topic" type="text" onChange={e => setNewTopic(e.target.value)} value={newTopic}/>
+  
+        <label className="topic__form-label" htmlFor="topic__body">Topic description</label>
+        <textarea id="topic__body" type="text" onChange={e => setNewTopicBody(e.target.value)} value={newTopicBody}/>
+
+        <button style={{'backgroundColor' : newTopicLoading ? 'grey' : ''}} id="topic__submit">{newTopicLoading ? 'Adding topic...' : 'Create new topic'}</button>
+    </form>
+    </div>}
+  </main>
+);
+};
+
+export default Topics;
+
+
+/*
+return (
+  <main ref={myRef}>
+     <h2 className="topics__h2">Viewing all topics</h2>
+     {isLoading ? <div><Spinner animation="grow" /><p className="topics__loading">Fetching data...</p></div> : 
+     
+     <div>
      {successMsg && <p className="topic__confirmation">Your topic has been added to the list.</p>}
      {showDeletedMsg && <p className="comments__confirmation">Topic deleted.</p>}
      {error && <p className="error">{error}</p>}
@@ -130,4 +190,4 @@ return (
 );
 };
 
-export default Topics;
+*/

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as api from '../api';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Users = ({setLoggedInUser, setAvatarUrl, loggedInUser}) => {
 const [users, setUsers] = useState([]);
@@ -30,7 +31,7 @@ const handleClick = (username, avatar_url) => () => {
 if (error) {
   return <p className="error">{error}</p>
 } else if (!error && isLoading) {
-    return <p className="users__loading">Fetching users data...</p>
+    return <div><Spinner animation="grow" /><p className="users__loading">Fetching users data...</p></div>
 } else {
  return (
   <main>
