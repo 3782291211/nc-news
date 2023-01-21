@@ -3,11 +3,11 @@
 **[Link to my live web app](
 nc-news-react-app.netlify.app)**
 
-**Northcoders News** is an online social hub where you can view and post articles and comments. Articles fall under different topics and each article has user curated ratings and can be up or down voted. Users can also view and add comments on any article.
+**Northcoders News** is an online social hub where you can view, rate and post articles and comments under different categories.
 
-The website is linked to a RESTful back end API I made using node and express, which exposes a wide variety of endpoints to the web app and covers the full range of CRUD operations. The user interface allows for lots of interactivity and offers a rich user experience, through extensive use of conditional rendering, meaningful user interface updates, impactful error handling, appropriate feedback regarding loading states and confirmation of successful submissions.
+The website is linked to a live database and a RESTful back end API that I created using node and express, which exposes a broad range of endpoints to the web app and covers the full range of CRUD operations. The user interface allows for lots of interactivity and offers a rich user experience, through extensive use of conditional rendering, meaningful user interface updates, impactful error handling, appropriate feedback regarding loading states and confirmation of successful submissions.
 
-At every stage of this project, the design and styling process was heavily based on responsive design, ensuring that the website caters to all available viewport widths from smaller smartphones to tablets and desktop.
+At every stage of this project, the design and styling process was strictly driven by responsive design principles, ensuring that the website caters to all available viewport widths from small smartphone displays to tablets and all the way up to desktop.
 
 ## Available functionality
 
@@ -23,11 +23,26 @@ With this application, a user can:
     - To log in manually, use the buttons at the top of the screen and login with the username and 'password'. 
     - Usernames can be found on the 'Users' page.
 
-## Preview
+## Views
+### Home page
 <img src="./Screenshots/home.png" width="600px"/> 
 <br />  <br /> 
+
+### Articles
 <img src="./Screenshots/articles.png" width="600px"/>  
 <br />  <br /> 
+
+### Single article view
 <img src="./Screenshots/article.png" width="600px"/>  
 <br />  <br /> 
+
+### Users
 <img src="./Screenshots/users.png" width="600px"/>  
+<br />  <br /> 
+
+### Topics
+<img src="./Screenshots/topics.png" width="600px"/>  
+<br />  <br /> 
+
+### Comments
+<img src="./Screenshots/comments.png" width="600px"/>  
