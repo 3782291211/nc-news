@@ -80,12 +80,10 @@ if (apiError) {
 } else {
  return (
     <main className="comments">
+    <button style={{marginTop: '20px'}} className="comments__new" onClick={() => navigate(-1)}>Back to article</button>
     {isLoading ? <Loading/> 
     : <div>
        <h2>Showing comments for <em className="h2__em">{`"${article.title}"`} </em></h2>
-
-       <button className="comments__new" onClick={() => navigate(-1)}>Back to article</button>
-
        <h3>Article:</h3>
        <p className="single-article__author">By <strong>{article.author}</strong>, {new Date(article.created_at).toString().slice(0, 24)}</p>
     <article className="comments__article">
