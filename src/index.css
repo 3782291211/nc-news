@@ -80,6 +80,13 @@ nav ul {
   text-align: center;
 }
 
+#dropdown__main {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #212529;
+  border: 0
+}
+
 #nav {
   background-color: whitesmoke;
   border-bottom: 2px solid black;
@@ -107,6 +114,30 @@ nav ul {
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
+}
+
+.loading {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-bottom: 15px;
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%}
+  50% {background-position: 100% 50%}
+  100% {background-position: 0% 50%}
+}
+
+.slanted {
+  background-color: black;
+  color: whitesmoke;
+  padding-bottom: 3px
 }
 
 .home__pagination {
@@ -290,6 +321,10 @@ li {
   text-overflow: ellipsis;
 }
 
+.--overflow {
+  -webkit-line-clamp: 1;
+}
+
 .article-preview__img,
 .comment-preview__img {
   aspect-ratio: 1;
@@ -392,7 +427,7 @@ article {
   padding: 0;
   -webkit-line-clamp: 3;
   box-shadow: none;
-  line-height: 116%;
+  line-height: 117%;
   height: auto;
 }
 
@@ -819,11 +854,13 @@ textarea#new-article__body {
 
 button.article__delete {
   font-family: "Do Hyeon", sans-serif;
-  font-size: 22px;
+  font-size: 25px;
   display: block;
   margin: 20px auto;
-  padding: 6px;
+  padding: 2px 5px;
   background-color: rgb(193, 0, 0);
+  width: 215px;
+  border-radius: 6px;
 }
 
 button.article__delete:active {
@@ -880,6 +917,10 @@ button.article__delete:active {
 
   .articles__sort__text {
     font-size: 20px;
+  }
+
+  .loading {
+    width: 90%
   }
 
   #login__form {
