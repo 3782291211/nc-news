@@ -520,13 +520,15 @@ button#new-article__submit {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 12px 0 0;
+  margin: 5px 0 0;
 }
 
 .votes__count {
+  display: flex;
+  justify-content: center;
   font-family: "Do Hyeon", sans-serif;
-  margin: 5px 10px 0 10px;
   font-size: 22px;
+  margin: 20px 0 5px
 }
 
 .votes__error {
@@ -552,7 +554,7 @@ button#new-article__submit {
 #single-article__link a,
 .articles__new {
   display: block;
-  margin: 0 auto 20px;
+  margin: 7px auto;
   font-size: 25px;
   background-color: rgb(245, 207, 71);
   color: black;
@@ -583,7 +585,7 @@ textarea {
 
 textarea#comments__new,
 #new-comment__body {
-  margin: 10px auto;
+  margin: 10px auto 25px;
   width: 90%;
   height: 200px;
   max-width: 800px;
@@ -919,6 +921,11 @@ button.article__delete:active {
     font-size: 20px;
   }
 
+  .home__welcome {
+    font-size: 37px;
+    margin: 30px 0 50px;
+  }
+
   .loading {
     width: 90%
   }
@@ -972,20 +979,28 @@ button.article__delete:active {
   }
 
   .votes__buttons {
-    flex-direction: column;
+    flex-direction: row;
     margin: 0 auto;
     align-content: center;
   }
 
   .votes__buttons button {
     text-align: center;
-    width: 120px;
-    font-size: 17px;
-    margin: 0 auto 5px;
+    font-size: 16px;
   }
 
   .votes__count {
-    margin: 2px auto;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .comment__details, .single-article__author {
+    font-size: 20px
+  }
+
+  .comment__body, .comments__article {
+    font-size: 18px;
   }
 
   .votes__error {
@@ -1104,11 +1119,6 @@ button.article__delete:active {
 
   .home__page-button {
     width: fit-content;
-  }
-
-  .home__welcome {
-    font-size: 40px;
-    margin: 30px 0 50px;
   }
 
   .--home {
