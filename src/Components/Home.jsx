@@ -1,20 +1,30 @@
 import 'animate.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../api';
 import Loading from './Loading';
 
 const Home = () => {
   const [hinge, setHinge] = useState({state: false, count: 0});
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [limit, setLimit] = useState(20);
   const [page, setPage] = useState(1);
+  const [screenPosition, setScreenPosition] = useState({x: 0, y: 0})
 
   const [errorMsg, setErrorMsg] = useState(false);
-
   const navigate = useNavigate();
 
+  useLayoutEffect(() => {
+    window.scrollTo(screenPosition.x, screenPosition.y);
+  });
+
+  useEffect(() => {
+    if (comments && comments.length === 0) {
+      setPage(page - 1);
+    }
+  }, [comments]);
+  
   useEffect(() => {
     if (page) {
       setIsLoading(true);
@@ -64,10 +74,16 @@ const Home = () => {
     </div>
 
     <div className= "home__buttons">
-    {page > 1 && <button className="home__page-button" onClick={() => setPage(prev => --prev)}>Previous page</button>}
-    <button className="home__page-button" onClick={() => setPage(prev => ++prev)}>Next page</button></div>
+    {page > 1 && <button className="home__page-button" onClick={() => {
+      setScreenPosition({x: window.scrollX, y: window.scrollY});
+      setPage(prev => --prev);
+    }}>Previous page</button>}
+    <button className="home__page-button" onClick={() => {
+      setScreenPosition({x: window.scrollX, y: window.scrollY});
+      setPage(prev => ++prev);
+    }}>Next page</button></div>
 
-    <p className="--bold">Page <br /> {page}</p>
+    <p className="--bold">Page <br />{page}</p>
     <div className="home__skip">
     <label htmlFor="comments__select-page">Go to page</label>
     <input id="comments__select-page" type="number" value={page} onChange={e => setPage(e.target.value)} />
@@ -75,7 +91,7 @@ const Home = () => {
     </div>
 
     <ul className="home__comments">
-    {comments.map(({comment_id, votes, article, author, body, avatar_url, article_id, created_at}) => {
+    {comments && comments.map(({comment_id, votes, article, author, body, avatar_url, article_id, created_at}) => {
       return (
       <li key={comment_id}
         onClick={() => navigate(`/articles/${article_id}`)}

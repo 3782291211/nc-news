@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
@@ -13,6 +13,7 @@ const [selectedSort, setSelectedSort] = useState('created_at');
 const [selectedOrder, setSelectedOrder] = useState('DESC');
 const [selectedLimit, setSelectedLimit] = useState('20');
 const [page, setPage] = useState(1);
+const [screenPosition, setScreenPosition] = useState({x: 0, y: 0})
 
 const [disableNextButton, setDisableNextButton] = useState(false);
 
@@ -30,6 +31,10 @@ const setQuery = (option, queryParam) => {
   newParams.set(queryParam, option);
   setSearchParams(newParams);
 };
+
+useLayoutEffect(() => {
+  window.scrollTo(screenPosition.x, screenPosition.y);
+});
 
 useEffect(() => {
   if (!searchParams.get('sort_by')) {
@@ -113,10 +118,12 @@ if (apiError) {
 
   <div className="articles__buttons">
       <button disabled={disableNextButton} onClick={() => {
+           setScreenPosition({x: window.scrollX, y: window.scrollY});
            setPage(prev => prev + 1);
            setQuery(page, 'page');
       }}>Next page</button>
       <button disabled={page === 1} onClick={() => {
+           setScreenPosition({x: window.scrollX, y: window.scrollY});
            setPage(prev => prev - 1);
            setQuery(page, 'page');
       }}>Previous page</button>
