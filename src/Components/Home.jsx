@@ -2,7 +2,7 @@ import 'animate.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../api';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from './Loading';
 
 const Home = () => {
   const [hinge, setHinge] = useState({state: false, count: 0});
@@ -38,7 +38,7 @@ const Home = () => {
          setHinge({state: true, count : 1});
          setTimeout(() => setHinge({state: false, count : 1}), 4000);
       };
-    }}>Welcome to NC News, an online social hub</p>
+    }}>Welcome to NC News: an online social hub.</p>
    
     <p id="home__intro">Northcoders News is a newly-launched online social space where you can read articles and comments posted by others, as well as posting your own articles and comments. To get started, check out the latest comments below, or feel free to navigate to the different sections and explore various articles. <br /> <br />
     If you'd like to share an interesting story or experience, you can post new articles under existing topics, or you can create a new topic to go along with your article. <br /> <br /> 
@@ -46,9 +46,8 @@ const Home = () => {
     This website is part of a larger full-stack web development project and was inspired by the incredible people at the Northcoders organisation whose support and guidance were invaluable.</p>
     {errorMsg && <p className="error">{errorMsg}</p>}
 
-    <h2 className="home__h2">Showing latest comments</h2>
-    {isLoading ? <div><Spinner animation="grow" /><p className="comments__loading">Fetching data...</p></div> : <section>
-
+    {!isLoading && <h2 className="home__h2">Showing latest comments</h2>}
+    {isLoading ? <Loading/> : <section>
     <div className="home__pagination">
     <div className="home__select">
     <p>Results per page</p>
@@ -83,11 +82,11 @@ const Home = () => {
         style={{'backgroundColor' : 'black'}}>
         <div className="article__li-div --home-comment">
         <img className="comment-preview__img" src={avatar_url} alt={`${author}'s avatar`}/>
-       <p className="comment-card__body --home">{body}</p>
+       <p className="comment-card__body --home">"{body}"</p>
        </div>
        
        <p className="comment-card__details"><em>🗨 by </em> <strong>{author}</strong></p>
-        <p className="comment-card__details">📝 <em>in</em> "{article}"</p>
+        <p className="comment-card__details --overflow">📝 <em>in</em> "{article}"</p>
        <p className="comment-card__details"> 📆 {new Date(created_at).toString().slice(4, 15)} <span className="comment-card__votes">Votes: {votes}</span></p>
       </li>)
     })}
