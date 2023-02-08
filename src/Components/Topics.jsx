@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import * as api from '../api';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from "./Loading";
 
 const Topics = () => {
 const { topics, setTopics } = useContext(TopicsContext);
@@ -85,7 +85,7 @@ const handleDelete = topic => {
 return (
   <main ref={myRef}>
      <h2 className="topics__h2">Viewing all topics</h2>
-     {isLoading ? <div><Spinner animation="grow" /><p className="topics__loading">Fetching data...</p></div> : 
+     {isLoading ? <Loading/> : 
      
      <div>
      {successMsg && <p className="topic__confirmation">Your topic has been added to the list.</p>}

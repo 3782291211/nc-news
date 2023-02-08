@@ -7,7 +7,7 @@ import updateVotes from '../updateVotes';
 import Buttons from "./Buttons";
 import DeleteNotification from "./DeleteNotification";
 import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from "./Loading";
 
 const SingleArticle = ({loggedInUser}) => {
   
@@ -107,7 +107,7 @@ if (apiError) {
 } else {
   return (
   <main className="single-article">
-  {isLoading ? <div><Spinner animation="grow" /><p className="single-article__loading">Fetching data...</p></div> 
+  {isLoading ? <Loading/> 
   : <div>
     <h2 >{`"${article.title}"`}</h2>
     <div className="single-article__author-div">
@@ -148,13 +148,14 @@ if (apiError) {
 
     {article.comment_count > 0 &&
     <div>
+    
+
+    <p className="single-article__current" style={{margin: '50px auto 35px'}}>{showRecentButton ? 'Showing top comments' : 'Showing most recent comments'}</p>
+
     <div className="single-article__buttons">
     {showRecentButton && <button id="recent" onClick={handleClick}>Most recent</button>}
     {showTopButton && <button id="top" onClick={handleClick}>Top comments</button>}
-    
     </div>
-
-    <p className="single-article__current">{showRecentButton ? 'Showing top comments' : 'Showing most recent comments'}</p>
 
     <ul>
     {comments.map(({comment_id, votes, author, body, created_at}, i) => {
