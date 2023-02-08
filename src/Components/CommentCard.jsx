@@ -6,7 +6,7 @@ const [showError, setShowError] = useState(false);
 
   return (
     <li className="comment__full">
-    <p className="comment__details"><strong>{author}</strong> <br />{date}</p>
+    <p className="comment__details --overflow"><strong>{author}</strong> <br />{date}</p>
     <p className ="comment__body">{body}</p>
     
     <Buttons 

@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentCard from "./CommentCard";
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from "./Loading";
 
 const Comments = ({loggedInUser}) => {
+const navigate = useNavigate();
 const { articleId } = useParams('');
 const [article, setArticle] = useState([]);
 const [comments, setComments] = useState([]);
@@ -79,9 +80,12 @@ if (apiError) {
 } else {
  return (
     <main className="comments">
-    {isLoading ? <div><Spinner animation="grow" /><p className="single-article__loading">Fetching data...</p></div> 
+    {isLoading ? <Loading/> 
     : <div>
        <h2>Showing comments for <em className="h2__em">{`"${article.title}"`} </em></h2>
+
+       <button className="comments__new" onClick={() => navigate(-1)}>Back to article</button>
+
        <h3>Article:</h3>
        <p className="single-article__author">By <strong>{article.author}</strong>, {new Date(article.created_at).toString().slice(0, 24)}</p>
     <article className="comments__article">

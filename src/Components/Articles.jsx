@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
 import 'animate.css';
-import Spinner from 'react-bootstrap/Spinner';
+import Loading from './Loading';
 
 const Articles = () => {
 const [articles, setArticles] = useState([]);
@@ -66,12 +66,7 @@ if (apiError) {
     <h2>{topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles '}<em className="h2__em">(preview)</em></h2>
     {!isLoading && <Link to="/articles/new"><button className="articles__new">Post new article</button></Link>}
 
-    {isLoading && <div>
-      <Spinner animation="grow" />
-      <p className="articles__loading">Fetching data...</p>
-      </div>}
-
-    {!isLoading && 
+    {isLoading ? <Loading/> :
     <div>
 
   <div className="articles__pagination">
