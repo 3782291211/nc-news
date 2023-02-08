@@ -12,7 +12,6 @@ const [previousButton, setPreviousButton] = useState('');
 const [voteLimitError, setVoteLimitError] = useState(false);
 
 const handleClick = e => {
-  console.log('hiya');
 if (e.target.id !== previousButton) {
   setVoteLimitError(false);
   setPreviousButton(e.target.id);
@@ -60,9 +59,9 @@ const handleDelete = () => {
   };
 };
 
-  return (
-    <div className="votes__buttons">
+  return (<>
       <span className={`votes__count ${votes >= 0 ? '--positive' : '--negative'}`}>Votes: {votes}</span>
+    <div className="votes__buttons">
       <button id="upvote" onClick={handleClick}>Vote up 👍</button>
       <button id="downvote" onClick={handleClick}>Vote down 👎</button>
 
@@ -74,6 +73,7 @@ const handleDelete = () => {
      
      {showError && <p className="votes__error">Unable to update votes.</p>}
    </div>
+   </>
   );
 };
 
