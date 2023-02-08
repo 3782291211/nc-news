@@ -48,7 +48,7 @@ const Home = () => {
          setHinge({state: true, count : 1});
          setTimeout(() => setHinge({state: false, count : 1}), 4000);
       };
-    }}>Welcome to NC News: an online social hub.</p>
+    }}>Welcome to NC News: an online social hub for serious coders.</p>
    
     <p id="home__intro">Northcoders News is a newly-launched online social space where you can read articles and comments posted by others, as well as posting your own articles and comments. To get started, check out the latest comments below, or feel free to navigate to the different sections and explore various articles. <br /> <br />
     If you'd like to share an interesting story or experience, you can post new articles under existing topics, or you can create a new topic to go along with your article. <br /> <br /> 
