@@ -8,9 +8,11 @@ const [buttonId, setButtonId] = useState('');
 const navigate = useNavigate();
 
 useEffect(() => {
-  api.fetchUsers().then(({users}) => {
-    setAvatarUrl(users.filter(user => user.username === loggedInUser)[0].avatar_url);
-  });
+  if (loggedInUser) {
+    api.fetchUsers().then(({users}) => {
+      setAvatarUrl(users.filter(user => user.username === loggedInUser)[0].avatar_url);
+    });
+  };
 }, []);
 
 const handleSubmit = e => {
