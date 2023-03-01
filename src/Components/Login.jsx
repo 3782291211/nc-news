@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as api from '../api';
 import Spinner from 'react-bootstrap/Spinner';
 
-const Login = ({setLoggedInUser}) => {
+const Login = ({loggedInUser, setLoggedInUser}) => {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +11,7 @@ const [errorMsg, setErrorMsg] = useState('');
 
 const handleSubmit = e => {
   e.preventDefault();
+  setErrorMsg('');
   if (!username || !password) {
     setErrorMsg("Please complete all required fields.");
     setTimeout(() => setErrorMsg(''), 6000);
@@ -33,7 +34,7 @@ const handleSubmit = e => {
         }
     })
   }
-}
+};
 
 return (<main>
     <h2 className="account__h2">Log in to your account</h2>
