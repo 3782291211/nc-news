@@ -6,7 +6,7 @@ import ArticlePreviewCard from './ArticlePreviewCard';
 import 'animate.css';
 import Loading from './Loading';
 
-const Articles = () => {
+const Articles = ({loggedInUser}) => {
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [selectedSort, setSelectedSort] = useState('created_at');
@@ -69,7 +69,7 @@ if (apiError) {
   return (
     <main>
     <h2>{topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles '}<em className="h2__em">(preview)</em></h2>
-    {!isLoading && <Link to="/articles/new"><button className="articles__new">Post new article</button></Link>}
+    {!isLoading && loggedInUser && <Link to="/articles/new"><button className="articles__new">Post new article</button></Link>}
 
     {isLoading ? <Loading/> :
     <div>
