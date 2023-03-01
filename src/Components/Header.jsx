@@ -5,21 +5,27 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({setLoggedInUser, loggedInUser, avatarUrl, setAvatarUrl}) => {
 const [buttonId, setButtonId] = useState('');
+const [logoutMsg, setLogoutMsg] = useState('');
 const navigate = useNavigate();
 
 useEffect(() => {
   if (loggedInUser) {
-    api.fetchUsers().then(({users}) => {
-      setAvatarUrl(users.filter(user => user.username === loggedInUser)[0].avatar_url);
+    window.localStorage.setItem('NC_NEWS_APP', loggedInUser);
+    api.fetchSingleUser(loggedInUser)
+    .then(({user : {avatar_url}}) => {
+      setAvatarUrl(avatar_url);
     });
   };
-}, []);
+}, [loggedInUser]);
 
 const handleSubmit = e => {
   e.preventDefault();
   if (buttonId === 'logout__button') {
     setLoggedInUser('');
+    window.localStorage.setItem('NC_NEWS_APP', '');
     navigate('/');
+    setLogoutMsg('Until next time!');
+    setTimeout(() => setLogoutMsg(''), 6000);
   } else if (buttonId === 'login__button') {
     navigate('login');
   } else if (buttonId === 'signup__button') {
@@ -37,8 +43,9 @@ const handleError = ({ currentTarget }) => {
   return (
   <main>
     <form id="login__form" onSubmit={handleSubmit}>
+    {logoutMsg && <p className="logout">{logoutMsg}</p>}
        
-        {!loggedInUser && <div id="login__div">
+        {!loggedInUser && !logoutMsg && <div id="login__div">
 
         <button onClick={e => setButtonId(e.target.id)} id="login__button">Login</button>
         <button onClick={e => setButtonId(e.target.id)} id="signup__button">Sign up</button>
