@@ -678,10 +678,10 @@ textarea#comments__new,
   margin: 10px 0;
 }
 
-.login__error {
+.logout {
   width: fit-content;
-  color: red;
-  margin: 16px auto 0;
+  color: rgb(0, 255, 255);
+  margin: 13px auto;
 }
 
 .login__logged-in {
@@ -833,6 +833,11 @@ select {
 
 #topic__submit, #account__submit {
   margin: auto;
+}
+
+#account__submit:disabled {
+  background-color: rgb(141, 136, 136);
+  color: rgb(69, 62, 62)
 }
 
 #new-article__form {
