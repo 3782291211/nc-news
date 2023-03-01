@@ -18,24 +18,8 @@ if (e.target.id !== previousButton) {
   updateVotes(setShowError, setItem, id, e.target.id, itemType);
 } else {
   setVoteLimitError(true);
-}
-
-}
-
-//setPreviousButton(e.target.id);
-//setVoteCount(prev => {});
- // if (voteCount <= 1) {
- //  updateVotes(setShowError, setItem, id, e.target.id, itemType);
- // }
-//}
-
-/*
-
-if (!loggedInUser) {
-    setNotLoggedInError(true);
-  } else if
-*/
-//!loggedInUser ? () =>  : updateVotes;
+};
+};
 
 const handleDelete = () => {
   if (loggedInUser === author) {
@@ -62,8 +46,8 @@ const handleDelete = () => {
   return (<>
       <span className={`votes__count ${votes >= 0 ? '--positive' : '--negative'}`}>Votes: {votes}</span>
     <div className="votes__buttons">
-      <button id="upvote" onClick={handleClick}>Vote up 👍</button>
-      <button id="downvote" onClick={handleClick}>Vote down 👎</button>
+      {loggedInUser && <><button id="upvote" onClick={handleClick}>Vote up 👍</button>
+      <button id="downvote" onClick={handleClick}>Vote down 👎</button></>}
 
       {loggedInUser && loggedInUser === author && <button id={id} disabled={disableDelete} onClick={handleDelete} className={isLoading ? '--red' : ''}>{isLoading ? 'Deleting...' : 'Delete'}</button>}
    
