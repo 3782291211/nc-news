@@ -472,6 +472,7 @@ button {
 
 button:active,
 #topic__submit:active,
+#account__submit:active,
 #new-article__submit:active {
   background-color: orangered;
   color: yellow;
@@ -549,6 +550,7 @@ button#new-article__submit {
 .comments__new,
 #new-comment__submit,
 #topic__submit,
+#account__submit,
 #new-article__submit,
 #single-article__link,
 #single-article__link a,
@@ -558,6 +560,10 @@ button#new-article__submit {
   font-size: 25px;
   background-color: rgb(245, 207, 71);
   color: black;
+}
+
+#account__submit {
+  margin-top: 10px !important
 }
 
 #single-article__link a {
@@ -608,10 +614,11 @@ textarea#comments__new,
 .single-article__current,
 .comments__confirmation,
 .topic__confirmation,
+.account__confirmation,
 .comments__error,
 .login__confirmation {
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   margin: 10px auto 30px;
   padding: 5px;
   width: 100%;
@@ -630,8 +637,9 @@ textarea#comments__new,
 
 .comments__confirmation,
 .topic__confirmation,
+.account__confirmation,
 .login__confirmation {
-  font-size: 24px;
+  font-size: 20px;
   background-color: rgb(2, 182, 2);
 }
 
@@ -639,13 +647,18 @@ textarea#comments__new,
   height: 57px;
   display: flex;
   justify-content: flex-end;
-  background-color: #000000;
+  background-color: #1c1f22;
   padding: 0 0 5px;
+}
+
+#login__div {
+  display: flex;
+  align-items: center;
 }
 
 .login__label {
   color: whitesmoke;
-  font-size: 21px;
+  font-size: 18px;
   margin: 0 8px;
 }
 
@@ -653,8 +666,7 @@ textarea#comments__new,
 #password {
   font-size: 18px;
   color: black;
-  width: 150px;
-  max-width: 200px;
+  width: 140px;
 }
 
 .login__img {
@@ -677,22 +689,30 @@ textarea#comments__new,
   margin: 17px 10px 0 0;
 }
 
-.login__field {
-  display: inline;
-}
-
 #login__button,
-#logout__button {
+#signup__button,
+#logout__button,
+#profile {
   background-color: rgb(73, 72, 72);
   box-shadow: 0 0 7px 1px grey;
   color: rgb(255, 255, 255);
   font-size: 16px;
   height: fit-content;
   padding: 3.5px 9px;
-  margin: 11px 16px;
+  margin: 3px 6px 0
 }
 
-#login__button:active {
+#logout__button {
+  margin: 11px 6px 0 5px
+}
+
+#profile {
+  margin: 11px 6px 0 15px;
+  background-color: #F5CF47;
+  color: black;
+}
+
+#login__button:active, #signup__button:active, #profile:active {
   background-color: rgb(0, 4, 255);
   color: yellow;
 }
@@ -709,6 +729,7 @@ select {
   font-weight: bold;
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
   margin: 20px auto;
+  padding: 5px
 }
 
 .topic__title {
@@ -782,21 +803,23 @@ select {
   box-shadow: 0 0 4px 4px rgb(248, 56, 98);
 }
 
-.topics__h2 {
+.topics__h2, .account__h2 {
   margin: 20px auto 0;
 }
 
 #topic__form,
+#account__form,
 #new-article__form {
   background-color: whitesmoke;
-  width: 80%;
+  width: 100%;
   margin: 20px auto 30px;
   padding-bottom: 9px;
   height: 318px;
   box-shadow: 10px 10px 10px hsl(88, 20%, 20%, 90%);
 }
 
-#topic__form {
+#topic__form,
+#account__form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -804,7 +827,11 @@ select {
   max-width: 800px;
 }
 
-#topic__submit {
+#account__form {
+  height: auto
+}
+
+#topic__submit, #account__submit {
   margin: auto;
 }
 
@@ -818,9 +845,10 @@ select {
 }
 
 .topic__form-label,
+.account__form-label,
 .new-article__form-label {
   box-sizing: border-box;
-  background-color: #000000;
+  background-color: #1c1f22;
   text-align: left;
   display: block;
   padding: 3px 20px 6px 6px;
@@ -910,7 +938,8 @@ button.article__delete:active {
 
 @media (max-width: 550px) {
   .login__field {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .articles__sort {
@@ -930,22 +959,9 @@ button.article__delete:active {
     width: 90%
   }
 
-  #login__form {
-    height: 75px;
-  }
-
-  #login__button {
-    margin: 3px 6px 0 0;
-    float: right;
-    height: 20px;
-    padding: 0 7px 18px 4px;
-    font-size: 14px;
-    width: 108px;
-  }
-
   #username,
   #password {
-    width: 100px;
+    width: 80px;
     font-size: 12px;
   }
 
@@ -955,11 +971,6 @@ button.article__delete:active {
 
   .login__label {
     font-size: 14px;
-  }
-
-  .login__logged-in {
-    margin: 20px 20px 0 0;
-    font-size: 4vw;
   }
 
   p {
@@ -1013,7 +1024,7 @@ button.article__delete:active {
   }
 
   h2, .h2__em {
-    font-size: 8vw;
+    font-size: 33px;
   }
 
   article {
@@ -1056,7 +1067,7 @@ button.article__delete:active {
     font-size: 16px;
   }
 
-  #topic__submit {
+  #topic__submit, #account__submit {
     font-size: 20px;
   }
 
@@ -1066,14 +1077,6 @@ button.article__delete:active {
   }
   .single-article__author {
     padding: 3px;
-  }
-
-  #login__form {
-    height: 65px;
-  }
-
-  #login__button {
-    margin: 7px 3px 0 0;
   }
 
   #new-article__title,
