@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Loading from "./Loading";
 
-const Topics = () => {
+const Topics = ({loggedInUser}) => {
 const { topics, setTopics } = useContext(TopicsContext);
 const [ searchParams ] = useSearchParams();
 const newTopicInput = searchParams.get('topic');
@@ -94,11 +94,10 @@ return (
      
      <ul className={'topics__list'}>
         {topics.map(({slug, description, topic_id, number_of_articles}) => {
-          const cursorStyle = number_of_articles > 0 ? {'cursor' : 'pointer'} : {};
               return (
-            <li 
+            <li
             key={topic_id} 
-            style={cursorStyle}
+            style={number_of_articles > 0 ? {'cursor' : 'pointer'} : {}}
             className={`topics__topic ${number_of_articles === 0 ? '--empty-topic' : ''}`}
             onClick={() => number_of_articles > 0 && navigate(`/articles?topic=${slug}`)}
             >
@@ -108,9 +107,9 @@ return (
             `}</p>
             
             <p className='topic__description'>"{description}"</p>
-            {number_of_articles === 0 && <p className="topic__empty-msg">No articles have been posted under this topic yet. Click the button to add an article, or to delete the topic.</p>}
+            {loggedInUser && number_of_articles === 0 && <p className="topic__empty-msg">No articles have been posted under this topic yet. Click the button to add an article, or to delete the topic.</p>}
 
-            {number_of_articles === 0 && <DropdownButton
+            {loggedInUser && number_of_articles === 0 && <DropdownButton
             id="dropdown-basic-button"
             title="Select an option">
               <Dropdown.Item onClick={() => navigate(`/articles/new?topic=${slug}`)}>Post an article</Dropdown.Item>
