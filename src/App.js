@@ -17,7 +17,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState('');
+  const [loggedInUser, setLoggedInUser] = useState(window.localStorage.getItem('NC_NEWS_APP'));
   const [avatarUrl, setAvatarUrl] = useState('');
   const location = useLocation();
 
@@ -31,7 +31,7 @@ function App() {
       <div id="App__body">
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/articles" element={<Articles />}/>
+        <Route path="/articles" element={<Articles loggedInUser={loggedInUser}/>}/>
         <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
         <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
         <Route path="/articles/new" element={<NewArticle loggedInUser={loggedInUser} />} />
@@ -42,8 +42,8 @@ function App() {
         setLoggedInUser={setLoggedInUser} 
         setAvatarUrl={setAvatarUrl}
         loggedInUser={loggedInUser} />}></Route>
-        {loggedInUser && <Route path="/my-profile" element={<Profile/>}/>}
-        <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
+        {loggedInUser && <Route path="/my-profile" element={<Profile loggedInUser={loggedInUser}/>}/>}
+        <Route path="/login" element={<Login loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
