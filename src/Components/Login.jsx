@@ -1,59 +1,57 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as api from '../api';
+import Spinner from 'react-bootstrap/Spinner';
 
-const Login = ({setLoggedInUser, loggedInUser, avatarUrl, setAvatarUrl}) => {
+const Login = ({setLoggedInUser}) => {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
-const [users, setUsers] = useState([]);
-const [showErrorMsg, setShowErrorMsg] = useState(false);
-const [buttonId, setButtonId] = useState('');
-
-useEffect(() => {
-  api.fetchUsers().then(({users}) => {
-    setUsers(users);
-    setAvatarUrl(users.filter(user => user.username === loggedInUser)[0].avatar_url);
-  });
-}, []);
+const [isLoading, setIsLoading] = useState(false);
+const [successMsg, setSuccessMsg] = useState('');
+const [errorMsg, setErrorMsg] = useState('');
 
 const handleSubmit = e => {
   e.preventDefault();
-  if (buttonId === 'logout__button') {
-    setLoggedInUser('');
-  } else if (users.map(({username}) => username).includes(username) && password === 'password') {
-    setLoggedInUser(username);
-    setAvatarUrl(users.filter(user => user.username === username)[0].avatar_url);
-    setUsername('');
-    setPassword('');
+  if (!username || !password) {
+    setErrorMsg("Please complete all required fields.");
+    setTimeout(() => setErrorMsg(''), 6000);
   } else {
-    setShowErrorMsg(true);
-    setTimeout(() => setShowErrorMsg(false), 6000);
+    setIsLoading(true);
+    api.login(username, password)
+    .then(({msg}) => {
+        setIsLoading(false);
+        setUsername('');
+        setPassword('');
+        setSuccessMsg(msg);
+        setLoggedInUser(username);
+        setTimeout(() => setSuccessMsg(''), 6000);
+    })
+    .catch(err => {
+        setIsLoading(false);
+        if (err.response.data.msg) {
+            setErrorMsg(err.response.data.msg);
+            setTimeout(() => setErrorMsg(''), 6000);
+        }
+    })
   }
-};
-  return (
-    <form style={loggedInUser ? {'height': '57px'} : {}} id="login__form" onSubmit={handleSubmit}>
-       
-        {!loggedInUser && !showErrorMsg && <div id="login__div">
-        <div className="login__field">
-        <label htmlFor="username" className="login__label"> Username </label>
-        <input id="username" type="text" onChange={e => setUsername(e.target.value)} placeholder="username" value={username}/>
-        </div>
+}
 
-        <div className="login__field">
-        <label htmlFor="password" className="login__label"> Password  </label>
-        <input id="password" type="password" onChange={e => setPassword(e.target.value)} placeholder="password" value={password} />
-        </div>
-        
-        <button onClick={e => setButtonId(e.target.id)} id="login__button">Login</button>
-        </div>}
+return (<main>
+    <h2 className="account__h2">Log in to your account</h2>
 
-        {loggedInUser && <p className="login__logged-in">Current user: {loggedInUser}</p>}
-        {loggedInUser && <img className="login__img" src={avatarUrl} />}
-        {loggedInUser && <button onClick={e => setButtonId(e.target.id)} id="logout__button">Log out</button>}
-        
-        {showErrorMsg && <p className="login__error">Invalid username/password</p>}
+    {successMsg && !errorMsg && <p className="account__confirmation">{successMsg}</p>}
+    {errorMsg && <p className="error">{errorMsg}</p>}
+
+    <form id="account__form" onSubmit={handleSubmit}>
+      
+        <label className="account__form-label" htmlFor="account__new-username">Username</label>
+        <input id="account__new-username" type="text" onChange={e => setUsername(e.target.value)} value={username} placeholder="Enter username"/>
+
+        <label className="account__form-label" htmlFor="account__new-password">Password</label>
+        <input id="account__new-pasword" type="password" onChange={e => setPassword(e.target.value)} value={password} placeholder="Enter password"/>
+
+        <button disabled={isLoading} style={isLoading ? {backgroundColor: 'blue', color: 'yellow'} : {}} id="account__submit">{!isLoading ? 'Login' : <><Spinner style={{width: 25, height: 25, fontSize: 15, margin: '0 7px -3px 0'}} animation="border" />Loading...</>}</button>
     </form>
-  
-  );
+</main>);
 };
 
 export default Login;
