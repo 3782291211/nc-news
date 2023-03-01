@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as api from '../api';
 import Loading from "./Loading";
+import anonymous from '../anonymous.webp';
 
 const Users = ({setLoggedInUser, setAvatarUrl, loggedInUser}) => {
 const [users, setUsers] = useState([]);
@@ -28,6 +29,11 @@ const handleClick = (username, avatar_url) => () => {
   setTimeout(() => setShowLoggedInMsg(false), 6000);
 };
 
+const handleError = ({ currentTarget }) => {
+  currentTarget.onerror = null; // prevents looping
+  currentTarget.src = anonymous;
+};
+
 if (error) {
   return <p className="error">{error}</p>
 } else if (!error && isLoading) {
@@ -43,7 +49,7 @@ if (error) {
         <div className="users__user">
         <p>{name}</p>
         <p style={{'fontStyle': 'italic'}}>"{username}"</p>
-        <img src={avatar_url} alt={`${name}'s profile picture`} />
+        <img src={avatar_url || ''} alt={`${name}'s profile picture`} onError={handleError}/>
         </div>
         <button className="users__change" onClick={handleClick(username, avatar_url)}>Sign in as user</button>
       </li>
