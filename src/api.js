@@ -39,6 +39,10 @@ export const fetchUsers = () => {
   return newsApi.get('users').then(res => res.data);
 };
 
+export const fetchSingleUser = username => {
+  return newsApi.get(`users/${username}`).then(res => res.data);
+}
+
 export const fetchTopics = () => {
   return newsApi.get('/topics')
   .then(res => res.data);
