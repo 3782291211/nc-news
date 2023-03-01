@@ -119,7 +119,7 @@ return (
         })}
     </ul>
 
-    <h3 className="topics__h3">Add a new topic</h3>
+    {loggedInUser && <><h3 className="topics__h3">Add a new topic</h3>
     <form id="topic__form" onSubmit={handleSubmit}>
         <label className="topic__form-label" htmlFor="topic__new-topic">Topic title</label>
         <input id="topic__new-topic" type="text" onChange={e => setNewTopic(e.target.value)} value={newTopic}/>
@@ -128,7 +128,7 @@ return (
         <textarea id="topic__body" type="text" onChange={e => setNewTopicBody(e.target.value)} value={newTopicBody}/>
 
         <button style={{'backgroundColor' : newTopicLoading ? 'grey' : ''}} id="topic__submit">{newTopicLoading ? 'Adding topic...' : 'Create new topic'}</button>
-    </form>
+    </form></>}
     </div>}
   </main>
 );
