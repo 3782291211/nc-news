@@ -128,7 +128,7 @@ if (apiError) {
       <form id="new-comment__form" onSubmit={handleSubmit}>
         <textarea id="new-comment__body" type="text" onChange={e => setNewComment(e.target.value)} value={newComment} placeholder="Type your comment here..."/>
 
-        <button style={{ 'backgroundColor' : loadingNewComment ? 'grey' : ''}} id="new-comment__submit">{loadingNewComment ? 'Posting comment. Please wait...' : 'Post new comment'}</button>
+        {loggedInUser && <button style={{ 'backgroundColor' : loadingNewComment ? 'grey' : ''}} id="new-comment__submit">{loadingNewComment ? 'Posting comment. Please wait...' : 'Post new comment'}</button>}
     </form>
     <button id="single-article__link"><Link to={`/articles/${articleId}/comments`}>Show all comments</Link></button>
     </section>
