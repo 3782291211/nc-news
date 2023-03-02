@@ -49,7 +49,7 @@ if (error) {
         <div className="users__user">
         <p>{name}</p>
         <p style={{'fontStyle': 'italic'}}>"{username}"</p>
-        <img src={avatar_url || ''} alt={`${name}'s profile picture`} onError={handleError}/>
+        <img src={avatar_url || ''} alt={name} onError={handleError}/>
         </div>
         <button className="users__change" onClick={handleClick(username, avatar_url)}>Sign in as user</button>
       </li>
