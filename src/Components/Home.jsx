@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../api';
 import Loading from './Loading';
+import anonymous from '../anonymous.webp';
 
 const Home = () => {
   const [hinge, setHinge] = useState({state: false, count: 0});
@@ -40,6 +41,11 @@ const Home = () => {
     });
     };
   }, [limit, page]);
+
+  const handleError = ({ currentTarget }) => {
+    currentTarget.onerror = null;
+    currentTarget.src = anonymous;
+  };
 
   return (<main>
      {hinge.state && <p className={hinge.state && 'animate__animated animate__fadeOut animate__delay-3s'} style={{'fontSize' : '40px', 'marginTop': '90px'}}>Uh oh...</p>}
@@ -97,7 +103,7 @@ const Home = () => {
         onClick={() => navigate(`/articles/${article_id}`)}
         style={{'backgroundColor' : 'black'}}>
         <div className="article__li-div --home-comment">
-        <img className="comment-preview__img" src={avatar_url} alt={`${author}'s avatar`}/>
+        <img className="comment-preview__img" src={avatar_url} alt={`${author}'s avatar`} onError={handleError}/>
        <p className="comment-card__body --home">"{body}"</p>
        </div>
        
@@ -108,6 +114,11 @@ const Home = () => {
     })}
     </ul>
     </section>}
+    <button style={{margin: '20px auto 50px'}} id="button__top" onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })}>Back to top</button>
   </main>);
 };
 
