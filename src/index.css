@@ -681,7 +681,7 @@ textarea#comments__new,
 .logout {
   width: fit-content;
   color: rgb(0, 255, 255);
-  margin: 13px auto;
+  margin: 13px 20px;
 }
 
 .login__logged-in {
