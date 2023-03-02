@@ -42,8 +42,8 @@ function App() {
         setLoggedInUser={setLoggedInUser} 
         setAvatarUrl={setAvatarUrl}
         loggedInUser={loggedInUser} />}></Route>
-        {loggedInUser && <Route path="/my-profile" element={<Profile loggedInUser={loggedInUser}/>}/>}
-        <Route path="/login" element={<Login loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>}/>
+        {loggedInUser && <Route path="/my-profile" element={<Profile loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>}/>}
+        <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
