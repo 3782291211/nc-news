@@ -22,6 +22,7 @@ const [apiError, setApiError] = useState(null);
 const [searchParams, setSearchParams] = useSearchParams({});
 const sortByQuery = searchParams.get('sort_by');
 const topicQuery = searchParams.get('topic');
+const authorQuery = searchParams.get('author');
 const orderByQuery = searchParams.get('order');
 const limitQuery = searchParams.get('limit');
 const pageQuery = searchParams.get('page');
@@ -45,7 +46,7 @@ useEffect(() => {
   };
   setApiError(null);
   setIsLoading(true);
-  api.fetchArticles(topicQuery, selectedSort, selectedOrder, page, selectedLimit)
+  api.fetchArticles(topicQuery, selectedSort, selectedOrder, page, selectedLimit, authorQuery)
   .then(({articles, total_count, page_limit}) => {
     setDisableNextButton(total_count < page_limit);
     setIsLoading(false);
@@ -129,6 +130,8 @@ if (apiError) {
       }}>Previous page</button>
   </div> <p className="--bold">Page {page}</p>
   </div>
+
+  {articles.length === 0 && <h3 style={{margin: '40px 0 20px', color: '#F0147B'}}>No articles to display.</h3>}
      
       <ul className="articles__list animate__animated animate__bounceInLeft">
        {articles.map(({article_id, author, avatar_url, title, topic, created_at, votes, comment_count}) => {
@@ -146,6 +149,11 @@ if (apiError) {
       })}
     </ul>
   </div>}
+  <button id="button__top" onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })}>Back to top</button>
   </main>
 );
 };
