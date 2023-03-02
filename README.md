@@ -7,11 +7,12 @@ nc-news-react-app.netlify.app)**
 
 The website is linked to a live database and a RESTful back end API that I created using node and express, which exposes a broad range of endpoints to the web app and covers the full range of CRUD operations. The user interface allows for lots of interactivity and offers a rich user experience, through extensive use of conditional rendering, meaningful user interface updates, impactful error handling, appropriate feedback regarding loading states and confirmation of successful submissions.
 
-At every stage of this project, the design and styling process was strictly driven by responsive design principles, ensuring that the website caters to all available viewport widths from small smartphone displays to tablets and all the way up to desktop.
-
 ## Available functionality
+**Note**: a lot of the app's functionality requires the user to be signed up and logged in, which can be accomplished very easily and quickly using the signup/login pages.
 
 With this application, a user can: 
+- create a new account;
+- login to an existing account;
 - view all articles that have been posted;
 - filter and sort articles;
 - view latest comments;
