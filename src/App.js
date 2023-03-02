@@ -10,7 +10,7 @@ import NewArticle from './Components/NewArticle';
 import ArticleDeleteConfirm from './Components/ArticleDeleteConfirm';
 import ArticlePostedConfirm from './Components/ArticlePostedConfirm';
 import Users from './Components/Users';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState } from "react";
 import Profile from './Components/Profile';
 import Login from './Components/Login';
@@ -19,7 +19,6 @@ import Signup from './Components/Signup';
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(window.localStorage.getItem('NC_NEWS_APP'));
   const [avatarUrl, setAvatarUrl] = useState('');
-  const location = useLocation();
 
   return (
     <div className="App">
@@ -45,14 +44,9 @@ function App() {
         {loggedInUser && <Route path="/my-profile" element={<Profile loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>}/>}
         <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/*" element={<p className="error">HTTP error 404: page not found.</p>}/>
+        <Route path="/*" element={<p style={{margin: '30px 0 40px'}} className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
-      {/^\/$|articles/.test(location.pathname) && <button id="button__top" onClick={() => window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      })}>Back to top</button>}
     </div>
   );
 }
@@ -60,3 +54,4 @@ function App() {
 export default App;
 
 //regex \/articles\/(deleted|new\/\d+)
+// {/^\/$|articles/.test(location.pathname) && }
