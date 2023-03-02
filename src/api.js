@@ -41,6 +41,17 @@ export const fetchUsers = () => {
 
 export const fetchSingleUser = username => {
   return newsApi.get(`users/${username}`).then(res => res.data);
+};
+
+export const updateUserDetails = (currentUsername, username, password, name, avatar_url) => {
+  const requestBody = {};
+  [['username', username], ['password', password], ['name', name], ['avatar_url', avatar_url]]
+  .forEach(element => {
+    if (element[1]) {
+      requestBody[element[0]] = element[1];
+    };
+  });
+  return newsApi.patch(`users/${currentUsername}`, requestBody).then(res => res.data);
 }
 
 export const fetchTopics = () => {
