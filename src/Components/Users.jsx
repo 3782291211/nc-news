@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import * as api from '../api';
 import Loading from "./Loading";
 import anonymous from '../anonymous.webp';
+import { useNavigate } from "react-router-dom";
 
 const Users = ({setLoggedInUser, setAvatarUrl, loggedInUser}) => {
 const [users, setUsers] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [error, setError] = useState(false);
 const [showLoggedInMsg, setShowLoggedInMsg] = useState(false);
+const navigate = useNavigate();
 
 useEffect(() => {
     setIsLoading(true);
@@ -17,17 +19,10 @@ useEffect(() => {
   })
   .catch(err => {
     setIsLoading(false);
-    setError(err.message)
+    setError(err.message);
   });
 }, []);
 
-const handleClick = (username, avatar_url) => () => {
-  setLoggedInUser(username);
-  setAvatarUrl(avatar_url);
-  setShowLoggedInMsg(true);
-  window.scrollTo(0, 0);
-  setTimeout(() => setShowLoggedInMsg(false), 6000);
-};
 
 const handleError = ({ currentTarget }) => {
   currentTarget.onerror = null; // prevents looping
@@ -51,7 +46,7 @@ if (error) {
         <p style={{'fontStyle': 'italic'}}>"{username}"</p>
         <img src={avatar_url || ''} alt={name} onError={handleError}/>
         </div>
-        <button className="users__change" onClick={handleClick(username, avatar_url)}>Sign in as user</button>
+        <button className="users__change" onClick={() => navigate(`/articles?author=${username}`)}>User's articles</button>
       </li>
     })}
     </ul>
