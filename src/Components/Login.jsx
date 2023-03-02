@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as api from '../api';
 import Spinner from 'react-bootstrap/Spinner';
+import { useNavigate } from "react-router-dom";
 
-const Login = ({loggedInUser, setLoggedInUser}) => {
+const Login = ({setLoggedInUser}) => {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [isLoading, setIsLoading] = useState(false);
 const [successMsg, setSuccessMsg] = useState('');
 const [errorMsg, setErrorMsg] = useState('');
+const navigate = useNavigate();
 
 const handleSubmit = e => {
   e.preventDefault();
@@ -24,13 +26,19 @@ const handleSubmit = e => {
         setPassword('');
         setSuccessMsg(msg);
         setLoggedInUser(username);
-        setTimeout(() => setSuccessMsg(''), 6000);
+        setTimeout(() => {
+          setSuccessMsg('');
+          navigate('/');
+        }, 6000);
     })
     .catch(err => {
         setIsLoading(false);
         if (err.response.data.msg) {
             setErrorMsg(err.response.data.msg);
             setTimeout(() => setErrorMsg(''), 6000);
+        } else {
+          setErrorMsg(err.response.data);
+          setTimeout(() => setErrorMsg(''), 6000);
         }
     })
   }
