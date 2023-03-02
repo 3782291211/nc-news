@@ -27,23 +27,18 @@ With this application, a user can:
 ## Views
 ### Home page
 <img src="./Screenshots/home.png" width="600px"/> 
-<br />  <br /> 
 
 ### Articles
 <img src="./Screenshots/articles.png" width="600px"/>  
-<br />  <br /> 
 
 ### Single article view
 <img src="./Screenshots/article.png" width="600px"/>  
-<br />  <br /> 
 
 ### Users
 <img src="./Screenshots/users.png" width="600px"/>  
-<br />  <br /> 
 
 ### Topics
-<img src="./Screenshots/topics.png" width="600px"/>  
-<br />  <br /> 
+<img src="./Screenshots/topics.png" width="600px"/> 
 
 ### Comments
 <img src="./Screenshots/comments.png" width="600px"/>  
