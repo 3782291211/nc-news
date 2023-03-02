@@ -18,6 +18,9 @@ const handleSubmit = e => {
   } else if (password !== passwordConfirm) {
     setErrorMsg("Passwords do not match.");
     setTimeout(() => setErrorMsg(''), 6000);
+  } else if (password.length < 10 || !/\d+/.test(password) || !/[A-Z]+/.test(password)) {
+    setErrorMsg("Password does not meet requirements.");
+    setTimeout(() => setErrorMsg(''), 6000);
   } else {
     setIsLoading(true);
     api.signup(screenName, username, password, avatarUrl)
