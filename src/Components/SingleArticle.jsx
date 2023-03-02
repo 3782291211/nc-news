@@ -126,7 +126,7 @@ if (apiError) {
     {commentError &&  <p className="error" style={{'textAlign' : 'center'}}>{commentError}</p>}
     <section>
       <form id="new-comment__form" onSubmit={handleSubmit}>
-        <textarea id="new-comment__body" type="text" onChange={e => setNewComment(e.target.value)} value={newComment} placeholder="Type your comment here..."/>
+        {loggedInUser && <textarea id="new-comment__body" type="text" onChange={e => setNewComment(e.target.value)} value={newComment} placeholder="Type your comment here..."/>}
 
         {loggedInUser && <button style={{ 'backgroundColor' : loadingNewComment ? 'grey' : ''}} id="new-comment__submit">{loadingNewComment ? 'Posting comment. Please wait...' : 'Post new comment'}</button>}
     </form>
@@ -172,6 +172,11 @@ if (apiError) {
     </div>}
 
     </div>}
+    <button style={{display: 'block', margin: '50px auto 60px'}} id="button__top" onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })}>Back to top</button>
   </main>
 );
 }
