@@ -128,6 +128,11 @@ if (apiError) {
     })}
     </ul>
     </div>}
+    <button style={{display: 'block', margin: '50px auto'}} id="button__top" onClick={() => window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      })}>Back to top</button>
     </main>
  );
 };
