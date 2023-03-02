@@ -1,15 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import anonymous from '../anonymous.webp';
 
 const ArticlePreviewCard = ({author, avatar_url, title, topic, createdAt, votes, commentCount, article_id}) => {
 const date = new Date(createdAt).toString();
 
 const navigate = useNavigate();
 
+const handleError = ({ currentTarget }) => {
+  currentTarget.onerror = null;
+  currentTarget.src = anonymous;
+};
+
   return (<li 
     className="articles__preview"
     onClick={() => navigate(`/articles/${article_id}`)}>
     <div className="article__li-div">
-    <img className="article-preview__img" src={avatar_url} alt={`${author}'s avatar`}/>
+    <img className="article-preview__img" src={avatar_url} alt={`${author}'s avatar`} onError={handleError}/>
     <p className="article-card__title">{title} </p> 
   
     </div>
@@ -18,8 +24,6 @@ const navigate = useNavigate();
     <p className="article-card__details"> 💬 {commentCount} comments</p>
     <p className={`article-card__details ${votes >= 0 ? '--positive' : '--negative'}`}>Votes: {votes}</p>
    
-   
-
   </li>);
 };
 
