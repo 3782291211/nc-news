@@ -1,7 +1,6 @@
 # **Northcoders News**: a front end *React* project
 
-**[Link to my live web app](
-nc-news-react-app.netlify.app)**
+**[Link to my live web app](https://nc-news-react-app.netlify.app/)**
 
 **Northcoders News** is an online social hub where you can view, rate and post articles and comments under different categories. To get started, visit the website using the link above, sign up for a new account, login and start posting articles and comments.
 
