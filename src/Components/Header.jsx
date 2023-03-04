@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as api from '../api';
 import anonymous from '../anonymous.webp';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../Contexts/CurrentUser";
 
-const Header = ({setLoggedInUser, loggedInUser, avatarUrl, setAvatarUrl}) => {
+const Header = ({ avatarUrl, setAvatarUrl, setRerender}) => {
+const {setLoggedInUser, loggedInUser} = useContext(UserContext);
 const [buttonId, setButtonId] = useState('');
 const [logoutMsg, setLogoutMsg] = useState('');
 const navigate = useNavigate();
@@ -26,17 +28,19 @@ const handleSubmit = e => {
     navigate('/');
     setLogoutMsg('Until next time!');
     setTimeout(() => setLogoutMsg(''), 6000);
+    setRerender(prev => !prev);
   } else if (buttonId === 'login__button') {
     navigate('login');
   } else if (buttonId === 'signup__button') {
     navigate('signup');
   } else if (buttonId === 'profile') {
-    navigate('my-profile');
+    setRerender(prev => !prev);
+    navigate(`profile/${loggedInUser}`);
   };
 };
 
 const handleError = ({ currentTarget }) => {
-  currentTarget.onerror = null; // prevents looping
+  currentTarget.onerror = null;
   currentTarget.src = anonymous;
 };
 
