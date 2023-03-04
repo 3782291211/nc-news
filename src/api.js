@@ -84,6 +84,10 @@ export const deleteArticle = articleId => {
   return newsApi.delete(`/articles/${articleId}`);
 };
 
+export const deleteUser = username => {
+  return newsApi.delete(`/users/${username}`);
+};
+
 export const signup = (name, username, password, avatar_url) => {
   return newsApi.post('signup', {name, username, password, avatar_url}).then(({data}) => data);
 }
