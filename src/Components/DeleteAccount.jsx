@@ -19,9 +19,11 @@ const handleDelete = e => {
     window.localStorage.setItem('NC_NEWS_APP', '');
   })
   .catch (err => {
-    setDeleteError(err);
+    if (err.response.data.msg) {
+      setDeleteError(err.response.data.msg);
+    };
   });
-}
+};
 
   return (
     <Modal
