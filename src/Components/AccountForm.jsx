@@ -5,7 +5,7 @@ const AccountForm = ({type, handleSubmit, isLoading, formData, setFormData}) => 
 const {screenName, username, password, passwordConfirm, avatarUrl} = formData;
 
   return (<form id="account__form" onSubmit={handleSubmit}>
-  {type === "update" && <p style={{margin: 0, border: '2px solid #1c1f22', fontSize: 24}}>Update as many or as few fields as you like.</p>}
+  {type === "update" && <p style={{margin: 0, border: '2px solid #1c1f22', fontSize: 24, padding: '0 7px 2px', textAlign: 'left'}}>Update as many or as few fields as you like.</p>}
   <label className="account__form-label" htmlFor="account__change-name">Screen name</label>
   <input id="account__change-name" type="text" onChange={e => setFormData(prev => ({...prev, screenName: e.target.value}))} value={screenName} placeholder={type === 'update' ? "Enter new screen name" : "Enter screen name"}/>
 
