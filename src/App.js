@@ -15,7 +15,6 @@ import { useState } from "react";
 import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import AccountDeleteConfirm from './Components/AccountDeleteConfirm';
 
 function App() {
   const [avatarUrl, setAvatarUrl] = useState('');
@@ -42,7 +41,6 @@ function App() {
         <Route path="/profile/:username" element={<Profile setRerender={setRerender} rerender={rerender}/>}/>
         <Route path="/login" element={<Login setRerender={setRerender}/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/account/deleted/:username" element={<AccountDeleteConfirm/>}/>
         <Route path="/*" element={<p style={{margin: '30px 0 40px'}} className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
