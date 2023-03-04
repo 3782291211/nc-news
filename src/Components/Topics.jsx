@@ -5,8 +5,11 @@ import * as api from '../api';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Loading from "./Loading";
+import { v4 as uuidv4 } from 'uuid';
+import { UserContext } from "../Contexts/CurrentUser";
 
-const Topics = ({loggedInUser}) => {
+const Topics = () => {
+const { loggedInUser } = useContext(UserContext);
 const { topics, setTopics } = useContext(TopicsContext);
 const [ searchParams ] = useSearchParams();
 const newTopicInput = searchParams.get('topic');
@@ -85,6 +88,7 @@ const handleDelete = topic => {
 return (
   <main ref={myRef}>
      <h2 className="topics__h2">Viewing all topics</h2>
+     {!loggedInUser && <p className="login-prompt">Log in to create a new topic.</p>}
      {isLoading ? <Loading/> : 
      
      <div>
@@ -96,7 +100,7 @@ return (
         {topics.map(({slug, description, topic_id, number_of_articles}) => {
               return (
             <li
-            key={topic_id} 
+            key={uuidv4()} 
             style={number_of_articles > 0 ? {'cursor' : 'pointer'} : {}}
             className={`topics__topic ${number_of_articles === 0 ? '--empty-topic' : ''}`}
             onClick={() => number_of_articles > 0 && navigate(`/articles?topic=${slug}`)}
