@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from '../api';
 import CommentPreviewCard from "./CommentPreviewCard";
@@ -8,9 +8,10 @@ import Buttons from "./Buttons";
 import DeleteNotification from "./DeleteNotification";
 import Button from 'react-bootstrap/Button';
 import Loading from "./Loading";
+import { UserContext } from "../Contexts/CurrentUser";
 
-const SingleArticle = ({loggedInUser}) => {
-  
+const SingleArticle = () => {
+  const { loggedInUser } = useContext(UserContext);
   const { articleId } = useParams();
   const [article, setArticle] = useState([]);
   const [comments, setComments] = useState([]);
