@@ -15,35 +15,34 @@ import { useState } from "react";
 import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import AccountDeleteConfirm from './Components/AccountDeleteConfirm';
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(window.localStorage.getItem('NC_NEWS_APP'));
   const [avatarUrl, setAvatarUrl] = useState('');
+  const [rerender, setRerender] = useState(false);
 
   return (
     <div className="App">
-      <Header setLoggedInUser={setLoggedInUser}
-      loggedInUser={loggedInUser}
+      <Header
       avatarUrl={avatarUrl}
-      setAvatarUrl={setAvatarUrl}/>
+      setAvatarUrl={setAvatarUrl}
+      setRerender={setRerender}/>
       <Nav/>
       <div id="App__body">
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/articles" element={<Articles loggedInUser={loggedInUser}/>}/>
-        <Route path="/articles/:articleId" element={<SingleArticle loggedInUser={loggedInUser} />}/> 
-        <Route path="/articles/:articleId/comments" element={<Comments loggedInUser={loggedInUser} />} />
-        <Route path="/articles/new" element={<NewArticle loggedInUser={loggedInUser} />} />
-        <Route path="/topics" element={<Topics loggedInUser={loggedInUser} />}/>
-        <Route path="/articles/deleted/:articleId" element={<ArticleDeleteConfirm />} />
-        <Route path="/articles/new/:articleId" element={<ArticlePostedConfirm />}/>
-        <Route path='/users' element={<Users 
-        setLoggedInUser={setLoggedInUser} 
-        setAvatarUrl={setAvatarUrl}
-        loggedInUser={loggedInUser} />}></Route>
-        {loggedInUser && <Route path="/my-profile" element={<Profile loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>}/>}
-        <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>}/>
+        <Route path="/articles" element={<Articles/>}/>
+        <Route path="/articles/:articleId" element={<SingleArticle/>}/> 
+        <Route path="/articles/:articleId/comments" element={<Comments/>}/>
+        <Route path="/articles/new" element={<NewArticle/>}/>
+        <Route path="/topics" element={<Topics/>}/>
+        <Route path="/articles/deleted/:articleId" element={<ArticleDeleteConfirm/>}/>
+        <Route path="/articles/new/:articleId" element={<ArticlePostedConfirm/>}/>
+        <Route path='/users' element={<Users/>}/>
+        <Route path="/profile/:username" element={<Profile setRerender={setRerender} rerender={rerender}/>}/>
+        <Route path="/login" element={<Login setRerender={setRerender}/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/account/deleted/:username" element={<AccountDeleteConfirm/>}/>
         <Route path="/*" element={<p style={{margin: '30px 0 40px'}} className="error">HTTP error 404: page not found.</p>}/>
       </Routes>
       </div>
@@ -52,6 +51,3 @@ function App() {
 }
 
 export default App;
-
-//regex \/articles\/(deleted|new\/\d+)
-// {/^\/$|articles/.test(location.pathname) && }
