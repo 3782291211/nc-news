@@ -17,6 +17,7 @@ const [isLoadingUser, setIsLoadingUser] = useState(false);
 const [isLoadingForm, setIsLoadingForm] = useState(false);
 const [successMsg, setSuccessMsg] = useState('');
 const [errorMsg, setErrorMsg] = useState(null);
+const [formError, setFormError] = useState(null);
 
 const [articles, setArticles] = useState('');
 const [isLoadingArticles, setIsLoadingArticles] = useState(false);
@@ -76,11 +77,11 @@ const handleError = ({ currentTarget }) => {
 const handleSubmit = e => {
   e.preventDefault();
   if ((password || passwordConfirm) && password !== passwordConfirm) {
-    setErrorMsg("Passwords do not match.");
-    setTimeout(() => setErrorMsg(''), 6000);
+    setFormError("Passwords do not match.");
+    setTimeout(() => setFormError(''), 6000);
   } else if (password && passwordConfirm && password === passwordConfirm && (password.length < 10 || !/\d+/.test(password) || !/[A-Z]+/.test(password))) {
-    setErrorMsg("Password does not meet requirements.");
-    setTimeout(() => setErrorMsg(''), 6000);
+    setFormError("Password does not meet requirements.");
+    setTimeout(() => setFormError(''), 6000);
   } else {
     setIsLoadingForm(true);
     api.updateUserDetails(loggedInUser, username, password, screenName, avatarUrl)
@@ -96,8 +97,8 @@ const handleSubmit = e => {
       setIsLoadingForm(false);
       setFormData({screenName: '', username: '', password: '', passwordConfirm: '', avatarUrl: ''});
       if (err.response.data) {
-        setErrorMsg(err.response.data.msg);
-        setTimeout(() => setErrorMsg(''), 6000);
+        setFormError(err.response.data.msg);
+        setTimeout(() => setFormError(''), 6000);
       };
     });
   };
@@ -116,8 +117,8 @@ return (<main>
     </div>
     
     <h2 className="account__h2">Update account details</h2>
-    {errorMsg && <p className="error">{errorMsg}</p>}
-    {successMsg && !errorMsg && <p className="account__confirmation">{successMsg}</p>}
+    {formError && <p className="error">{formError}</p>}
+    {successMsg && !formError && <p className="account__confirmation">{successMsg}</p>}
     <AccountForm type="update" formData={formData} setFormData={setFormData} handleSubmit={handleSubmit} isLoading={isLoadingForm}/>
 
     <h2 className="account__h2">{isLoadingArticles ? <><Spinner style={{width: 25, height: 25, fontSize: 15, margin: '20px 10px 2px 0'}} animation="border" />Loading articles...</> : articles.length ? 'My recent articles' : 'You haven\'t posted any articles yet.'}</h2>
