@@ -1,19 +1,22 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
-import { useSearchParams } from "react-router-dom";
+import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import * as api from '../api';
 import ArticlePreviewCard from './ArticlePreviewCard';
 import 'animate.css';
 import Loading from './Loading';
+import { UserContext } from '../Contexts/CurrentUser';
 
-const Articles = ({loggedInUser}) => {
+const Articles = () => {
+const {loggedInUser} = useContext(UserContext);
 const [articles, setArticles] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
 const [selectedSort, setSelectedSort] = useState('created_at');
 const [selectedOrder, setSelectedOrder] = useState('DESC');
 const [selectedLimit, setSelectedLimit] = useState('20');
 const [page, setPage] = useState(1);
-const [screenPosition, setScreenPosition] = useState({x: 0, y: 0})
+const [screenPosition, setScreenPosition] = useState({x: 0, y: 0});
+const navigate = useNavigate();
 
 const [disableNextButton, setDisableNextButton] = useState(false);
 
@@ -62,23 +65,23 @@ useEffect(() => {
       setApiError(err.response.data);
     };
   });
-}, [topicQuery, sortByQuery, orderByQuery, limitQuery, pageQuery]);
+}, [topicQuery, sortByQuery, orderByQuery, limitQuery, pageQuery, authorQuery]);
 
 if (apiError) {
   return <p className="error">{apiError}</p>;
 } else {
   return (
     <main>
-    <h2>{topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles '}<em className="h2__em">(preview)</em></h2>
-    {!isLoading && loggedInUser && <Link to="/articles/new"><button className="articles__new">Post new article</button></Link>}
+    <h2>{authorQuery ? `Viewing articles by '${authorQuery}' ` : topicQuery ? `Viewing articles under '${topicQuery}' ` : 'Viewing all articles '}<em className="h2__em">(preview)</em></h2>
+    {!loggedInUser && <p className="login-prompt">Log in to post new articles.</p>}
+    {!isLoading && loggedInUser && <button className="articles__new" onClick={() => navigate('/articles/new')}>Post new article</button>}
 
     {isLoading ? <Loading/> :
     <div>
-
-  <div className="articles__pagination">
-  <div className="articles__sort">
-  <div>
-  <p className="articles__sort__text">Sort by:</p>
+    <div className="articles__pagination">
+    <div className="articles__sort">
+    <div>
+    <p className="articles__sort__text">Sort by:</p>
       <select value={selectedSort} onChange={e => {
         setSelectedSort(e.target.value);
         setQuery(e.target.value, 'sort_by');
@@ -115,9 +118,9 @@ if (apiError) {
         <option value="50">50</option>
       </select>
     </div>
-  </div>
+    </div>
 
-  <div className="articles__buttons">
+    <div className="articles__buttons">
       <button disabled={disableNextButton} onClick={() => {
            setScreenPosition({x: window.scrollX, y: window.scrollY});
            setPage(prev => prev + 1);
@@ -128,8 +131,8 @@ if (apiError) {
            setPage(prev => prev - 1);
            setQuery(page, 'page');
       }}>Previous page</button>
-  </div> <p className="--bold">Page {page}</p>
-  </div>
+    </div> <p className="--bold">Page {page}</p>
+    </div>
 
   {articles.length === 0 && <h3 style={{margin: '40px 0 20px', color: '#F0147B'}}>No articles to display.</h3>}
      
