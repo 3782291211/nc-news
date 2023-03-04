@@ -52,12 +52,17 @@ const Home = () => {
     <p className={`home__welcome ${hinge.state && 'animate__animated animate__hinge animate__slower'}`} onMouseEnter={() => {
       if (hinge.count === 0) {
          setHinge({state: true, count : 1});
-         setTimeout(() => setHinge({state: false, count : 1}), 4000);
+         setTimeout(() => {
+          setScreenPosition({x: window.scrollX, y: window.scrollY});
+          setHinge({state: false, count : 1});
+         }, 4000);
       };
     }}>Welcome to NC News: an online social hub for serious coders.</p>
    
-    <p id="home__intro">Northcoders News is a newly-launched online social space where you can read articles and comments posted by others, as well as posting your own articles and comments. To get started, check out the latest comments below, or feel free to navigate to the different sections and explore various articles. <br /> <br />
+    <p id="home__intro">Northcoders News is an online social space where you can read articles and comments posted by others, as well as post your own. <span className="intro-span">To get started, sign up for a new account, explore the various sections of the website, and post new articles and comments.</span><br /> <br />
     If you'd like to share an interesting story or experience, you can post new articles under existing topics, or you can create a new topic to go along with your article. <br /> <br /> 
+
+    Once you've signed up for a new account, you'll be able to update your account details by heading over to the profile section of the website. <br /> <br /> 
     
     This website is part of a larger full-stack web development project and was inspired by the incredible people at the Northcoders organisation whose support and guidance were invaluable.</p>
     {errorMsg && <p className="error">{errorMsg}</p>}
