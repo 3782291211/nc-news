@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import * as api from '../api';
 import Spinner from 'react-bootstrap/Spinner';
-import { useNavigate } from "react-router-dom";
+import { UserContext } from "../Contexts/CurrentUser";
 
-const Login = ({setLoggedInUser}) => {
+const Login = ({setRerender}) => {
+const {loggedInUser, setLoggedInUser} = useContext(UserContext);
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [isLoading, setIsLoading] = useState(false);
 const [successMsg, setSuccessMsg] = useState('');
 const [errorMsg, setErrorMsg] = useState('');
-const navigate = useNavigate();
 
 const handleSubmit = e => {
   e.preventDefault();
   setErrorMsg('');
+  if (loggedInUser) {
+    setSuccessMsg("You're already logged in!");
+    return;
+  }
   if (!username || !password) {
     setErrorMsg("Please complete all required fields.");
     setTimeout(() => setErrorMsg(''), 6000);
@@ -26,10 +30,7 @@ const handleSubmit = e => {
         setPassword('');
         setSuccessMsg(msg);
         setLoggedInUser(username);
-        setTimeout(() => {
-          setSuccessMsg('');
-          navigate('/');
-        }, 6000);
+        setRerender(prev => !prev);
     })
     .catch(err => {
         setIsLoading(false);
@@ -50,7 +51,7 @@ return (<main>
     {successMsg && !errorMsg && <p className="account__confirmation">{successMsg}</p>}
     {errorMsg && <p className="error">{errorMsg}</p>}
 
-    <form id="account__form" onSubmit={handleSubmit}>
+    <form style={{marginBottom: '60px'}} id="account__form" onSubmit={handleSubmit}>
       
         <label className="account__form-label" htmlFor="account__new-username">Username</label>
         <input id="account__new-username" type="text" onChange={e => setUsername(e.target.value)} value={username} placeholder="Enter username"/>
