@@ -21,6 +21,9 @@ const handleSubmit = e => {
   } else if (password.length < 10 || !/\d+/.test(password) || !/[A-Z]+/.test(password)) {
     setErrorMsg("Password does not meet requirements.");
     setTimeout(() => setErrorMsg(''), 6000);
+  } else if (/^\s+$/.test(username) || /^\s+$/.test(screenName)) {
+    setErrorMsg(`${/^\s+$/.test(username) ? 'Username' : 'Screen name'} cannot be blank.`);
+    setTimeout(() => setErrorMsg(''), 6000);
   } else {
     setIsLoading(true);
     api.signup(screenName, username, password, avatarUrl)
