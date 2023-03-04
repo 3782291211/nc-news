@@ -1,15 +1,17 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as api from '../api';
+import { UserContext } from "../Contexts/CurrentUser";
 import CommentCard from "./CommentCard";
 import Loading from "./Loading";
 
-const Comments = ({loggedInUser}) => {
-const navigate = useNavigate();
+const Comments = () => {
+const { loggedInUser } = useContext(UserContext);
 const { articleId } = useParams('');
 const [article, setArticle] = useState([]);
 const [comments, setComments] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
+const navigate = useNavigate();
 
 const [showTextArea, setShowTextArea] = useState(false);
 const [showCreateButton, setshowCreateButton] = useState(true);
@@ -81,6 +83,7 @@ if (apiError) {
  return (
     <main className="comments">
     <button style={{marginTop: '20px'}} className="comments__new" onClick={() => navigate(-1)}>Back to article</button>
+    {!loggedInUser && <p className="login-prompt">Log in to post comments and to vote.</p>}
     {isLoading ? <Loading/> 
     : <div>
        <h2>Showing comments for <em className="h2__em">{`"${article.title}"`} </em></h2>
