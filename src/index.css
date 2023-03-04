@@ -89,7 +89,7 @@ nav ul {
 
 #nav {
   background-color: whitesmoke;
-  border-bottom: 2px solid black;
+  border-bottom: 4px solid black;
 }
 
 #nav__p {
@@ -102,13 +102,20 @@ nav ul {
   font-size: 22px;
 }
 
+.modal-title {
+  line-height: 30px;
+  font-size: 26px;
+}
+
 .nav__link {
-  margin: 0 3px;
-  width: 120px;
+  margin: 0 3px -2px;
+  width: 100px;
   text-align: center;
   background-color: #e3f4f5;
   font-size: 22px;
-  cursor: pointer;
+}
+
+#nav a {
 }
 
 a {
@@ -203,7 +210,7 @@ a {
   font-size: 40px;
 }
 
-#home__intro {
+#home__intro, .login-prompt {
   background-color: whitesmoke;
   text-align: left;
   box-shadow: 0 0 20px 10px rgba(87, 115, 174, 0.6);
@@ -214,6 +221,19 @@ a {
   font-size: 24px;
   border: 2px solid black;
   border-radius: 20px;
+}
+
+.intro-span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #212529;
+}
+
+.login-prompt {
+  max-width: fit-content;
+  margin: 25px auto;
+  font-size: 22px;
+  padding: 10px 20px
 }
 
 ul {
@@ -242,7 +262,7 @@ li {
 
 .articles__pagination {
   width: fit-content;
-  margin: 50px auto 10px;
+  margin: 40px auto 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -681,12 +701,15 @@ textarea#comments__new,
 .logout {
   width: fit-content;
   color: rgb(0, 255, 255);
-  margin: 13px 20px;
+  margin: 16px 20px;
 }
 
 .login__logged-in {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: whitesmoke;
-  margin: 17px 10px 0 0;
+  margin: 17px 7px 0 0;
 }
 
 #login__button,
@@ -699,15 +722,16 @@ textarea#comments__new,
   font-size: 16px;
   height: fit-content;
   padding: 3.5px 9px;
-  margin: 3px 6px 0
+  margin: 3px 12px 0 0
 }
 
 #logout__button {
-  margin: 11px 6px 0 5px
+  margin: 12px 12px 0 0;
+  min-width: 70px
 }
 
 #profile {
-  margin: 11px 6px 0 15px;
+  margin: 12px 12px 0 15px;
   background-color: #F5CF47;
   color: black;
 }
@@ -764,21 +788,10 @@ select {
   margin: auto;
 }
 
-/*.articles__list, .home__comments, .topics__list {
-  width: 95%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
-  justify-content: center;
-  gap: 15px
-}
-
-.articles__list li, .home__comments li, .topics__topic {
- width: 100%;
- margin: 0
-}*/
-
 .topics__list {
   max-width: 100%;
+  margin-bottom: 60px;
+  margin-top: 30px;
 }
 
 .topic__empty-msg {
@@ -796,7 +809,7 @@ select {
   background-color: #000000;
   padding: 2px;
   border-radius: 10px;
-  margin: 10px auto;
+  margin: 0 auto;
 }
 
 .--empty-topic {
@@ -805,6 +818,8 @@ select {
 
 .topics__h2, .account__h2 {
   margin: 20px auto 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #topic__form,
@@ -825,6 +840,7 @@ select {
   justify-content: flex-start;
   height: 350px;
   max-width: 800px;
+  margin-bottom: 60px;
 }
 
 #account__form {
@@ -847,6 +863,7 @@ select {
   height: 860px;
   max-width: 1200px;
   width: 100%;
+  margin-bottom: 60px
 }
 
 .topic__form-label,
@@ -907,18 +924,24 @@ button.article__delete:active {
   margin: 0;
 }
 
-.users__change {
-  display: block;
-  margin: 0 auto 20px;
-}
-
 .users__list {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 60px */
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
+  justify-content: center;
+  gap: 0 10px;
+  margin-bottom: 60px
 }
 
 .users__user {
+  width: 190px;
+}
+
+.users__user, .users__user-profile {
   padding: 5px;
   margin: 20px;
   border-radius: 10px;
@@ -926,19 +949,35 @@ button.article__delete:active {
   box-shadow: 0 0 20px 6px rgb(249, 48, 212);
 }
 
-.users__user img {
-  margin-top: 9px;
+.users__details {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.users__user img, .users__user-profile img {
+  margin-top: 7px;
   border-radius: 10px;
   aspect-ratio: 1;
-  height: 200px;
+  width: auto;
+  height: 180px;
   object-fit: cover;
   object-position: 0 20%;
 }
 
-.users__user > * {
-  font-size: 25px;
+.users__details, .users__link {
   color: whitesmoke;
-  margin: 0;
+  margin: 0
+}
+
+.users__link {
+  color: #F5CF47;
+  font-size: 24px;
+}
+
+.users__link:hover {
+  color: rgb(58, 255, 248)
 }
 
 @media (max-width: 550px) {
@@ -1051,7 +1090,7 @@ button.article__delete:active {
     font-size: 5vw;
   }
 
-  #logout__button {
+  #logout__button, #profile {
     font-size: 14px;
   }
 
@@ -1097,7 +1136,7 @@ button.article__delete:active {
 }
 
 @media (max-width: 780px) {
-  #home__intro {
+  #home__intro, .intro-span {
     font-size: 18px;
     line-height: 2.5ch;
   }
@@ -1161,5 +1200,34 @@ button.article__delete:active {
   .home__pagination p,
   .home__skip label {
     font-size: 17px;
+  }
+
+  .users__list {
+   display: flex;
+   flex-direction: column;
+   width: 95%
+  }
+
+  .users__user {
+    margin: 7px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 0 7px 3px rgb(249, 48, 212);
+  }
+
+  .users__user img {
+    height: 80px;
+    margin: 0
+  }
+
+  .users__link {
+    color: #F5CF47;
+    font-size: 20px;
+  }
+
+  .users__user p {
+    font-size: 16px;
   }
 }
