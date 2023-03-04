@@ -11,7 +11,6 @@ return () => {
   api.deleteArticle(articleId).then(() => {
     navigate(`/articles/deleted/${articleId}`);
   }).catch (err => {
-    console.log(err);
     setApiError(err.message);
   });
 }
