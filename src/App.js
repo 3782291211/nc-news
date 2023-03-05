@@ -29,7 +29,7 @@ function App() {
       <Nav/>
       <div id="App__body">
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/articles/:articleId" element={<SingleArticle/>}/> 
         <Route path="/articles/:articleId/comments" element={<Comments/>}/>
