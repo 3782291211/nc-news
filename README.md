@@ -12,20 +12,13 @@ The website is linked to a live database and a RESTful back end API that I creat
 With this application, a user can: 
 - create a new account;
 - login to an existing account;
-- access a private profile page which allows user to update details, view recent articles or delete account;
-- view all articles that have been posted;
-- view, filter and sort articles;
-- view comments;
-- view list of users and articles posted by each user;
-- vote on articles and comments;
 - access a private profile page which allows user to update details, view their recent articles or delete their account;
 - view, filter and sort articles;
 - view comments;
 - view list of users and articles posted by each user;
-- vote up/down on articles and comments;
+- vote on articles and comments;
 - post new comments and delete previous comments;
 - post new articles and delete previous articles;
-- add and delete topics.
 - add and delete topics.
 
 ## Views
