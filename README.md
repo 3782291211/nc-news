@@ -3,7 +3,7 @@
 **[Link to my live web app](
 nc-news-react-app.netlify.app)**
 
-**Northcoders News** is an online social hub where you can view, rate and post articles and comments under different categories.
+**Northcoders News** is an online social hub where you can view, rate and post articles and comments under different categories. To get started, visit the website using the link above, sign up for a new account, login and start posting articles and comments.
 
 The website is linked to a live database and a RESTful back end API that I created using node and express, which exposes a broad range of endpoints to the web app and covers the full range of CRUD operations. The user interface allows for lots of interactivity and offers a rich user experience, through extensive use of conditional rendering, meaningful user interface updates, impactful error handling, appropriate feedback regarding loading states and confirmation of successful submissions.
 
@@ -13,16 +13,15 @@ The website is linked to a live database and a RESTful back end API that I creat
 With this application, a user can: 
 - create a new account;
 - login to an existing account;
+- access a private profile page which allows user to update details, view recent articles or delete account;
 - view all articles that have been posted;
-- filter and sort articles;
-- view latest comments;
-- vote up/down on articles and comments;
+- view, filter and sort articles;
+- view comments;
+- view list of users and articles posted by each user;
+- vote on articles and comments;
 - post new comments and delete previous comments;
 - post new articles and delete previous articles;
-- add and delete topics;
-- login in as one of several existing users.
-    - To log in manually, use the buttons at the top of the screen and login with the username and 'password'. 
-    - Usernames can be found on the 'Users' page.
+- add and delete topics.
 
 ## Views
 ### Home page
