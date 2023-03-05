@@ -41,6 +41,12 @@ useLayoutEffect(() => {
 });
 
 useEffect(() => {
+    setPage(1);
+    setQuery(1, 'page');
+}, [topicQuery]);
+
+useEffect(() => {
+  setIsLoading(true);
   if (!searchParams.get('sort_by')) {
     setSelectedSort('created_at');
   };
@@ -48,12 +54,11 @@ useEffect(() => {
     setSelectedOrder('DESC');
   };
   setApiError(null);
-  setIsLoading(true);
-  api.fetchArticles(topicQuery, selectedSort, selectedOrder, page, selectedLimit, authorQuery)
+  api.fetchArticles(topicQuery, selectedSort, selectedOrder, pageQuery, selectedLimit, authorQuery)
   .then(({articles, total_count, page_limit}) => {
     setDisableNextButton(total_count < page_limit);
-    setIsLoading(false);
     setArticles(articles);
+    setIsLoading(false);
   })
   .catch(err => {
     setIsLoading(false);
@@ -121,22 +126,20 @@ if (apiError) {
     </div>
 
     <div className="articles__buttons">
+    <button disabled={page === 1} onClick={() => {
+           setScreenPosition({x: window.scrollX, y: window.scrollY});
+           setPage(page - 1);
+           setQuery(page - 1, 'page');
+      }}>Previous page</button>
       <button disabled={disableNextButton} onClick={() => {
            setScreenPosition({x: window.scrollX, y: window.scrollY});
-           setPage(prev => prev + 1);
-           setQuery(page, 'page');
+           setPage(page + 1);
+           setQuery(page + 1, 'page');
       }}>Next page</button>
-      <button disabled={page === 1} onClick={() => {
-           setScreenPosition({x: window.scrollX, y: window.scrollY});
-           setPage(prev => prev - 1);
-           setQuery(page, 'page');
-      }}>Previous page</button>
-    </div> <p className="--bold">Page {page}</p>
+    </div><p className="--bold">Page {page}</p>
     </div>
 
-  {articles.length === 0 && <h3 style={{margin: '40px 0 20px', color: '#F0147B'}}>No articles to display.</h3>}
-     
-      <ul className="articles__list animate__animated animate__bounceInLeft">
+    {articles.length ? <ul className="articles__list animate__animated animate__bounceInLeft">
        {articles.map(({article_id, author, avatar_url, title, topic, created_at, votes, comment_count}) => {
          return <Link key={article_id} to={`/articles/${article_id}`}>
           <ArticlePreviewCard
@@ -150,7 +153,7 @@ if (apiError) {
             commentCount={comment_count} />
           </Link>;
       })}
-    </ul>
+    </ul> : <h3 style={{margin: '40px 0 20px', color: '#F0147B'}}>No articles to display.</h3>}
   </div>}
   <button id="button__top" onClick={() => window.scrollTo({
         top: 0,
