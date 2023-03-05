@@ -33,17 +33,23 @@ return e => {
   if (!articleTitle || !topic || !newArticleBody) {
     setError('You must complete all fields before posting your article.');
     setTimeout(() => setError(false), 6000);
-  } else if (!topics.map(topic => topic.slug).includes(topic.toLowerCase())) {
+  } else if (!topics.map(topic => topic.slug.toLowerCase()).includes(topic.toLowerCase())) {
     setError('That topic does not exist.');
     setTimeout(() => setError(false), 6000);
     setShowTopicPrompt(true);
   } else if (articleTitle && topic && newArticleBody) {
     setError(false);
-    api.postNewArticle(loggedInUser, articleTitle, newArticleBody, topic.toLowerCase())
+    api.postNewArticle(loggedInUser, articleTitle, newArticleBody, topic)
     .then(({article}) => {
       navigate(`/articles/new/${article.article_id}`);
     })
-    .catch(err => setError(err.message));
+    .catch(err => {
+      if (err.response.data.msg) {
+      setError(err.response.data.msg);
+      } else {
+        setError(err.message);
+      }
+    });
 };
 };
 };
