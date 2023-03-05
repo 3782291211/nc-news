@@ -32,29 +32,3 @@ return(
 };
 
 export default Nav;
-
-/*
-
-return(
-  <nav>
-    <ul id="nav">
-    <Link to="/"><li className="nav__link">Home</li></Link>
-    <Link to="articles"><li className="nav__link">All articles</li></Link>
-    <Link to="topics"><li className="nav__link">Topics</li></Link>
-    <Link to="users"><li className="nav__link">Users</li></Link>
-    </ul>
-    {isLoading && <div><Spinner animation="grow" /><p className="nav__loading">Fetching topics</p></div>}
-    {!isLoading && !apiError && 
-    <DropdownButton id="dropdown__main" title="📰 Articles by topic">
-      {topics.filter(({number_of_articles}) => number_of_articles > 0).map(({slug, topic_id}) => {
-        return <Dropdown.Item 
-        key={topic_id}
-        onClick={(e => navigate(`articles?topic=${e.target.innerHTML}`))}
-        >{slug}</Dropdown.Item>
-      } )}
-    </DropdownButton> }
-  </nav>
-)
-};
-
-*/
