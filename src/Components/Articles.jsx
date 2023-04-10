@@ -155,7 +155,7 @@ if (apiError) {
       })}
     </ul> : <h3 style={{margin: '40px 0 20px', color: '#F0147B'}}>No articles to display.</h3>}
   </div>}
-  <button id="button__top" onClick={() => window.scrollTo({
+  <button style={{margin: '20px auto 50px'}} onClick={() => window.scrollTo({
         top: 0,
         left: 0,
         behavior: "smooth"
