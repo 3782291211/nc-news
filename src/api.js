@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: 'https://majids-backend-api-project.onrender.com/api'
+  baseURL: 'https://ncnews.vercel.app/api'
 });
 
 export const fetchArticles = (topic, sort_by, order, page, limit, author) => {
