@@ -13,7 +13,7 @@ const messages = [
     'Server is taking longer than expected to respond. Hang in there!',
     'Just a few more moments...',
     'It\'s not broken, it\'s just really slow.',
-    'Loading'
+    'It looks like the app is going through a cold-start.'
   ];
     
 useEffect(() => {
