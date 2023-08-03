@@ -46,7 +46,7 @@ useEffect(() => {
         setTimeout(() => setErrorMsg(''), 6000);
       }
     });
-  } else {
+  } else if (!currentUser) {
     setErrorMsg("Page not found.");
   }
 }, [rerender]);
@@ -88,6 +88,7 @@ const handleSubmit = e => {
     .then(({user}) => {
         setIsLoadingForm(false);
         setFormData({screenName: '', username: '', password: '', passwordConfirm: '', avatarUrl: ''});
+        window.history.replaceState(null, "New Page Title", `/profile/${user.username}`);
         setRerender(!rerender);
         setLoggedInUser(user.username);
         setSuccessMsg("Update completed.");
