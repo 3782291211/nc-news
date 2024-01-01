@@ -1,4 +1,5 @@
 import Spinner from 'react-bootstrap/Spinner';
+import info from '../info-circle-fill.svg';
 
 const AccountForm = ({type, handleSubmit, isLoading, formData, setFormData}) => {
 
@@ -12,7 +13,7 @@ const {screenName, username, password, passwordConfirm, avatarUrl} = formData;
   <label className="account__form-label" htmlFor="account__new-username">Username</label>
   <input id="account__new-username" type="text" onChange={e => setFormData(prev => ({...prev, username: e.target.value}))} value={username} placeholder={type === 'update' ? "Enter new username" : "Enter username"}/>
 
-  <label className="account__form-label" htmlFor="account__new-password">Password *</label>
+  <label className="account__form-label account__password-label" htmlFor="account__new-password">Password<span><img src={info}/>Must be at least 10 characters and contain at least 1 number and 1 capital letter</span></label>
   <input id="account__new-pasword" type="password" onChange={e => setFormData(prev => ({...prev, password: e.target.value}))} value={password} placeholder={type === 'update' ? "Enter new password" : "Enter password"}/>
 
   <label className="account__form-label" htmlFor="account__new-password-conf">Confirm password</label>
