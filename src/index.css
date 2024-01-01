@@ -486,7 +486,8 @@ button {
 button:active,
 #topic__submit:active,
 #account__submit:active,
-#new-article__submit:active {
+#new-article__submit:active,
+.account__tip button:active {
   background-color: orangered;
   color: yellow;
 }
@@ -872,6 +873,44 @@ select {
   width: 100%;
 }
 
+.account__password-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.account__password-label span {
+  display: flex;
+  gap: 10px;
+  color: rgb(0, 255, 229);
+}
+
+.account__tip {
+  max-width: 800px;
+  margin: 40px auto 30px;
+  box-shadow: 5px -5px 0 1px black;
+  background-color: rgba(245, 207, 71, 0.433);
+  border: 1px solid rgb(44, 42, 42);
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.account__tip p, .account__tip p strong {
+  font-size: 24px;
+  text-align: left;
+}
+
+.account__tip button {
+  background-color: rgb(245, 207, 71);
+  color: black;
+}
+
+.account__tip > * {
+  margin: 0;
+}
+
 textarea#topic__body,
 textarea#new-article__body {
   font-family: "Patrick Hand";
@@ -996,6 +1035,10 @@ button.article__delete:active {
     width: 90%
   }
 
+  .account__password-label span {
+    font-size: 15px;
+  }
+
   #username,
   #password {
     width: 80px;
@@ -1104,7 +1147,7 @@ button.article__delete:active {
     font-size: 16px;
   }
 
-  #topic__submit, #account__submit {
+  #topic__submit, #account__submit, .account__tip button {
     font-size: 20px;
   }
 
@@ -1222,5 +1265,9 @@ button.article__delete:active {
 
   .users__user p {
     font-size: 16px;
+  }
+
+  .account__tip {
+    margin: 20px auto 20px;
   }
 }

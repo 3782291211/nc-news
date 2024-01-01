@@ -11,8 +11,16 @@ const [isLoading, setIsLoading] = useState(false);
 const [successMsg, setSuccessMsg] = useState('');
 const [errorMsg, setErrorMsg] = useState('');
 
-const handleSubmit = e => {
+const loginAsSampleUser = () => {
+  handleSubmit("weegembump", "password123ABC");
+}
+
+const loginAsUser = e => {
   e.preventDefault();
+  handleSubmit(username, password);
+}
+
+const handleSubmit = (username, password) => {
   setErrorMsg('');
   if (loggedInUser) {
     setSuccessMsg("You're already logged in!");
@@ -47,12 +55,16 @@ const handleSubmit = e => {
 
 return (<main>
     <h2 className="account__h2">Log in to your account</h2>
+    <div className="account__tip">
+      <p>Click the button below to login as a <strong>sample user</strong>.</p>
+      <button onClick={loginAsSampleUser}>Login as sample user</button>
+    </div>
+    <p style={{fontSize: "24px"}}>Or, you can login with your own account.</p>
 
     {successMsg && !errorMsg && <p className="account__confirmation">{successMsg}</p>}
     {errorMsg && <p className="error">{errorMsg}</p>}
 
-    <form style={{marginBottom: '60px'}} id="account__form" onSubmit={handleSubmit}>
-      
+    <form style={{marginBottom: '60px'}} id="account__form" onSubmit={loginAsUser}>
         <label className="account__form-label" htmlFor="account__new-username">Username</label>
         <input id="account__new-username" type="text" onChange={e => setUsername(e.target.value)} value={username} placeholder="Enter username"/>
 
