@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseUrl: "https://ncnews.vercel.app/api",
+  baseURL: "https://ncnews.vercel.app/api",
   //baseURL: 'https://majids-backend-api-project.onrender.com/api'
 });
 
